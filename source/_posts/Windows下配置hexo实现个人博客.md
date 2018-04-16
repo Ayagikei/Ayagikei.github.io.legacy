@@ -112,16 +112,16 @@ language: #简体中文的话可以在这里填上"zh-Hans"
 timezone:
 ```
 
-** 注意一个坑： ** 每一行的冒号之后记得加上一个空格，否则会报错。
+** 注意一个坑：  每一行的冒号之后记得加上一个空格，否则会报错。**
 
 
 ### 更换 NexT 主题 
-首先你要找到心怡的主题，可以在[这里]（https://hexo.io/themes/）找。
+首先你要找到心怡的主题，可以在[这里](https://hexo.io/themes/)找。
 
 建议直接查阅[NexT 官网](http://theme-NexT.iissnan.com/getting-started.html)，安装步骤以及各种自定义步骤十分详细，。
 
 
-### 实现NexT主题圆形头像
+### 实现 NexT 主题圆形头像
 在 \themes\NexT\source\css\_custom 里的 custom.styl 文件是让我们放入自定义css样式的。
 我们可能用此文件来实现圆形头像。
 打开文件并在其中插入
@@ -166,7 +166,7 @@ $ ssh-keygen -t rsa
 ``` bash
 ssh -T git@github.com
 ```
-** 若显示 *Hi <你的用户名>! You've successfully authenticated , but Github does not provide shell access. * 就表示你已经成功了！
+若显示 Hi <你的用户名>! You've successfully authenticated , but Github does not provide shell access.  就表示你已经**成功**了！
 
 ### 建立一个 Github Pages 仓库，并将你的博客上传
 
@@ -207,6 +207,9 @@ hexo d
 
 3. 然后，如图配置域名解析。
 {% asset_img art01_02.png %}
+
+4. 最后，还要在你的本地博客文件夹/Source文件夹内，新建一个无后缀名的叫做CNAME的文件，并在其中写入你的域名。
+{% asset_img art01_05.png %}
 
 4. 试试用你的域名访问吧~
 
