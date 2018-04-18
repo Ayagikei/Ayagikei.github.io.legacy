@@ -180,8 +180,16 @@ ssh -T git@github.com
 ### 建立一个 Github Pages 仓库，并将你的博客上传 ###
 
 1. 在 Github 新建一个名称为 <你的github用户名>.github.io 的仓库。
-2. 打开博客所在根目录的 _config.yml 文件，即 ** 站点配置文件 ** 。
-3. 找到以下段落并修改：
+
+2. 安装 [hexo-deployer-git](https://github.com/hexojs/hexo-deployer-git)。
+
+   ```bash
+   $ npm install hexo-deployer-git --save
+   ```
+
+3. 打开博客所在根目录的 _config.yml 文件，即 ** 站点配置文件 ** 。
+
+4. 找到以下段落并修改：
 
 ``` 
 # Deployment
@@ -201,7 +209,7 @@ hexo d
 执行完命令后，你的博客就已经部署在了Github Pages上了。
 对应的地址是 <替换成你的用户名>.github.io
 
-* 现在，所有人都可以通过这个地址访问你的邮箱了！ *
+**现在，所有人都可以通过这个地址访问你的邮箱了！** 
 
 ---
 
@@ -270,7 +278,64 @@ $ git commit -m "初始化hexo分支"
 $ git push
 ```
 
----
+同时，你还可以编写一份.sh脚本文件来方便自己的部署和git操作；以下是我的脚本代码：
+
+```bash
+echo "Script Starting..."
+echo "----Cleaning"
+hexo clean
+echo "----Generating"
+hexo g
+
+
+read -r -p "Do u want to run server to debug? [Y/else] " input
+
+case $input in
+	[yY][eE][sS]|[yY])
+		echo "----Starting server in debug mode"
+		hexo s --debug
+		;;
+
+	*)
+	echo "Skip server"
+	;;
+esac
+
+read -r -p "Do u want to Deploying? [Y/else] " input
+
+case $input in
+	[yY][eE][sS]|[yY])
+		echo "----Deploying"
+		hexo d
+		;;
+
+	*)
+	echo "Skip deploy..."
+	;;
+esac
+
+read -r -p "Do u want to git push? [Y/else] " input
+
+case $input in
+	[yY][eE][sS]|[yY])
+		echo "----Deploying"
+		git add .
+		git commit -m "Update"
+		git push
+		;;
+
+	*)
+	echo "Skip git push..."
+	;;
+esac
+
+
+
+echo "All Finaish!"
+read -p "Press any key to exit." var
+```
+
+
 
 ## 8. 开写吧！
 
