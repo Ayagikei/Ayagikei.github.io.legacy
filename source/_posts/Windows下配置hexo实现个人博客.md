@@ -32,7 +32,7 @@ categories:
 ### Git的安装 ###
 
 - [下载地址](https://git-scm.com/download/win)
-- 安装步骤：如不懂选项可以全程NexT
+- 安装步骤：如不懂选项可以全程 next
 - 验证：安装完毕后，在任一文件夹空白处右键会多出Git Bash here选项，点开之后输入
 ``` bash
 $ git -v
@@ -122,7 +122,10 @@ timezone:
 
 这里推荐一款叫做 NexT 的极简风格的主题，也是本博客使用的主题：
 
-建议直接查阅 [NexT 官网](http://theme-NexT.iissnan.com/getting-started.html) ，安装步骤以及各种自定义步骤十分详细，。
+建议直接查阅 [NexT 官网](http://theme-NexT.iissnan.com/getting-started.html) ，安装步骤以及各种自定义步骤十分详细。
+
+**注意：** NexT主题的GitHub地址在6.0版本之后迁移到了  https://github.com/theme-next/hexo-theme-next 。
+一些旧博文里的NexT主题的安装方式可能会让你安装上旧版本的NexT主题。
 
 <br />
 ### 实现 NexT 主题圆形头像 ###
