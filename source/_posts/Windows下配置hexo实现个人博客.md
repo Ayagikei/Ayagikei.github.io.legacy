@@ -1,4 +1,4 @@
-﻿---
+---
 title: Windows下配置hexo实现个人博客
 date: 2018-04-16 19:07:32
 tags: 
@@ -9,7 +9,7 @@ tags:
 categories: 
 - 技术
 ---
-## 前言 ##
+## 1.前言 ##
 很久以前自己就想要一个自己的博客，来保存自己写过的杂七杂八的文章。偶然间听说用hexo搭建个人博客很简便，就查询了一波资料搭建出了这个网站。
 第一篇文章就献给hexo的搭建过程吧~
 
@@ -27,10 +27,10 @@ categories:
 
 ---
 
-## 1. 所需环境的安装和配置 ##
-	
+## 2. 所需环境的安装和配置 ##
+
 ### Git的安装 ###
-		
+
 - [下载地址](https://git-scm.com/download/win)
 - 安装步骤：如不懂选项可以全程NexT
 - 验证：安装完毕后，在任一文件夹空白处右键会多出Git Bash here选项，点开之后输入
@@ -52,7 +52,7 @@ $ node -v
 
 ---
 
-## 2. hexo的安装和运行 ##
+## 3. hexo的安装和运行 ##
 
 ### 正常步骤 ###
 
@@ -96,7 +96,7 @@ $ npm config set registry https://registry.npm.taobao.org
 
 ---
 
-## 3. hexo个性化配置 ##
+## 4. hexo个性化配置 ##
 看到自己构建好的博客后，是不是很想将博客换成自己想要的名字？
 如果你不中意默认的主题的话，还可以自己挑选喜欢的主题。
 <br />
@@ -110,17 +110,19 @@ subtitle: #副标题
 description: #描述
 keywords:
 author: #你的大名
-language: #简体中文的话可以在这里填上"zh-Hans"
+language: #简体中文的话可以在这里填上"zh-CN"
 timezone:
 ```
 
 **注意一个坑：  每一行的冒号之后记得加上一个空格，否则会报错。**
 
 <br />
-### 更换 NexT 主题 ###
+### 更换 hexo 主题 ###
 首先你要找到心怡的主题，可以在[这里](https://hexo.io/themes/)找。
 
-建议直接查阅[NexT 官网](http://theme-NexT.iissnan.com/getting-started.html)，安装步骤以及各种自定义步骤十分详细，。
+这里推荐一款叫做 NexT 的极简风格的主题，也是本博客使用的主题：
+
+建议直接查阅 [NexT 官网](http://theme-NexT.iissnan.com/getting-started.html) ，安装步骤以及各种自定义步骤十分详细，。
 
 <br />
 ### 实现 NexT 主题圆形头像 ###
@@ -139,7 +141,7 @@ timezone:
 
 ---
 
-## 4. 搭桥Github Pages ##
+## 5. 搭桥Github Pages ##
 在以上方式搭建的服务器只有自己才能访问到，那么如何让其他人也能访问到自己的博客呢？
 我们将用到Github Pages服务。
 
@@ -155,13 +157,13 @@ Github Pages 可以托管用户编写的静态网页，还能提供一个域名�
 $ git config --global user.name "<你的github账号名>"
 $ git config --global user.email "<你的github邮箱>"
 ```
- 
+
 3. 接下来输入以下命令
 ```bash
 $ ssh-keygen -t rsa
 ```
 然后回车三次，之后就会生成两个文件，分别为id_rsa和id_rsa.pub，即密钥id_rsa和公钥 id_rsa.pub 。
-  
+
 4. 在 https://github.com/settings/keys 中点击 New SSH key，粘贴到刚才生成的 id_rsa.pub 文件其中的内容。
 
 5. 添加完毕后，可以在 Git Bash 里面输入以下命令来测试是否连接成功。
@@ -169,9 +171,10 @@ $ ssh-keygen -t rsa
 ssh -T git@github.com
 ```
 
-若显示 
-> Hi <你的用户名>! You've successfully authenticated , but Github does not provide shell access.  
-就表示你已经**成功**了！
+若显示以下内容就表示你已经**成功**了！
+> Hi <你的用户名>! You've successfully authenticated , but Github does not provide shell access. 
+
+
 
 <br />
 ### 建立一个 Github Pages 仓库，并将你的博客上传 ###
@@ -202,7 +205,7 @@ hexo d
 
 ---
 
-## 5. 绑定个人域名 ##
+## 6. 绑定个人域名 ##
 但是，如果你想要一个自己设定的域名的话，又该怎么办呢？
 这里以[ 万网 ](https://wanwang.aliyun.com/)为例。
 
@@ -221,7 +224,7 @@ hexo d
 
 ---
 
-## 6. 部署步骤优化 ##
+## 7. 部署步骤优化 ##
 以上方式只是将 hexo 生成的静态网页上传到 Github Pages，但是并没有备份源文件。
 这样对于多部电脑编辑博客是件麻烦事，而且文件没有云备份也不安全。
 当然，你可以新建一个仓库专门用来保存源文件。但是每次变动要上推两个仓库的变动也不方便。
@@ -257,7 +260,7 @@ $ git push
 hexo g
 hexo d
 ```
-  
+
 
 
 然后再使用以下Git命令来上推备份原文件。
@@ -265,17 +268,17 @@ hexo d
 $ git add .
 $ git commit -m "初始化hexo分支"
 $ git push
-``` 
+```
 
 ---
 
-## 7. 开写吧！
+## 8. 开写吧！
 
 ### 生成 md 文件 ###
 使用以下命令生成md文件。
 ``` bash
 $ hexo new [layout] <title>.
-``` 
+```
 然后再在 *source\_posts* 里找到md文件。
 可以在头部写入文章的标签以及分类。
 下面就用正常的 markdown 语法进行编辑即可。
@@ -286,6 +289,39 @@ $ hexo new [layout] <title>.
 > 如果 title包含空格的话，需要用引号括起来。
 
 <br />
+
+### 本地 Markdown 编辑器
+
+推荐两款：
+
+- [Cmd Markdown](https://www.zybuluo.com/mdeditor)
+
+  <i class="fa fa-check fa-lg"></i> 多平台，还可以在线使用
+
+  <i class="fa fa-check fa-lg"></i> 两栏对比，实时同步预览
+
+  <i class="fa fa-check fa-lg"></i> 编辑器易用
+
+  <i class="fa fa-check fa-lg"></i> 有云同步
+
+  <i class="fa fa-times fa-lg"></i> 需要注册使用
+
+  <i class="fa fa-times fa-lg"></i> 部分功能需要会员
+
+- [Typora](https://www.typora.io/)
+
+  <i class="fa fa-check fa-lg"></i> 多平台
+
+  <i class="fa fa-check fa-lg"></i> 实时渲染写好的Markdown代码
+
+  <i class="fa fa-check fa-lg"></i> 编辑器简洁美观
+
+  <i class="fa fa-check fa-lg"></i> 免费支持多种格式导出
+
+  <i class="fa fa-times fa-lg"></i> 体积有些庞大
+
+<br />
+
 ### 后台管理编辑插件 ###
 有两款实现了WEB UI的后台管理编辑插件可供你选择。
 这里就不对两者的使用方法做介绍了。
@@ -297,7 +333,7 @@ $ hexo new [layout] <title>.
 <br />
 ### 最后 ###
 强烈建议读读 hexo 的官方文档以及你所用主题的官方文档。
-就如 hexo 3.0 有一些自定义标签，不同于 markdown 的标准语法。这些都是需要你看看官方文档才能得知的。
+就如 hexo 3.x 有一些自定义标签（插入图片），不同于 markdown 的标准语法。这些都是需要你看看官方文档才能得知的。
 
-  [1]: https://jaredforsyth.com/hexo-admin/
-  [2]: https://github.com/geekwen/hexo-local-admin
+[1]: https://jaredforsyth.com/hexo-admin/
+[2]: https://github.com/geekwen/hexo-local-admin
