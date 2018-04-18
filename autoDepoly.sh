@@ -35,9 +35,11 @@ read -r -p "Do u want to git push? [Y/else] " input
 
 case $input in
 	[yY][eE][sS]|[yY])
-		echo "----Deploying"
+		echo "----Git Add"
 		git add .
+		echo "----Git Commit"
 		git commit -m "Update"
+		echo "----Git Push"
 		git push
 		;;
 

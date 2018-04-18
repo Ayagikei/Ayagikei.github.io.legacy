@@ -281,7 +281,7 @@ $ git push
 同时，你还可以编写一份.sh脚本文件来方便自己的部署和git操作；以下是我的脚本代码：
 
 ```bash
-echo "Script Starting..."
+echo "Script Starting"
 echo "----Cleaning"
 hexo clean
 echo "----Generating"
@@ -318,9 +318,11 @@ read -r -p "Do u want to git push? [Y/else] " input
 
 case $input in
 	[yY][eE][sS]|[yY])
-		echo "----Deploying"
+		echo "----Git Add"
 		git add .
+		echo "----Git Commit"
 		git commit -m "Update"
+		echo "----Git Push"
 		git push
 		;;
 
