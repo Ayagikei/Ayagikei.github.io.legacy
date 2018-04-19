@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://sarasarasa.net
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -88,6 +88,11 @@ symbols_count_time:
   total_symbols: true
   total_time: true
 
+# 自动生成sitemap
+sitemap: 
+path: sitemap.xml
+
+  
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy: 

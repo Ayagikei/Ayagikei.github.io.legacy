@@ -13,7 +13,7 @@ categories:
 
 <img src="/2018/04/18/Steam-夏日特惠？不，是夏日-海豹-。/header.jpg" class="full-image" />
 
-> 本文首发于我的[知乎专栏](https://zhuanlan.zhihu.com/p/22116153)「[丹特利安的书架](https://zhuanlan.zhihu.com/Dantarian)」。
+> 本文首发于我的[知乎专栏](https://zhuanlan.zhihu.com/p/24984075)「[丹特利安的书架](https://zhuanlan.zhihu.com/Dantarian)」。
 >
 > 亦授权了[小黑盒平台的转载](http://api.xiaoheihe.cn/maxnews/app/share/detail/12072)。
 
