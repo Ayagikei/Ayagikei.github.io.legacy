@@ -14,15 +14,13 @@ categories:
 
 这是基于 [ScienJus/smartqq](https://github.com/ScienJus/smartqq) 制作的一个自用的，主题为 **舰队Collection** 机器人。
 
-## 更新记录
+------
 
-****
+## 更新记录
 
 **2018/4/22**   现在以Maven的方式导入smartqq，重新设计了项目的包结构。
 
 **2018/4/21**   增加复读功能（1%几率复读+重复了3次的语句自动复读），官推转发现在可以识别 Img 标签。
-
-
 
 
 
