@@ -10,13 +10,15 @@ categories:
 - 项目
 ---
 
-项目主页：https://github.com/Ayagikei/QQbot-Kancolle
+项目主页：https://github.com/Ayagikei/Kancolle-QQ-Bot
 
 这是基于 [ScienJus/smartqq](https://github.com/ScienJus/smartqq) 制作的一个自用的，主题为 **舰队Collection** 机器人。
 
 ------
 
 ## 更新记录
+
+**2018/4/25**   以栈的方式重写了TwitterGetter方法，现在可以获取一次更新的多条官推。
 
 **2018/4/22**   现在以Maven的方式导入smartqq，重新设计了项目的包结构。
 
@@ -59,6 +61,8 @@ categories:
    {% asset_img pic7.png %}
 
    {% asset_img pic8.png %}
+
+- 复读功能，任意语句（不包含<称呼>）1%几率复读，或者重复了3次的语句自动复读。
 
 ## 使用方法
 
@@ -152,7 +156,6 @@ categories:
 ## 需要的改进
 
 - 更多的功能实现
-- 用栈实现获取多条更新的官推
 - 单元测试
 - 二维码直接在控制台输出
 - 网页后台，可供服务器使用

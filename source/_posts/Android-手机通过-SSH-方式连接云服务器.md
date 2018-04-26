@@ -14,6 +14,8 @@ categories:
 
 其实，一些 app 能让你的手机立刻变成一个 linux 终端。
 
+<!-- more -->
+
 ## <i class="fa fa-mobile  fa-lg"></i> 所用的APP
 
  {% asset_img pic01.png %}
