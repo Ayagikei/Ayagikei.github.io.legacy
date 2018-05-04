@@ -1,13 +1,14 @@
 ---
 title: Android 手机通过 SSH 方式连接云服务器
+tags:
+  - Android
+  - SSH
+  - 云服务器
+  - 技术
+categories:
+  - 技术
+abbrlink: 83d18952
 date: 2018-04-24 22:16:46
-tags: 
-- Android
-- SSH
-- 云服务器
-- 技术
-categories: 
-- 技术
 ---
 
 身边没有电脑，只有手机，但又想远程连接服务器进行操作和文件传输，该怎么办呢？

@@ -1,14 +1,15 @@
 ---
 title: Steam 夏日特惠？不，是夏日"海豹"。
+tags:
+  - 游戏
+  - 游戏文化
+  - 知乎专栏
+  - Steam
+categories:
+  - 游戏
+  - 文化
+abbrlink: d16687dc
 date: 2018-04-18 16:50:34
-tags: 
-- 游戏
-- 游戏文化
-- 知乎专栏
-- Steam
-categories: 
-- 游戏
-- 文化
 ---
 
 <img src="/2018/04/18/Steam-夏日特惠？不，是夏日-海豹-。/header.jpg" class="full-image" />

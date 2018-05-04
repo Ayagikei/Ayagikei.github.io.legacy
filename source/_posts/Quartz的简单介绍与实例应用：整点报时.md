@@ -1,14 +1,15 @@
 ---
 title: Quartz的简单介绍与实例应用：整点报时
+tags:
+  - Quartz
+  - 技术
+  - 实例
+  - Java
+  - 框架
+categories:
+  - 技术
+abbrlink: 5dc888ab
 date: 2018-04-19 15:23:25
-tags: 
-- Quartz
-- 技术
-- 实例
-- Java
-- 框架
-categories: 
-- 技术
 ---
 
 自己弄的一个 QQ 机器人有一个整点报时的功能，当时使用了非常简陋的方法实现。想要重写的时候，发现了一款非常好用的任务调度框架：**Quartz**。

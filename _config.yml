@@ -15,7 +15,11 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://sarasarasa.net
 root: /
-permalink: :year/:month/:day/:title/
+# 链接持久化
+permalink: post/:abbrlink.html
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
 permalink_defaults:
 
 # Directory
@@ -91,6 +95,7 @@ symbols_count_time:
 # 自动生成sitemap
 sitemap: 
 path: sitemap.xml
+
 
   
 # Deployment

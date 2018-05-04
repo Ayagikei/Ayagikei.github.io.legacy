@@ -1,13 +1,14 @@
 ---
 title: 项目文档：舰C主题的QQ机器人（ QQ Bot Kancolle）
+tags:
+  - Github
+  - 项目
+  - QQ机器人
+  - 文档
+categories:
+  - 项目
+abbrlink: 61989d5e
 date: 2018-04-20 19:16:38
-tags: 
-- Github
-- 项目
-- QQ机器人
-- 文档
-categories: 
-- 项目
 ---
 
 项目主页：https://github.com/Ayagikei/Kancolle-QQ-Bot

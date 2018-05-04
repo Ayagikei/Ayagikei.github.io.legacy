@@ -1,13 +1,14 @@
 ---
 title: Windows下配置hexo实现个人博客
+tags:
+  - 前端
+  - hexo
+  - NexT
+  - 记录
+categories:
+  - 技术
+abbrlink: 49d119d7
 date: 2018-04-16 19:07:32
-tags: 
-- 前端
-- hexo
-- NexT
-- 记录
-categories: 
-- 技术
 ---
 ## 1.前言 ##
 很久以前自己就想要一个自己的博客，来保存自己写过的杂七杂八的文章。偶然间听说用hexo搭建个人博客很简便，就查询了一波资料搭建出了这个网站。
