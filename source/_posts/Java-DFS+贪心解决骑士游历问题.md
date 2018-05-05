@@ -49,6 +49,8 @@ date: 2018-05-05 18:51:46
 
 ```java
 
+package lab3.Knight;
+
 /**
  * @author AyagiKei
  * @url https://github.com/Ayagikei
@@ -77,26 +79,60 @@ public class Point {
         this.y = y;
     }
 
-    public Point left(){
-        if(this.getY()==0)
+    public Point moveNE(){
+        if(this.getX()-2 <1 || this.getY()+1 >8)
             return null;
 
-        return new Point(this.getX(),this.getY()-1);
+        return new Point(this.getX()-2,this.getY()+1);
     }
 
-    public Point right(){
-        return new Point(this.getX(),this.getY()+1);
-    }
-
-    public Point up(){
-        if(this.getX()==0)
+    public Point moveEN(){
+        if(this.getX()-1 <1 || this.getY()+2 >8)
             return null;
 
-        return new Point(this.getX()-1,this.getY());
+        return new Point(this.getX()-1,this.getY()+2);
     }
 
-    public Point down(){
-        return new Point(this.getX()+1,this.getY());
+    public Point moveES(){
+        if(this.getX()+1 > 8 || this.getY()+2 >8)
+            return null;
+
+        return new Point(this.getX()+1,this.getY()+2);
+    }
+
+    public Point moveSE(){
+        if(this.getX()+2 > 8 || this.getY()+1 >8)
+            return null;
+
+        return new Point(this.getX()+2,this.getY()+1);
+    }
+
+    public Point moveSW(){
+        if(this.getX()+2 > 8 || this.getY()-1 <1)
+            return null;
+
+        return new Point(this.getX()+2,this.getY()-1);
+    }
+
+    public Point moveWS(){
+        if(this.getX()+1 > 8 || this.getY()-2 <1)
+            return null;
+
+        return new Point(this.getX()+1,this.getY()-2);
+    }
+
+    public Point moveWN(){
+        if(this.getX()-1 < 1 || this.getY()-2 <1)
+            return null;
+
+        return new Point(this.getX()-1,this.getY()-2);
+    }
+
+    public Point moveNW(){
+        if(this.getX()-2 < 1 || this.getY()-1 <1)
+            return null;
+
+        return new Point(this.getX()-2,this.getY()-1);
     }
 
     @Override
@@ -109,12 +145,12 @@ public class Point {
 
     @Override
     public boolean equals(Object obj) {
-       if(obj == this) return true;
-       if(!(obj instanceof Point)) return false;
-       if(obj.hashCode()!=this.hashCode()) return false;
+        if(obj == this) return true;
+        if(!(obj instanceof Point)) return false;
+        if(obj.hashCode()!=this.hashCode()) return false;
 
-       Point p = (Point) obj;
-       return (p.getY() == this.getY()) && (p.getX() == this.getX());
+        Point p = (Point) obj;
+        return (p.getY() == this.getY()) && (p.getX() == this.getX());
     }
 }
 
