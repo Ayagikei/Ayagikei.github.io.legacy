@@ -123,7 +123,6 @@ public static String solveByStack(int maze[][],Point entrance,Point exit){
     Stack<Point> solve = new Stack<>();
 
     solve.push(entrance);
-    solve.peek();
     maze[entrance.getX()][entrance.getY()] = 2;
 
     Point p;
@@ -133,7 +132,7 @@ public static String solveByStack(int maze[][],Point entrance,Point exit){
 
         //System.out.println(solve.peek().getX() + " " + solve.peek().getY());
 
-        //上下左右进一格
+        //上下左右进一格，并将走过的地方标记为2
         if(((p = solve.peek().up())!=null) && maze[p.getX()][p.getY()] == 0){
             maze[p.getX()][p.getY()] = 2;
             solve.push(p);
@@ -171,11 +170,13 @@ public static String solveByStack(int maze[][],Point entrance,Point exit){
 
     }
 
+    //反向标记最终的路线为3
     while(!solve.isEmpty()){
         p = solve.pop();
         maze[p.getX()][p.getY()] = 3;
     }
 
+    //构建字符串返回
     StringBuffer stringBuffer = new StringBuffer();
     for(int i=0;i<maze.length;i++) {
         for (int j = 0; j < maze[0].length; j++) {

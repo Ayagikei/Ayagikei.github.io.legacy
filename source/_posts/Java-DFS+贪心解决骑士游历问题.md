@@ -184,7 +184,6 @@ public class Point {
 
 
         solve.push(entrance);
-        solve.peek();
         chess[entrance.getX()][entrance.getY()] = 0;
 
         Point pTop;
@@ -289,111 +288,73 @@ public class Point {
 代码如下：
 
 ```java
-     public static String solveByStackWithOpti(Point entrance){
+package lab3.Knight;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
+/**
+ * @author AyagiKei
+ * @url https://github.com/Ayagikei
+ **/
+public class KnightProblemSolve {
+
+    public static int chess[][][]=new int[9][9][9];
+
+
+    public static String solveByStackWithOpti(Point entrance){
         Stack<Point> solve = new Stack<>();
 
-        chess = new int[9][9];
+        //棋盘数组，计算过程中标记每个点已经走向过的方向
+        //第三维的[0]代表该点是否走过，[1]~[8]代表相应的方向是否走过
+        chess = new int[9][9][9];
 
-
+        //起点入栈
         solve.push(entrance);
-        solve.peek();
-        chess[entrance.getX()][entrance.getY()] = 0;
 
+        //栈顶元素
         Point pTop;
 
         //所有点走过为止
         while(solve.size()!=64){
 
-            Point qNewTop,chosenPoint = null;
+            //栈为空即无解的时候返回null
+            if(solve.isEmpty())
+                return null;
+
+            Point pNewTop,chosenPoint = null;
             int direction = 0,cnt = 9;
 
             pTop = solve.peek();
             System.out.println("("+pTop.getX()+"," + pTop.getY()+")");
 
-            //每一步选择通路最少的能行路
 
+            //计算并且找出8个方向中通路最少的路（并且是可以到达的）
+            for(int i=1;i<=8;i++){
+                if(chess[pTop.getX()][pTop.getY()][i] == 0){
+                    pNewTop = getPoint(pTop, i);
 
-            if(chess[pTop.getX()][pTop.getY()] < 1 && (qNewTop = pTop.moveNE()) != null && chess[qNewTop.getX()][qNewTop.getY()] == 0){
-                if(countAccess(qNewTop) < cnt){
-                    cnt = countAccess(qNewTop);
-                    direction = 1;
-                    chosenPoint = qNewTop;
+                    if(pNewTop != null && chess[pNewTop.getX()][pNewTop.getY()][0] == 0){
+                        if(countAccess(pNewTop) < cnt){
+                            cnt = countAccess(pNewTop);
+                            direction = 1;
+                            chosenPoint = pNewTop;
+                        }
+                    }
                 }
-
             }
 
-            if(chess[pTop.getX()][pTop.getY()] < 2 && (qNewTop = pTop.moveEN()) != null && chess[qNewTop.getX()][qNewTop.getY()] == 0){
-                if(countAccess(qNewTop) < cnt){
-                    cnt = countAccess(qNewTop);
-                    direction = 2;
-                    chosenPoint = qNewTop;
-                }
-
-            }
-
-            if(chess[pTop.getX()][pTop.getY()] < 3 && (qNewTop = pTop.moveES()) != null && chess[qNewTop.getX()][qNewTop.getY()] == 0){
-                if(countAccess(qNewTop) < cnt){
-                    cnt = countAccess(qNewTop);
-                    direction = 3;
-                    chosenPoint = qNewTop;
-                }
-
-            }
-
-            if(chess[pTop.getX()][pTop.getY()] < 4 && (qNewTop = pTop.moveSE()) != null && chess[qNewTop.getX()][qNewTop.getY()] == 0){
-                if(countAccess(qNewTop) < cnt){
-                    cnt = countAccess(qNewTop);
-                    direction = 4;
-                    chosenPoint = qNewTop;
-                }
-
-            }
-
-            if(chess[pTop.getX()][pTop.getY()] < 5 && (qNewTop = pTop.moveSW()) != null && chess[qNewTop.getX()][qNewTop.getY()] == 0){
-                if(countAccess(qNewTop) < cnt){
-                    cnt = countAccess(qNewTop);
-                    direction = 5;
-                    chosenPoint = qNewTop;
-                }
-
-            }
-
-            if(chess[pTop.getX()][pTop.getY()] < 6 && (qNewTop = pTop.moveWS()) != null && chess[qNewTop.getX()][qNewTop.getY()] == 0){
-                if(countAccess(qNewTop) < cnt){
-                    cnt = countAccess(qNewTop);
-                    direction = 6;
-                    chosenPoint = qNewTop;
-                }
-
-            }
-
-            if(chess[pTop.getX()][pTop.getY()] < 7 && (qNewTop = pTop.moveWN()) != null && chess[qNewTop.getX()][qNewTop.getY()] == 0){
-                if(countAccess(qNewTop) < cnt){
-                    cnt = countAccess(qNewTop);
-                    direction = 7;
-                    chosenPoint = qNewTop;
-                }
-
-            }
-
-            if(chess[pTop.getX()][pTop.getY()] < 8 && (qNewTop = pTop.moveNW()) != null && chess[qNewTop.getX()][qNewTop.getY()] == 0){
-                if(countAccess(qNewTop) < cnt){
-                    cnt = countAccess(qNewTop);
-                    direction = 8;
-                    chosenPoint = qNewTop;
-                }
-
-            }
-
-
+            //cnt == 9的时候就是无路可走的时候，回溯
             if(cnt == 9) {
-                //无路可走 回溯
-                chess[pTop.getX()][pTop.getY()] = 0;
+               for(int i=0;i<9;i++)
+                chess[pTop.getX()][pTop.getY()][i] = 0;
                 solve.pop();
             }
             else{
                 //选择最窄的路先走
-                chess[pTop.getX()][pTop.getY()] = direction;
+                chess[pTop.getX()][pTop.getY()][0] = 1;
+                chess[pTop.getX()][pTop.getY()][direction] = 1;
                 solve.push(chosenPoint);
             }
 
@@ -401,52 +362,61 @@ public class Point {
 
         System.out.println(solve.size());
 
+        //反向标记走过的路线
         while(!solve.isEmpty()){
             pTop = solve.pop();
-            chess[pTop.getX()][pTop.getY()] = solve.size()+1;
+            chess[pTop.getX()][pTop.getY()][0] = solve.size()+1;
         }
 
+        //输出
         StringBuffer stringBuffer = new StringBuffer();
         for(int i=1;i<9;i++) {
             for (int j = 1; j < 9; j++) {
-                stringBuffer.append(chess[i][j] +" ");
+                stringBuffer.append(chess[i][j][0] +" ");
             }
             stringBuffer.append("\r\n");
         }
 
         return stringBuffer.toString();
+        
     }
 
+    //统计p点的通路（可以到达的）
     public static int countAccess(Point p){
         int cnt = 0;
+        Point pNewPoint;
 
-        if(p.moveNE() != null && chess[p.moveNE().getX()][p.moveNE().getY()] == 0)
-            cnt ++;
+        for(int i=1;i<=8;i++){
+            pNewPoint = getPoint(p, i);
 
-        if(p.moveEN() != null && chess[p.moveEN().getX()][p.moveEN().getY()] == 0)
-            cnt ++;
-
-        if(p.moveES() != null && chess[p.moveES().getX()][p.moveES().getY()] == 0)
-            cnt ++;
-
-        if(p.moveSE() != null && chess[p.moveSE().getX()][p.moveSE().getY()] == 0)
-            cnt ++;
-
-        if(p.moveSW() != null && chess[p.moveSW().getX()][p.moveSW().getY()] == 0)
-            cnt ++;
-
-        if(p.moveWS() != null && chess[p.moveWS().getX()][p.moveWS().getY()] == 0)
-            cnt ++;
-
-        if(p.moveWN() != null && chess[p.moveWN().getX()][p.moveWN().getY()] == 0)
-            cnt ++;
-
-        if(p.moveNW() != null && chess[p.moveNW().getX()][p.moveNW().getY()] == 0)
-            cnt ++;
+            if(pNewPoint != null && chess[pNewPoint.getX()][pNewPoint.getY()][0] == 0)
+                cnt ++;
+        }
 
         return cnt;
 
     }
+
+    //获取8个方向的点
+    private static Point getPoint(Point p, int i) {
+        Point pNewPoint;
+        switch(i){
+            case 1: pNewPoint = p.moveNE();break;
+            case 2: pNewPoint = p.moveEN();break;
+            case 3: pNewPoint = p.moveES();break;
+            case 4: pNewPoint = p.moveSE();break;
+            case 5: pNewPoint = p.moveSW();break;
+            case 6: pNewPoint = p.moveWS();break;
+            case 7: pNewPoint = p.moveWN();break;
+            case 8: pNewPoint = p.moveNW();break;
+            default:pNewPoint = null;
+        }
+        return pNewPoint;
+    }
+
+
+}
+
 ```
 
 {% note info %} 
