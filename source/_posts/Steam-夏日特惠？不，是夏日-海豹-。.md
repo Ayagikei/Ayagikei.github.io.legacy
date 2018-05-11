@@ -12,7 +12,7 @@ abbrlink: d16687dc
 date: 2018-04-18 16:50:34
 ---
 
-<img src="/2018/04/18/Steam-夏日特惠？不，是夏日-海豹-。/header.jpg" class="full-image" />
+<img src="/post//d16687dc/header.jpg" class="full-image" />
 
 > 本文首发于我的[知乎专栏](https://zhuanlan.zhihu.com/p/24984075)「[丹特利安的书架](https://zhuanlan.zhihu.com/Dantarian)」。
 >
@@ -34,7 +34,7 @@ date: 2018-04-18 16:50:34
 
  {% asset_img 1.jpg %}
 
-> **\*夏日海豹，会马上开始吗？****谁知道确切时间？***
+> **夏日海豹，会马上开始吗？** **谁知道确切时间？**
 
 <!-- more -->
 
