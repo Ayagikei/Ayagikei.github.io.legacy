@@ -29,7 +29,7 @@ java -version
 rpm -qa | grep jdk
 ```
 如果没有安装的话，可以用yum方式安装：
-```
+```bash
 yum -y install java-1.8.0-openjdk*
 ```
 
@@ -146,7 +146,7 @@ CentOS 7.0以上版本，内置防火墙从 iptables 替换成了 firewalld。�
 
 然后开始尝试启动服务器吧：
 
-```
+```bash
 cd /root/MC
 java -jar server.jar
 ```
@@ -215,7 +215,7 @@ yum install screen
 
 1. 新建窗口（注意-S必须是大写的）
 
-   ```
+   ```bash
    screen -S mc
    ```
 
