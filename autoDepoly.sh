@@ -23,6 +23,7 @@ read -r -p "Do u want to Deploying? [Y/else] " input
 case $input in
 	[yY][eE][sS]|[yY])
 		echo "----Deploying"
+		cp other/google7e160391868c94f3.html public/google7e160391868c94f3.html
 		hexo d
 		;;
 
