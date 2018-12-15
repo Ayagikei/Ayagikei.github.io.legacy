@@ -60,7 +60,6 @@ Android6.0后，调用相机以及写入存储文件需要运行时申请权限�
      */
     @AfterPermissionGranted(RC_CAMERA)
     fun showChoosePicDialog() {
-        val currentApiVersion = android.os.Build.VERSION.SDK_INT
         val builder = android.app.AlertDialog.Builder(this)
         builder.setTitle("修改头像")
         val items = arrayOf("选择本地照片", "拍照")
@@ -91,11 +90,7 @@ Android6.0后，调用相机以及写入存储文件需要运行时申请权限�
                         if(file.exists())
                             file.delete()
 
-                        val fileUri = if(currentApiVersion < 24) {
-                            Uri.fromFile(file)
-                        } else{
-                            FileProvider.getUriForFile(this, getPackageName() + ".provider", file)
-                        }
+                        val fileUri = getUriByOsVersion(file)
 
                         openCameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri)
                         openCameraIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
@@ -126,7 +121,7 @@ Android7.0 对 APP 内的文件共享做了限制，外部不能直接访问你�
             when (requestCode) {
                 // 对拍照返回的图片进行裁剪处理
                 TAKE_PICTURE -> {
-                    val imgUriSel = FileProvider.getUriForFile(this, "$packageName.provider", getAvatarFile(avatarOriginFileName))
+                    val imgUriSel = getUriByOsVersion(getAvatarFile(avatarOriginFileName))
                     cutImageByuCrop(imgUriSel)
                 }
                 // 对在图库选择的图片进行裁剪处理
@@ -183,6 +178,20 @@ private fun getAvatarFile(filename:String): File{
 }
 ```
 
+**根据系统api版本决定是用绝对路径还是用FileProvider获得Uri的私有方法**
+
+```kotlin
+private fun getUriByOsVersion(file:File):Uri{
+    val currentApiVersion = android.os.Build.VERSION.SDK_INT
+
+    return if(currentApiVersion < 24) {
+        Uri.fromFile(file)
+    } else{
+        FileProvider.getUriForFile(this, packageName + ".provider", file)
+    }
+}
+```
+
 **上传裁剪后的头像**
 
 ```kotlin
@@ -212,7 +221,6 @@ fun cutImage(uri: Uri?) {
     val intent = Intent("com.android.camera.action.CROP")
     //com.android.camera.action.CROP这个action是用来裁剪图片用的
     intent.setDataAndType(uri, "image/*")
-    // 设置裁剪
     intent.putExtra("crop", "true")
     // aspectX aspectY 是宽高的比例
     intent.putExtra("aspectX", 1)
