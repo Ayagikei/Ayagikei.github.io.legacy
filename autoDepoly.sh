@@ -1,6 +1,19 @@
 echo "Script Starting"
-echo "----Cleaning"
-hexo clean
+read -r -p "Do u want to clean? [Y/else] " input
+
+case $input in
+	[yY][eE][sS]|[yY])
+		echo "----Cleaning"
+		hexo clean
+		;;
+
+	*)
+	echo "Skip clean"
+	;;
+esac
+
+
+
 echo "----Generating"
 hexo g
 
