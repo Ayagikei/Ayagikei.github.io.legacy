@@ -425,7 +425,7 @@ updateUI(account);
 
 2. 在用户登录成功后，你会在activity的`onActivityResult` 方法回调中获得一个 [`GoogleSignInAccount`](https://developers.google.com/android/reference/com/google/android/gms/auth/api/signin/GoogleSignInAccount.html)实例。
 
-   ```
+   ```java
    @Override
    public void onActivityResult(int requestCode, int resultCode, Intent data) {
        super.onActivityResult(requestCode, resultCode, data);
