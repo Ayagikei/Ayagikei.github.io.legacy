@@ -1,0 +1,3 @@
+[submodule "source/lib/fancybox"]
+	path = source/lib/fancybox
+	url = https://github.com/theme-next/theme-next-fancybox3
