@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 萨拉萨拉萨
+title: SaraSaraSa
 subtitle: A Blog to Write about Everything
 description:
 keywords:
@@ -79,7 +79,7 @@ search:
   path: search.xml
   field: post
   format: html
-  limit: 10000
+  content: true
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
