@@ -30,8 +30,8 @@ date: 2018-12-15 19:40:10
    2.5 [商店系统](#商店系统)
    2.6 [社区](#社区)
 3. [其他](#其他)
-   6.1 [更新日志](http://sarasarasa.net/post/a889432c.html)
-   6.2 [捐赠名单](http://sarasarasa.net/post/22d5d0d5.html)
+   3.1 [更新日志](http://sarasarasa.net/post/a889432c.html)
+   3.2 [捐赠名单](http://sarasarasa.net/post/22d5d0d5.html)
 
 ---
 
