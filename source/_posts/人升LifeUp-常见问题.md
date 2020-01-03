@@ -1,5 +1,5 @@
 ---
-title: 人升Lifeup 常见问题
+title: 人升LifeUp 常见问题
 tags:
   - 开发日志
   - Android
@@ -10,6 +10,12 @@ categories:
 abbrlink: 157a032e
 date: 2018-12-15 19:40:10
 ---
+
+# 最新版本更新介绍
+
+[v1.69.0更新介绍](http://sarasarasa.net/post/3651a964.html)
+
+
 
 # 目录
 
