@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="制作小部件的途中也遇到了各种坑orz，而且网络上的各种文章都不详细，摸索了一两天才写完。 准备首先，直接使用AS新建一个APP WIDGET，进行各种配置。 之后如果想修改小部件的最低宽高可以参考这个表：">
+<meta name="keywords" content="Android,开发日志">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人升开发日志#11 | 12&#x2F;06 Android 桌面小部件">
+<meta property="og:url" content="http://sarasarasa.net/post/f5d060f4.html">
+<meta property="og:site_name" content="萨拉萨拉萨">
+<meta property="og:description" content="制作小部件的途中也遇到了各种坑orz，而且网络上的各种文章都不详细，摸索了一两天才写完。 准备首先，直接使用AS新建一个APP WIDGET，进行各种配置。 之后如果想修改小部件的最低宽高可以参考这个表：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-13T05:06:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人升开发日志#11 | 12&#x2F;06 Android 桌面小部件">
+<meta name="twitter:description" content="制作小部件的途中也遇到了各种坑orz，而且网络上的各种文章都不详细，摸索了一两天才写完。 准备首先，直接使用AS新建一个APP WIDGET，进行各种配置。 之后如果想修改小部件的最低宽高可以参考这个表：">
+
+
+
+
+
+
+  <link rel="canonical" href="http://sarasarasa.net/post/f5d060f4.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>人升开发日志#11 | 12/06 Android 桌面小部件 | 萨拉萨拉萨</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe7ac5f435cef91b7c68c2e1aa4d39e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i> 
+		
+		
+		<img class="custom-logo-image" src="/images/logo.png"
+               alt="萨拉萨拉萨"/></span>
+		
+		
+        <span class="site-title">萨拉萨拉萨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">A Blog to Write about Everything</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sarasarasa.net/post/f5d060f4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AyagiKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="萨拉萨拉萨">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">人升开发日志#11 | 12/06 Android 桌面小部件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-06 23:36:39" itemprop="dateCreated datePublished" datetime="2018-12-06T23:36:39+08:00">2018-12-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-13 13:06:52" itemprop="dateModified" datetime="2018-12-13T13:06:52+08:00">2018-12-13</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/" itemprop="url" rel="index"><span itemprop="name">项目</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/开发日志/" itemprop="url" rel="index"><span itemprop="name">开发日志</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/开发日志/人升/" itemprop="url" rel="index"><span itemprop="name">人升</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/f5d060f4.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="post/f5d060f4.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">15k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">25 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>制作小部件的途中也遇到了各种坑orz，而且网络上的各种文章都不详细，摸索了一两天才写完。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>首先，直接使用AS新建一个APP WIDGET，进行各种配置。</p>
+<p>之后如果想修改小部件的最低宽高可以参考这个表：</p>
+ 
+<a id="more"></a>
+<h1 id="关键代码"><a href="#关键代码" class="headerlink" title="关键代码"></a>关键代码</h1><p><strong>LifeUpWidget.kt</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onUpdate</span><span class="params">(context: <span class="type">Context</span>, appWidgetManager: <span class="type">AppWidgetManager</span>, appWidgetIds: <span class="type">IntArray</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// There may be multiple widgets active, so update all of them</span></span><br><span class="line">        <span class="keyword">for</span> (appWidgetId <span class="keyword">in</span> appWidgetIds) &#123;</span><br><span class="line">            updateAppWidget(context, appWidgetManager, appWidgetId)</span><br><span class="line">            AppWidgetManager.getInstance(context).notifyAppWidgetViewDataChanged(appWidgetId, R.id.widget_list)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onEnabled</span><span class="params">(context: <span class="type">Context</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// Enter relevant functionality for when the first widget is created</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDisabled</span><span class="params">(context: <span class="type">Context</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// Enter relevant functionality for when the last widget is disabled</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onReceive</span><span class="params">(context: <span class="type">Context</span>, intent: <span class="type">Intent</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onReceive(context, intent)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (intent.hasExtra(WIDGET_IDS_KEY)) &#123;</span><br><span class="line">            <span class="keyword">val</span> ids = intent.extras.getIntArray(WIDGET_IDS_KEY)</span><br><span class="line">            <span class="keyword">this</span>.onUpdate(context, AppWidgetManager.getInstance(context), ids)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (intent.getBooleanExtra(<span class="string">"isShowToast"</span>, <span class="literal">false</span>))</span><br><span class="line">                ToastUtils.showShortToast(<span class="string">"成功刷新"</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (intent.action == FINISH_TASK) &#123;</span><br><span class="line">            <span class="keyword">val</span> extras = intent.extras</span><br><span class="line">            <span class="keyword">if</span> (extras != <span class="literal">null</span>) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (extras.getBoolean(<span class="string">"canBeFinish"</span>, <span class="literal">false</span>)) &#123;</span><br><span class="line">                    <span class="keyword">val</span> taskId = extras.getLong(<span class="string">"taskId"</span>)</span><br><span class="line">                    <span class="keyword">val</span> teamId = extras.getLong(<span class="string">"teamId"</span>)</span><br><span class="line">                    <span class="keyword">val</span> item = todoService.getATodoItem(taskId)</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (teamId == <span class="number">-1</span>L) &#123;</span><br><span class="line">                        todoService.finishTodoItem(taskId)</span><br><span class="line">                        ToastUtils.showShortToast(<span class="string">"成功完成事项"</span>)</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span> (item?.taskFrequency != <span class="number">0</span>)</span><br><span class="line">                            todoService.repeatTask(taskId)</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">val</span> activityVO = ActivityVO()</span><br><span class="line">                        item?.let &#123;</span><br><span class="line">                            teamNetworkImpl.finishTeamTask(it, activityVO)</span><br><span class="line">                            ToastUtils.showShortToast(<span class="string">"成功完成事项"</span>)</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    ToastUtils.showShortToast(<span class="string">"尚未到开始时间"</span>)</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                WidgetUtils.updateWidgets(context)</span><br><span class="line"><span class="comment">/*                // Notify the widget that the list view needs to be updated.</span></span><br><span class="line"><span class="comment">                val mgr = AppWidgetManager.getInstance(context)</span></span><br><span class="line"><span class="comment">                val cn = ComponentName(context, LifeUpWidget::class.java)</span></span><br><span class="line"><span class="comment">                mgr.notifyAppWidgetViewDataChanged(mgr.getAppWidgetIds(cn),</span></span><br><span class="line"><span class="comment">                        R.id.widget_list)*/</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line"></span><br><span class="line">        const <span class="keyword">val</span> WIDGET_IDS_KEY = <span class="string">"lifeupwidgetidskey"</span></span><br><span class="line">        const <span class="keyword">val</span> FINISH_TASK = <span class="string">"net.sarasarasa.lifeup.action.FINISH_TASK"</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">val</span> todoService = TodoServiceImpl()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">internal</span> <span class="function"><span class="keyword">fun</span> <span class="title">updateAppWidget</span><span class="params">(context: <span class="type">Context</span>, appWidgetManager: <span class="type">AppWidgetManager</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                                     appWidgetId: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment">// Construct the RemoteViews object</span></span><br><span class="line">            <span class="keyword">val</span> views = RemoteViews(context.packageName, R.layout.life_up_widget)</span><br><span class="line">            views.setTextViewText(R.id.appwidget_text, <span class="string">"今日事项 0/0"</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">val</span> intent = Intent(context, LifeUpRemoteViewsService::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)</span><br><span class="line"></span><br><span class="line">            views.setRemoteAdapter(R.id.widget_list, intent)</span><br><span class="line">            views.setEmptyView(R.id.widget_list, R.id.tv_empty)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">val</span> finishTaskIntent = Intent(FINISH_TASK)</span><br><span class="line">            finishTaskIntent.setClass(context, LifeUpWidget::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">            <span class="keyword">val</span> pendingIntent = PendingIntent.getBroadcast(context, <span class="number">200</span>, finishTaskIntent, PendingIntent.FLAG_UPDATE_CURRENT)</span><br><span class="line">            views.setPendingIntentTemplate(R.id.widget_list, pendingIntent)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">val</span> startActivityIntent = Intent(context, MainActivity::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">            <span class="keyword">val</span> startActivityPendingIntent = PendingIntent.getActivity(context, <span class="number">0</span>, startActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)</span><br><span class="line">            views.setOnClickPendingIntent(R.id.iv_home, startActivityPendingIntent)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">val</span> addItemIntent = Intent(context, AddToDoItemActivity::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">            <span class="keyword">val</span> addItemPendingIntent = PendingIntent.getActivity(context, <span class="number">0</span>, addItemIntent, PendingIntent.FLAG_UPDATE_CURRENT)</span><br><span class="line">            views.setOnClickPendingIntent(R.id.iv_add, addItemPendingIntent)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">val</span> man = AppWidgetManager.getInstance(context)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">val</span> ids = man.getAppWidgetIds(</span><br><span class="line">                    ComponentName(context, LifeUpWidget::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>))</span></span><br><span class="line">            <span class="keyword">val</span> refreshIntent = Intent()</span><br><span class="line">            refreshIntent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE</span><br><span class="line">            refreshIntent.putExtra(LifeUpWidget.WIDGET_IDS_KEY, ids)</span><br><span class="line">            refreshIntent.putExtra(<span class="string">"isShowToast"</span>, <span class="literal">true</span>)</span><br><span class="line">            <span class="keyword">val</span> refreshPendingIntent = PendingIntent.getBroadcast(context, <span class="number">199</span>, refreshIntent, PendingIntent.FLAG_UPDATE_CURRENT)</span><br><span class="line">            views.setOnClickPendingIntent(R.id.iv_refresh, refreshPendingIntent)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">val</span> finishCnt = todoService.getTodayFinishCount()</span><br><span class="line">            <span class="keyword">val</span> taskCnt = todoService.getTodayTaskCount()</span><br><span class="line">            views.setTextViewText(R.id.appwidget_text, <span class="string">"今日事项 <span class="subst">$&#123;finishCnt&#125;</span>/<span class="subst">$&#123;taskCnt&#125;</span>"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment">// Instruct the widget manager to update the widget</span></span><br><span class="line">            appWidgetManager.updateAppWidget(appWidgetId, views)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>LifeUpRemoteViewsService.Kt</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> net.sarasarasa.lifeup.service</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Intent</span><br><span class="line"><span class="keyword">import</span> android.widget.RemoteViewsService</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LifeUpRemoteViewsService</span> : <span class="type">RemoteViewsService</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onGetViewFactory</span><span class="params">(intent: <span class="type">Intent</span>?)</span></span>: RemoteViewsFactory &#123;</span><br><span class="line">        <span class="keyword">return</span> LifeUpRemoteViewsFactory(<span class="keyword">this</span>.applicationContext, intent)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>LifeUpRemoteViewsFactory.Kt</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> net.sarasarasa.lifeup.service</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context</span><br><span class="line"><span class="keyword">import</span> android.content.Intent</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle</span><br><span class="line"><span class="keyword">import</span> android.view.View</span><br><span class="line"><span class="keyword">import</span> android.widget.RemoteViews</span><br><span class="line"><span class="keyword">import</span> android.widget.RemoteViewsService</span><br><span class="line"><span class="keyword">import</span> net.sarasarasa.lifeup.R</span><br><span class="line"><span class="keyword">import</span> net.sarasarasa.lifeup.converter.TodoItemConverter</span><br><span class="line"><span class="keyword">import</span> net.sarasarasa.lifeup.fragment.LifeUpWidget</span><br><span class="line"><span class="keyword">import</span> net.sarasarasa.lifeup.fragment.LifeUpWidget.Companion.FINISH_TASK</span><br><span class="line"><span class="keyword">import</span> net.sarasarasa.lifeup.models.TaskModel</span><br><span class="line"><span class="keyword">import</span> net.sarasarasa.lifeup.service.impl.TodoServiceImpl</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat</span><br><span class="line"><span class="keyword">import</span> java.util.*</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LifeUpRemoteViewsFactory</span></span>(context: Context, intent: Intent?) : RemoteViewsService.RemoteViewsFactory &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> mList = ArrayList&lt;TaskModel&gt;()</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> mContext = context</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> todoService = TodoServiceImpl()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">()</span></span> &#123;</span><br><span class="line">        mList.clear()</span><br><span class="line">        mList.addAll(todoService.getUncompletedTodoList())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getLoadingView</span><span class="params">()</span></span>: RemoteViews? &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getItemId</span><span class="params">(position: <span class="type">Int</span>)</span></span>: <span class="built_in">Long</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> position.toLong()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDataSetChanged</span><span class="params">()</span></span> &#123;</span><br><span class="line">        mList.clear()</span><br><span class="line">        mList.addAll(todoService.getUncompletedTodoList())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">hasStableIds</span><span class="params">()</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getViewAt</span><span class="params">(position: <span class="type">Int</span>)</span></span>: RemoteViews? &#123;</span><br><span class="line">        <span class="keyword">if</span> (position &lt; <span class="number">0</span> || position &gt;= mList.size)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> taskModel = mList[position]</span><br><span class="line">        <span class="keyword">val</span> rv = RemoteViews(mContext.packageName, R.layout.item_widget_list)</span><br><span class="line">        <span class="keyword">var</span> canBeFinish = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">        rv.setTextViewText(R.id.tv_title, taskModel.content)</span><br><span class="line">        rv.setTextViewText(R.id.tv_exp, taskModel.expReward.toString() + <span class="string">"经验值"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> cal = Calendar.getInstance()</span><br><span class="line">        <span class="keyword">val</span> simpleDateFormat = SimpleDateFormat(<span class="string">"yyyy/MM/dd"</span>, Locale.getDefault())</span><br><span class="line">        <span class="keyword">val</span> dateAndTimeFormat = SimpleDateFormat(<span class="string">"yyyy/MM/dd HH:mm"</span>, Locale.getDefault())</span><br><span class="line">        <span class="keyword">val</span> isTeamTask = <span class="keyword">when</span> (taskModel.teamId) &#123;</span><br><span class="line">            <span class="number">-1</span>L -&gt; <span class="literal">false</span></span><br><span class="line">            <span class="keyword">else</span> -&gt; <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (cal.timeInMillis &lt; taskModel.startTime.time) &#123;</span><br><span class="line">            <span class="comment">//还没到开始时间的时候</span></span><br><span class="line">            rv.setViewVisibility(R.id.tv_time, View.VISIBLE)</span><br><span class="line">            rv.setViewVisibility(R.id.iv_time, View.VISIBLE)</span><br><span class="line">            rv.setTextViewText(R.id.tv_time, dateAndTimeFormat.format(taskModel.startTime) + <span class="string">"开始  #"</span> + TodoItemConverter.iFrequencyToTitleString(isTeamTask, taskModel.taskFrequency))</span><br><span class="line">            canBeFinish = <span class="literal">false</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//设置频次标识的颜色</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (taskModel.taskExpireTime != <span class="literal">null</span>) &#123;</span><br><span class="line">                rv.setViewVisibility(R.id.tv_time, View.VISIBLE)</span><br><span class="line">                rv.setViewVisibility(R.id.iv_time, View.VISIBLE)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (taskModel.teamId != <span class="number">-1</span>L) &#123;</span><br><span class="line">                    rv.setTextViewText(R.id.tv_time, dateAndTimeFormat.format(taskModel.endTime) + <span class="string">"期限  #"</span> + TodoItemConverter.iFrequencyToTitleString(isTeamTask, taskModel.taskFrequency))</span><br><span class="line">                &#125; <span class="keyword">else</span> rv.setTextViewText(R.id.tv_time, simpleDateFormat.format(taskModel.taskExpireTime) + <span class="string">"期限  #"</span> + TodoItemConverter.iFrequencyToTitleString(isTeamTask, taskModel.taskFrequency))</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                rv.setViewVisibility(R.id.tv_time, View.INVISIBLE)</span><br><span class="line">                rv.setViewVisibility(R.id.iv_time, View.INVISIBLE)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*        val extras = Bundle()</span></span><br><span class="line"><span class="comment">        taskModel.id?.let &#123; extras.putLong("taskId", it) &#125;</span></span><br><span class="line"><span class="comment">        val finishTaskIntent = Intent()</span></span><br><span class="line"><span class="comment">        finishTaskIntent.action = LifeUpWidget.FINISH_TASK</span></span><br><span class="line"><span class="comment">        finishTaskIntent.putExtras(extras)</span></span><br><span class="line"><span class="comment">        rv.setOnClickFillInIntent(R.id.btn,finishTaskIntent)*/</span></span><br><span class="line">        <span class="keyword">val</span> extras = Bundle()</span><br><span class="line">        taskModel.id?.let &#123; extras.putLong(<span class="string">"taskId"</span>, it) &#125;</span><br><span class="line">        extras.putLong(<span class="string">"teamId"</span>, taskModel.teamId)</span><br><span class="line">        extras.putBoolean(<span class="string">"canBeFinish"</span>, canBeFinish)</span><br><span class="line">        <span class="keyword">val</span> fillInIntent = Intent(FINISH_TASK)</span><br><span class="line">        fillInIntent.putExtra(<span class="string">"NUMBER"</span>, position)</span><br><span class="line">        fillInIntent.setClass(mContext, LifeUpWidget::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">        fillInIntent.putExtras(extras)</span><br><span class="line">        rv.setOnClickFillInIntent(R.id.btn, fillInIntent)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> rv</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getCount</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> mList.size</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getViewTypeCount</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDestroy</span><span class="params">()</span></span> &#123;</span><br><span class="line">        mList.clear()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>AndroidManifest.xml</strong></p>
+<p>在application中加入：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">".fragment.LifeUpWidget"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.appwidget.action.APPWIDGET_UPDATE"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"net.sarasarasa.lifeup.action.FINISH_TASK"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:name</span>=<span class="string">"android.appwidget.provider"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:resource</span>=<span class="string">"@xml/life_up_widget_info"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">service</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">".service.LifeUpRemoteViewsService"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:exported</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:permission</span>=<span class="string">"android.permission.BIND_REMOTEVIEWS"</span>&gt;</span><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="坑点"><a href="#坑点" class="headerlink" title="坑点"></a>坑点</h1><h2 id="只支持一部分View"><a href="#只支持一部分View" class="headerlink" title="只支持一部分View"></a>只支持一部分View</h2><p>A RemoteViews object (and, consequently, an App Widget) can support the following layout classes:</p>
+<ul>
+<li><code>FrameLayout</code></li>
+<li><code>LinearLayout</code></li>
+<li><code>RelativeLayout</code></li>
+<li><code>GridLayout</code></li>
+</ul>
+<p>And the following widget classes:</p>
+<ul>
+<li><code>AnalogClock</code></li>
+<li><code>Button</code></li>
+<li><code>Chronometer</code></li>
+<li><code>ImageButton</code></li>
+<li><code>ImageView</code></li>
+<li><code>ProgressBar</code></li>
+<li><code>TextView</code></li>
+<li><code>ViewFlipper</code></li>
+<li><code>ListView</code></li>
+<li><code>GridView</code></li>
+<li><code>StackView</code></li>
+<li><code>AdapterViewFlipper</code></li>
+</ul>
+<p>如果使用其他VIew的话，直接显示不出来。</p>
+<h2 id="WidgetProvier中设置ListView"><a href="#WidgetProvier中设置ListView" class="headerlink" title="WidgetProvier中设置ListView"></a>WidgetProvier中设置ListView</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const <span class="keyword">val</span> FINISH_TASK = <span class="string">"net.sarasarasa.lifeup.action.FINISH_TASK"</span></span><br><span class="line"><span class="comment">//要在AndroidManifest中加上 &lt;action android:name="net.sarasarasa.lifeup.action.FINISH_TASK" /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> views = RemoteViews(context.packageName, R.layout.life_up_widget)</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> intent = Intent(context, LifeUpRemoteViewsService::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)</span><br><span class="line"></span><br><span class="line">views.setRemoteAdapter(R.id.widget_list, intent)</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里的EmptyView指的是R.layout.life_up_widget的一个view，在ListView为空的时候才显示出来</span></span><br><span class="line"><span class="comment">//并不是单独的一个View</span></span><br><span class="line">views.setEmptyView(R.id.widget_list, R.id.tv_empty)</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果你的ListView要发送Intent的话，这里要设置IntentTemplate</span></span><br><span class="line"><span class="keyword">val</span> finishTaskIntent = Intent(FINISH_TASK)</span><br><span class="line">finishTaskIntent.setClass(context, LifeUpWidget::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line"><span class="keyword">val</span> pendingIntent = PendingIntent.getBroadcast(context, <span class="number">200</span>, finishTaskIntent, PendingIntent.FLAG_UPDATE_CURRENT)</span><br><span class="line">views.setPendingIntentTemplate(R.id.widget_list, pendingIntent)</span><br></pre></td></tr></table></figure>
+<p>然后在LifeUpRemoteViewsFactory.Kt的<strong>getViewAt</strong>方法中</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> extras = Bundle()</span><br><span class="line">taskModel.id?.let &#123; extras.putLong(<span class="string">"taskId"</span>, it) &#125;</span><br><span class="line">extras.putLong(<span class="string">"teamId"</span>, taskModel.teamId)</span><br><span class="line">extras.putBoolean(<span class="string">"canBeFinish"</span>, canBeFinish)</span><br><span class="line"><span class="keyword">val</span> fillInIntent = Intent(FINISH_TASK)</span><br><span class="line">fillInIntent.putExtra(<span class="string">"NUMBER"</span>, position)</span><br><span class="line">fillInIntent.setClass(mContext, LifeUpWidget::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">fillInIntent.putExtras(extras)</span><br><span class="line">rv.setOnClickFillInIntent(R.id.btn, fillInIntent)</span><br></pre></td></tr></table></figure>
+<p>然后再在WidgetProvider的OnReceive中处理这个广播</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onReceive</span><span class="params">(context: <span class="type">Context</span>, intent: <span class="type">Intent</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.onReceive(context, intent)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (intent.action == FINISH_TASK) &#123;</span><br><span class="line">		<span class="comment">//Do something...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="刷新ListView的数据"><a href="#刷新ListView的数据" class="headerlink" title="刷新ListView的数据"></a>刷新ListView的数据</h2><ol>
+<li><p>首先，重写onDataSetChanged方法</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDataSetChanged</span><span class="params">()</span></span> &#123;</span><br><span class="line">    mList.clear()</span><br><span class="line">    mList.addAll(todoService.getUncompletedTodoList())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后在WidgetProvier恰当的地方调用notifyAppWidgetViewDataChanged方法</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AppWidgetManager.getInstance(context).notifyAppWidgetViewDataChanged(appWidgetId, R.id.widget_list)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>##在应用中通知刷新</p>
+<p>这是一个StackOverFlow中有人推荐的方法：</p>
+<ol>
+<li><strong>在 WidgetProvier 中：</strong></li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const <span class="keyword">val</span> WIDGET_IDS_KEY = <span class="string">"lifeupwidgetidskey"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onReceive</span><span class="params">(context: <span class="type">Context</span>, intent: <span class="type">Intent</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.onReceive(context, intent)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (intent.hasExtra(WIDGET_IDS_KEY)) &#123;</span><br><span class="line">        <span class="keyword">val</span> ids = intent.extras.getIntArray(WIDGET_IDS_KEY)</span><br><span class="line">        <span class="keyword">this</span>.onUpdate(context, AppWidgetManager.getInstance(context), ids)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (intent.getBooleanExtra(<span class="string">"isShowToast"</span>, <span class="literal">false</span>))</span><br><span class="line">            ToastUtils.showShortToast(<span class="string">"成功刷新"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>写一个工具类：</strong></li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> net.sarasarasa.lifeup.utils</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.appwidget.AppWidgetManager</span><br><span class="line"><span class="keyword">import</span> android.content.ComponentName</span><br><span class="line"><span class="keyword">import</span> android.content.Context</span><br><span class="line"><span class="keyword">import</span> android.content.Intent</span><br><span class="line"><span class="keyword">import</span> net.sarasarasa.lifeup.fragment.LifeUpWidget</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WidgetUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">updateWidgets</span><span class="params">(context: <span class="type">Context</span>)</span></span> &#123;</span><br><span class="line">            <span class="keyword">val</span> man = AppWidgetManager.getInstance(context)</span><br><span class="line">            <span class="keyword">val</span> ids = man.getAppWidgetIds(</span><br><span class="line">                    ComponentName(context, LifeUpWidget::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>))</span></span><br><span class="line">            <span class="keyword">val</span> updateIntent = Intent()</span><br><span class="line">            updateIntent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE</span><br><span class="line">            updateIntent.putExtra(LifeUpWidget.WIDGET_IDS_KEY, ids)</span><br><span class="line">            <span class="comment">// updateIntent.putExtra(MyWidgetProvider.WIDGET_DATA_KEY, data)</span></span><br><span class="line">            context.sendBroadcast(updateIntent)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/开发日志/" rel="tag"># 开发日志</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/99671126.html" rel="next" title="人升开发日志#10 | 11/03 Android图片选择、裁剪实现（8.0以及MIUI适配）">
+                <i class="fa fa-chevron-left"></i> 人升开发日志#10 | 11/03 Android图片选择、裁剪实现（8.0以及MIUI适配）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/157a032e.html" rel="prev" title="人升Lifeup 常见问题">
+                人升Lifeup 常见问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="AyagiKei" />
+            
+              <p class="site-author-name" itemprop="name">AyagiKei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Ayagikei" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:AyagiKei@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/kei-8/activities" target="_blank" title="ZhiHu"><i class="fa fa-fw fa-circle"></i>ZhiHu</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/ayagikei" target="_blank" title="CSDN"><i class="fa fa-fw fa-circle"></i>CSDN</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关键代码"><span class="nav-number">2.</span> <span class="nav-text">关键代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#坑点"><span class="nav-number">3.</span> <span class="nav-text">坑点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#只支持一部分View"><span class="nav-number">3.1.</span> <span class="nav-text">只支持一部分View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WidgetProvier中设置ListView"><span class="nav-number">3.2.</span> <span class="nav-text">WidgetProvier中设置ListView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#刷新ListView的数据"><span class="nav-number">3.3.</span> <span class="nav-text">刷新ListView的数据</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AyagiKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">196k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">5:false</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://AyagiKei.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://sarasarasa.net/post/f5d060f4.html';
+        this.page.identifier = 'post/f5d060f4.html';
+        this.page.title = '人升开发日志#11 | 12/06 Android 桌面小部件';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://AyagiKei.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+      .copy-btn {
+          display: inline-block;
+          padding: 6px 12px;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 20px;
+          color: #333;
+          white-space: nowrap;
+          vertical-align: middle;
+          cursor: pointer;
+          background-color: #eee;
+          background-image: linear-gradient(#fcfcfc, #eee);
+          border: 1px solid #d5d5d5;
+          border-radius: 3px;
+          user-select: none;
+      }
+
+      .highlight-wrap .copy-btn {
+          transition: opacity .3s ease-in-out;
+          opacity: 0;
+          padding: 2px 6px;
+          position: fixed;
+          right: 4px;
+          top: 8px;
+      }
+
+      .highlight-wrap:hover .copy-btn,
+      .highlight-wrap .copy-btn:focus {
+          opacity: 1
+      }
+
+      .highlight-wrap {
+          transform: translateZ(0);
+      }
+  </style>
+  <script>
+      $('.highlight').each(function(i, e) {
+          var $wrap = $('<div>').addClass('highlight-wrap')
+          $(e).after($wrap)
+          $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+              var code = $(e.target).parent().find('.code').find('.line').map(function(i, e) {
+                  return $(e).text()
+              }).toArray().join('\n')
+              var ta = document.createElement('textarea')
+              document.body.appendChild(ta)
+              ta.style.position = 'fixed'
+              ta.style.top = 0
+              ta.style.left = 0
+              ta.value = code
+              ta.select()
+              ta.focus()
+              document.execCommand('copy')
+              document.body.removeChild(ta)
+          })).append(e)
+      })
+  </script>
+
+
+</body>
+</html>

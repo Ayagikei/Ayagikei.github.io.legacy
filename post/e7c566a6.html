@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="使用了Litepal作为数据库ORM框架，还有BRAVH来简化RecyclerView的适配器的写法。 这里记录下开发途中遇到的坑。 创建自己的Application类因为LitePal和MobSDK都需要对Application进行修改，所以最好实现自己的Application： 1234567891011import android.app.Applicationimport com.mob.">
+<meta name="keywords" content="Android,开发日志">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人升开发日志#9 | 8&#x2F;30 数据库+数据填充">
+<meta property="og:url" content="http://sarasarasa.net/post/e7c566a6.html">
+<meta property="og:site_name" content="萨拉萨拉萨">
+<meta property="og:description" content="使用了Litepal作为数据库ORM框架，还有BRAVH来简化RecyclerView的适配器的写法。 这里记录下开发途中遇到的坑。 创建自己的Application类因为LitePal和MobSDK都需要对Application进行修改，所以最好实现自己的Application： 1234567891011import android.app.Applicationimport com.mob.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-04T14:31:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人升开发日志#9 | 8&#x2F;30 数据库+数据填充">
+<meta name="twitter:description" content="使用了Litepal作为数据库ORM框架，还有BRAVH来简化RecyclerView的适配器的写法。 这里记录下开发途中遇到的坑。 创建自己的Application类因为LitePal和MobSDK都需要对Application进行修改，所以最好实现自己的Application： 1234567891011import android.app.Applicationimport com.mob.">
+
+
+
+
+
+
+  <link rel="canonical" href="http://sarasarasa.net/post/e7c566a6.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>人升开发日志#9 | 8/30 数据库+数据填充 | 萨拉萨拉萨</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe7ac5f435cef91b7c68c2e1aa4d39e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i> 
+		
+		
+		<img class="custom-logo-image" src="/images/logo.png"
+               alt="萨拉萨拉萨"/></span>
+		
+		
+        <span class="site-title">萨拉萨拉萨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">A Blog to Write about Everything</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sarasarasa.net/post/e7c566a6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AyagiKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="萨拉萨拉萨">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">人升开发日志#9 | 8/30 数据库+数据填充
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-30 02:08:40" itemprop="dateCreated datePublished" datetime="2018-08-30T02:08:40+08:00">2018-08-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-04 22:31:24" itemprop="dateModified" datetime="2018-09-04T22:31:24+08:00">2018-09-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/" itemprop="url" rel="index"><span itemprop="name">项目</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/开发日志/" itemprop="url" rel="index"><span itemprop="name">开发日志</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/开发日志/人升/" itemprop="url" rel="index"><span itemprop="name">人升</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/e7c566a6.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="post/e7c566a6.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">8.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">14 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>使用了Litepal作为数据库ORM框架，还有BRAVH来简化RecyclerView的适配器的写法。</p>
+<p>这里记录下开发途中遇到的坑。</p>
+<h1 id="创建自己的Application类"><a href="#创建自己的Application类" class="headerlink" title="创建自己的Application类"></a>创建自己的Application类</h1><p>因为LitePal和MobSDK都需要对Application进行修改，所以最好实现自己的Application：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.app.Application</span><br><span class="line"><span class="keyword">import</span> com.mob.MobSDK</span><br><span class="line"><span class="keyword">import</span> org.litepal.LitePal</span><br><span class="line"></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">LifeUpApplication</span> : <span class="type">Application</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate()</span><br><span class="line">         MobSDK.init(<span class="keyword">this</span>)</span><br><span class="line">        LitePal.initialize(<span class="keyword">this</span>);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="LitePal最新版的一些用法"><a href="#LitePal最新版的一些用法" class="headerlink" title="LitePal最新版的一些用法"></a>LitePal最新版的一些用法</h1><p>实体类<strong>继承LitePalSupport</strong>而不是原先的DataSupport。</p>
+<p>另外Kotlin的var会自动实现getter和setter：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.litepal.crud.LitePalSupport</span><br><span class="line"><span class="keyword">import</span> java.util.*</span><br><span class="line"></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">TaskModel</span></span>(</span><br><span class="line">        <span class="keyword">var</span> content: String,</span><br><span class="line">        <span class="keyword">var</span> remark: String,</span><br><span class="line">        <span class="keyword">var</span> taskExpireTime: Date?,</span><br><span class="line">        <span class="keyword">var</span> taskRemindTime: Date?,</span><br><span class="line">        <span class="keyword">var</span> relatedAttribute1: String?,</span><br><span class="line">        <span class="keyword">var</span> relatedAttribute2: String?,</span><br><span class="line">        <span class="keyword">var</span> relatedAttribute3: String?,</span><br><span class="line">        <span class="keyword">var</span> taskUrgencyDegree: <span class="built_in">Int</span>,</span><br><span class="line">        <span class="keyword">var</span> taskDifficultyDegree: <span class="built_in">Int</span>,</span><br><span class="line">        <span class="keyword">var</span> taskFrequency: <span class="built_in">Int</span>,</span><br><span class="line">        <span class="keyword">var</span> userId: <span class="built_in">Int</span>?,</span><br><span class="line">        <span class="keyword">var</span> isShared: <span class="built_in">Boolean</span>,</span><br><span class="line">        <span class="keyword">var</span> taskType: <span class="built_in">Int</span>?</span><br><span class="line">) : LitePalSupport() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> id: <span class="built_in">Long</span>? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">var</span> taskId: <span class="built_in">Long</span>? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">var</span> createdTime: <span class="built_in">Long</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> updatedTime: <span class="built_in">Long</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> expReward: <span class="built_in">Int</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> endDate: Date? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">var</span> taskStatus: <span class="built_in">Int</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而对数据库的操作方法也从调用DataSupport类的方法变成了<strong>调用LitePal类</strong>的方法。</p>
+<p>如：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getFirstAttribute</span><span class="params">()</span></span>: AttributeModel? &#123;</span><br><span class="line">	<span class="keyword">return</span> LitePal.findFirst(AttributeModel::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其他的话，没什么不一样。</p>
+<h1 id="刷新RecyclerView数据"><a href="#刷新RecyclerView数据" class="headerlink" title="刷新RecyclerView数据"></a>刷新RecyclerView数据</h1><p>需要注意的一个坑是，RecyclerView的Adapter用的List不能重新指向一个新的引用。</p>
+<p>必须用回原本的引用更改数据，然后再调用<code>notifyDataSetChanged()</code>就能刷新数据了。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">refreshDataSet</span><span class="params">()</span></span> &#123;</span><br><span class="line">    mList.clear()</span><br><span class="line">    mList.addAll(todoService.getUncompletedTodoList())</span><br><span class="line"></span><br><span class="line">    mAdapter.notifyDataSetChanged()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="当返回或是切换Fragment刷新数据"><a href="#当返回或是切换Fragment刷新数据" class="headerlink" title="当返回或是切换Fragment刷新数据"></a>当返回或是切换Fragment刷新数据</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onResume</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.onResume()</span><br><span class="line">    refreshDataSet() <span class="comment">//刷新数据的操作</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onHiddenChanged</span><span class="params">(hidden: <span class="type">Boolean</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.onHiddenChanged(hidden)</span><br><span class="line">    <span class="keyword">if</span> (!hidden) &#123;</span><br><span class="line">        refreshDataSet() <span class="comment">//刷新数据的操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Lottie的动画回调调用多次的问题"><a href="#Lottie的动画回调调用多次的问题" class="headerlink" title="Lottie的动画回调调用多次的问题"></a>Lottie的动画回调调用多次的问题</h1><p>原本在Lottie的结束和取消回调里调用一个对话框的显示的方法，实际使用发现这个回调会被调用数次？（有时候1次，有时候2次，3次。很是诡异。）</p>
+<p>解决方法自然是加个boolean值标识：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> isEverShowDialog = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">mView.addAnimatorListener(<span class="keyword">object</span> : Animator.AnimatorListener &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onAnimationRepeat</span><span class="params">(p0: <span class="type">Animator</span>?)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onAnimationEnd</span><span class="params">(p0: <span class="type">Animator</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!isEverShowDialog) &#123;</span><br><span class="line">            showDialogAbbr(item)</span><br><span class="line">            isEverShowDialog = <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//refreshHeaderView(mHeaderView)</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onAnimationCancel</span><span class="params">(p0: <span class="type">Animator</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!isEverShowDialog) &#123;</span><br><span class="line">            showDialogAbbr(item)</span><br><span class="line">            isEverShowDialog = <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onAnimationStart</span><span class="params">(p0: <span class="type">Animator</span>?)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="获得经验值的进度条动画的实现"><a href="#获得经验值的进度条动画的实现" class="headerlink" title="获得经验值的进度条动画的实现"></a>获得经验值的进度条动画的实现</h1><p>讲真，这个小小的动画实现可能是我花费时间最长的一个小模块了。</p>
+<p>首先要解决<strong>无论是3个属性都选择了，还是只选择了1个，2个都能正确显示</strong>的问题。</p>
+<p>其次，需要计算获得经验值前的经验值与等级的占比，来正确显示ProgressBar（进度条）的进度。</p>
+<p>还需要判断会不会升级，如果升级要将进度条置为0再进行下一步操作。</p>
+<p>还要保证进度增长的时间是大概一致的。</p>
+<p>还需要用到多线程来实现进度的缓慢增长。</p>
+<p><strong>等等……</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">doProgressOrigin</span><span class="params">(dialogView: <span class="type">View</span>, item: <span class="type">TaskModel</span>, index: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> relatedAttribute = <span class="keyword">when</span> (index) &#123;</span><br><span class="line">        <span class="number">1</span> -&gt; item.relatedAttribute1</span><br><span class="line">        <span class="number">2</span> -&gt; item.relatedAttribute2</span><br><span class="line">        <span class="number">3</span> -&gt; item.relatedAttribute3</span><br><span class="line">        <span class="keyword">else</span> -&gt; <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (relatedAttribute.isNullOrBlank()) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//完成前的</span></span><br><span class="line">    <span class="keyword">val</span> nowExpTotal = <span class="keyword">when</span> (index) &#123;</span><br><span class="line">        <span class="number">1</span> -&gt; attributeService.getAttributeExpByString(relatedAttribute ?: <span class="string">""</span>) - item.expReward</span><br><span class="line">        <span class="number">2</span> -&gt; attributeService.getAttributeExpByString(item.relatedAttribute2</span><br><span class="line">                ?: <span class="string">""</span>) - item.expReward</span><br><span class="line">        <span class="number">3</span> -&gt; attributeService.getAttributeExpByString(item.relatedAttribute3</span><br><span class="line">                ?: <span class="string">""</span>) - item.expReward</span><br><span class="line">        <span class="keyword">else</span> -&gt; <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> nowExp = nowExpTotal - attributeLevelService.getAttributeLevelByExp(nowExpTotal).startExpValue</span><br><span class="line">    <span class="keyword">val</span> levelMaxExp = attributeLevelService.getAttributeLevelByExp(nowExpTotal).endExpValue - attributeLevelService.getAttributeLevelByExp(nowExpTotal).startExpValue</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> progressBar = <span class="keyword">when</span> (index) &#123;</span><br><span class="line">        <span class="number">1</span> -&gt; dialogView.npb_first</span><br><span class="line">        <span class="number">2</span> -&gt; dialogView.npb_Sec</span><br><span class="line">        <span class="number">3</span> -&gt; dialogView.npb_thr</span><br><span class="line">        <span class="keyword">else</span> -&gt; <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    progressBar.progress = nowExp * <span class="number">100</span> / levelMaxExp</span><br><span class="line">    <span class="keyword">var</span> finalProgress = (nowExp + item.expReward) * <span class="number">100</span> / levelMaxExp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (finalProgress &gt;= <span class="number">100</span>) &#123;</span><br><span class="line">        <span class="comment">//要升级的情况</span></span><br><span class="line">        thread = Thread &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//先走到尾巴</span></span><br><span class="line">                <span class="keyword">val</span> toMax = progressBar.max - progressBar.progress</span><br><span class="line">                <span class="keyword">while</span> (threadRunning == <span class="literal">true</span> &amp;&amp; progressBar.progress != progressBar.max) &#123;</span><br><span class="line">                    activity?.runOnUiThread &#123; progressBar.incrementProgressBy(<span class="keyword">if</span> (toMax / <span class="number">20</span> &gt; <span class="number">0</span>) toMax / <span class="number">20</span> <span class="keyword">else</span> <span class="number">1</span>) &#125;</span><br><span class="line">                    Thread.sleep(<span class="number">40</span>)</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">//升级，进度条重置为0</span></span><br><span class="line">                <span class="keyword">val</span> newLevelModel = attributeLevelService.getAttributeLevelByExp(nowExpTotal + item.expReward)</span><br><span class="line">                <span class="keyword">val</span> textViewLevel = <span class="keyword">when</span> (index) &#123;</span><br><span class="line">                    <span class="number">1</span> -&gt; dialogView.tv_levelFirst</span><br><span class="line">                    <span class="number">2</span> -&gt; dialogView.tv_levelSec</span><br><span class="line">                    <span class="number">3</span> -&gt; dialogView.tv_expThr</span><br><span class="line">                    <span class="keyword">else</span> -&gt; <span class="keyword">return</span><span class="symbol">@Thread</span></span><br><span class="line">                &#125;</span><br><span class="line">                activity?.runOnUiThread &#123;</span><br><span class="line">                    progressBar.progress = <span class="number">0</span></span><br><span class="line">                    textViewLevel.text = <span class="string">"LV<span class="subst">$&#123;newLevelModel.levelNum&#125;</span>"</span></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                nowExp = nowExpTotal + item.expReward - newLevelModel.startExpValue</span><br><span class="line">                <span class="keyword">val</span> nextMaxExpTotal = newLevelModel.endExpValue</span><br><span class="line">                <span class="keyword">val</span> nextMaxExp = newLevelModel.endExpValue - newLevelModel.startExpValue</span><br><span class="line">                finalProgress = nowExp * <span class="number">100</span> / nextMaxExp</span><br><span class="line">                Thread.sleep(<span class="number">40</span>)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (threadRunning == <span class="literal">true</span> &amp;&amp; progressBar.progress != finalProgress) &#123;</span><br><span class="line">                    activity?.runOnUiThread &#123; progressBar.incrementProgressBy(<span class="keyword">if</span> (finalProgress / <span class="number">30</span> &gt; <span class="number">0</span>) finalProgress / <span class="number">30</span> <span class="keyword">else</span> <span class="number">1</span>) &#125;</span><br><span class="line">                    Thread.sleep(<span class="number">40</span>)</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">catch</span> (e: InterruptedException) &#123;</span><br><span class="line">                e.printStackTrace()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        thread?.start()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//不需要升级</span></span><br><span class="line">        thread = Thread &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">var</span> progressToGo = finalProgress - progressBar.progress</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (threadRunning == <span class="literal">true</span> &amp;&amp; progressBar.progress != finalProgress) &#123;</span><br><span class="line">                    activity?.runOnUiThread &#123; progressBar.incrementProgressBy(<span class="keyword">if</span> (progressToGo / <span class="number">30</span> &gt; <span class="number">0</span>) progressToGo / <span class="number">30</span> <span class="keyword">else</span> <span class="number">1</span>) &#125;</span><br><span class="line">                    Thread.sleep(<span class="number">40</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (e: InterruptedException) &#123;</span><br><span class="line">                e.printStackTrace()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        thread?.start()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="自定义View对话框的宽和高"><a href="#自定义View对话框的宽和高" class="headerlink" title="自定义View对话框的宽和高"></a>自定义View对话框的宽和高</h1><p>用了网上各种改跟View，getWindow然后setLayout的方法通通行不通。</p>
+<p><strong>最后发现在自定义View的根View里加上<code>android:minHeight</code>和<code>android:minWidth</code>两个属性就好了。</strong></p>
+<h1 id="ToolBar最右侧显示按钮图标"><a href="#ToolBar最右侧显示按钮图标" class="headerlink" title="ToolBar最右侧显示按钮图标"></a>ToolBar最右侧显示按钮图标</h1><p>其实那个按钮是OptionMenu里面的Item。</p>
+<p>设置Menu的时候将<code>app:showAsAction</code>设为<code>always</code>就可以强制显示图标了。</p>
+<p><strong>Menu布局文件：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">menu</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">"net.sarasarasa.lifeup.activities.AddToDoItemActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/action_finish"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">"@drawable/ic_done_white_24dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orderInCategory</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"完成"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:showAsAction</span>=<span class="string">"always"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Activity代码：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateOptionsMenu</span><span class="params">(menu: <span class="type">Menu</span>)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">    menuInflater.inflate(R.menu.menu_add_to_do_item, menu)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onOptionsItemSelected</span><span class="params">(item: <span class="type">MenuItem</span>)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">    <span class="keyword">when</span> (item.itemId) &#123;</span><br><span class="line">        R.id.action_finish -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (check()) &#123;</span><br><span class="line">                addItem(getItem())</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> -&gt; <span class="keyword">return</span> <span class="keyword">super</span>.onOptionsItemSelected(item)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/开发日志/" rel="tag"># 开发日志</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/e55e992b.html" rel="next" title="人升开发日志#8 | 8/5 主界面+设置界面">
+                <i class="fa fa-chevron-left"></i> 人升开发日志#8 | 8/5 主界面+设置界面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/9a4281e2.html" rel="prev" title="[Git]开发中途清理.igonore新增的忽略文件">
+                [Git]开发中途清理.igonore新增的忽略文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="AyagiKei" />
+            
+              <p class="site-author-name" itemprop="name">AyagiKei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Ayagikei" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:AyagiKei@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/kei-8/activities" target="_blank" title="ZhiHu"><i class="fa fa-fw fa-circle"></i>ZhiHu</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/ayagikei" target="_blank" title="CSDN"><i class="fa fa-fw fa-circle"></i>CSDN</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建自己的Application类"><span class="nav-number">1.</span> <span class="nav-text">创建自己的Application类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LitePal最新版的一些用法"><span class="nav-number">2.</span> <span class="nav-text">LitePal最新版的一些用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#刷新RecyclerView数据"><span class="nav-number">3.</span> <span class="nav-text">刷新RecyclerView数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#当返回或是切换Fragment刷新数据"><span class="nav-number">4.</span> <span class="nav-text">当返回或是切换Fragment刷新数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lottie的动画回调调用多次的问题"><span class="nav-number">5.</span> <span class="nav-text">Lottie的动画回调调用多次的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获得经验值的进度条动画的实现"><span class="nav-number">6.</span> <span class="nav-text">获得经验值的进度条动画的实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义View对话框的宽和高"><span class="nav-number">7.</span> <span class="nav-text">自定义View对话框的宽和高</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ToolBar最右侧显示按钮图标"><span class="nav-number">8.</span> <span class="nav-text">ToolBar最右侧显示按钮图标</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AyagiKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">196k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">5:false</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://AyagiKei.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://sarasarasa.net/post/e7c566a6.html';
+        this.page.identifier = 'post/e7c566a6.html';
+        this.page.title = '人升开发日志#9 | 8/30 数据库+数据填充';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://AyagiKei.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+      .copy-btn {
+          display: inline-block;
+          padding: 6px 12px;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 20px;
+          color: #333;
+          white-space: nowrap;
+          vertical-align: middle;
+          cursor: pointer;
+          background-color: #eee;
+          background-image: linear-gradient(#fcfcfc, #eee);
+          border: 1px solid #d5d5d5;
+          border-radius: 3px;
+          user-select: none;
+      }
+
+      .highlight-wrap .copy-btn {
+          transition: opacity .3s ease-in-out;
+          opacity: 0;
+          padding: 2px 6px;
+          position: fixed;
+          right: 4px;
+          top: 8px;
+      }
+
+      .highlight-wrap:hover .copy-btn,
+      .highlight-wrap .copy-btn:focus {
+          opacity: 1
+      }
+
+      .highlight-wrap {
+          transform: translateZ(0);
+      }
+  </style>
+  <script>
+      $('.highlight').each(function(i, e) {
+          var $wrap = $('<div>').addClass('highlight-wrap')
+          $(e).after($wrap)
+          $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+              var code = $(e.target).parent().find('.code').find('.line').map(function(i, e) {
+                  return $(e).text()
+              }).toArray().join('\n')
+              var ta = document.createElement('textarea')
+              document.body.appendChild(ta)
+              ta.style.position = 'fixed'
+              ta.style.top = 0
+              ta.style.left = 0
+              ta.value = code
+              ta.select()
+              ta.focus()
+              document.execCommand('copy')
+              document.body.removeChild(ta)
+          })).append(e)
+      })
+  </script>
+
+
+</body>
+</html>

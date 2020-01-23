@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文首发于我的知乎专栏「丹特利安的书架」。另外还发布于 Indienova 及其公众号，以及搜狐新闻的转载。本文受到了知乎的编辑推荐。并且授权了游资网的转载。 序初次接触到《传送门（Portal）》的你，一定会对传送门的设定感觉到新颖。接触到二代，又一定会对凝胶系统感觉兴奋。但其实，这两个游戏机制都不是在《传送门》最先出现的。  让我们先谈谈Valve。 Valve 一直都是一家喜欢招纳人才、吸收">
+<meta name="keywords" content="游戏,Portal,Valve,文化,机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《传送门》中的游戏机制来源--传送门与凝胶">
+<meta property="og:url" content="http://sarasarasa.net/post/23d68c4e.html">
+<meta property="og:site_name" content="萨拉萨拉萨">
+<meta property="og:description" content="本文首发于我的知乎专栏「丹特利安的书架」。另外还发布于 Indienova 及其公众号，以及搜狐新闻的转载。本文受到了知乎的编辑推荐。并且授权了游资网的转载。 序初次接触到《传送门（Portal）》的你，一定会对传送门的设定感觉到新颖。接触到二代，又一定会对凝胶系统感觉兴奋。但其实，这两个游戏机制都不是在《传送门》最先出现的。  让我们先谈谈Valve。 Valve 一直都是一家喜欢招纳人才、吸收">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://sarasarasa.net/post/23d68c4e/01.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/23d68c4e/02.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/23d68c4e/03.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/23d68c4e/04.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/23d68c4e/05.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/23d68c4e/06.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/23d68c4e/07.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/23d68c4e/08.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/23d68c4e/09.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/23d68c4e/10.jpg">
+<meta property="og:updated_time" content="2018-05-04T13:28:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《传送门》中的游戏机制来源--传送门与凝胶">
+<meta name="twitter:description" content="本文首发于我的知乎专栏「丹特利安的书架」。另外还发布于 Indienova 及其公众号，以及搜狐新闻的转载。本文受到了知乎的编辑推荐。并且授权了游资网的转载。 序初次接触到《传送门（Portal）》的你，一定会对传送门的设定感觉到新颖。接触到二代，又一定会对凝胶系统感觉兴奋。但其实，这两个游戏机制都不是在《传送门》最先出现的。  让我们先谈谈Valve。 Valve 一直都是一家喜欢招纳人才、吸收">
+<meta name="twitter:image" content="http://sarasarasa.net/post/23d68c4e/01.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://sarasarasa.net/post/23d68c4e.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>《传送门》中的游戏机制来源--传送门与凝胶 | 萨拉萨拉萨</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe7ac5f435cef91b7c68c2e1aa4d39e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i> 
+		
+		
+		<img class="custom-logo-image" src="/images/logo.png"
+               alt="萨拉萨拉萨"/></span>
+		
+		
+        <span class="site-title">萨拉萨拉萨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">A Blog to Write about Everything</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sarasarasa.net/post/23d68c4e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AyagiKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="萨拉萨拉萨">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《传送门》中的游戏机制来源--传送门与凝胶
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-26 22:37:42" itemprop="dateCreated datePublished" datetime="2018-04-26T22:37:42+08:00">2018-04-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-05-04 21:28:36" itemprop="dateModified" datetime="2018-05-04T21:28:36+08:00">2018-05-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/游戏/" itemprop="url" rel="index"><span itemprop="name">游戏</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/游戏/文化/" itemprop="url" rel="index"><span itemprop="name">文化</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/23d68c4e.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="post/23d68c4e.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div class="note success"><p>本文首发于我的<a href="https://zhuanlan.zhihu.com/p/32375870" target="_blank" rel="noopener">知乎专栏</a>「<a href="https://zhuanlan.zhihu.com/Dantarian" target="_blank" rel="noopener">丹特利安的书架</a>」。<br>另外还发布于 <a href="https://indienova.com/indie-game-news/portal-related-indie-games/" target="_blank" rel="noopener">Indienova</a> 及其公众号，以及<a href="http://www.sohu.com/a/215429090_485902" target="_blank" rel="noopener">搜狐新闻</a>的转载。<br>本文受到了知乎的编辑推荐。并且授权了<a href="http://www.gameres.com/796272.html" target="_blank" rel="noopener">游资网</a>的转载。</p></div>
+<h2 id="序"><a href="#序" class="headerlink" title="序"></a><strong>序</strong></h2><div class="note info"><p>初次接触到《传送门（Portal）》的你，一定会对传送门的设定感觉到新颖。接触到二代，又一定会对凝胶系统感觉兴奋。<br>但其实，这两个游戏机制都不是在《传送门》最先出现的。</p></div>
+<p><br></p>
+<p><strong>让我们先谈谈Valve。</strong></p>
+<p>Valve 一直都是一家喜欢招纳人才、吸收游戏创意的公司。</p>
+<p>如众所周知的《军团要塞（Team Fortress）》、《反恐精英（Counter-Strike）》原先都只是《半条命（Half-life）》的模组。Valve将这些高质量模组的制作人和游戏纳入麾下，并坚持打磨着这些游戏的设定与玩法，使其臻于完美<em>。</em></p>
+<p>Valve 还有知名度较低的一款作品《异星虫群（Alien Swarm）》，其也是一款由 Valve 从模组社区招聘来的才华四溢的设计小组制作的游戏。</p>
+<p>设计小组在进入 Valve 之前就在开发这款游戏，进入 Valve 后获许用 Source 引擎移植这款游戏。游戏免费发布后，也火热了好一段时间。</p>
+<p><strong>而传送门和凝胶机制，其实都有原型游戏。</strong></p>
+<p><strong>因原型游戏受到 Valve 青睐，游戏的创意和开发团队都因此进入了 Valve 。</strong></p>
+<a id="more"></a>
+<hr>
+<h2 id="传送门的起源——《Narbacular-Drop》"><a href="#传送门的起源——《Narbacular-Drop》" class="headerlink" title="传送门的起源——《Narbacular Drop》"></a><strong>传送门的起源——《Narbacular Drop》</strong></h2> <img src="/post/23d68c4e/01.jpg">
+<p>《Narbacular Drop》是一款由迪吉彭理工学院的大学生开发的游戏项目。它获得了2006年独立游戏节（the Independent Games Festival）的学生展示优胜奖项。</p>
+<p><br></p>
+<p>玩家在游戏中扮演的是一位叫做 “No-Knees” 的公主，正如名字所示，这位公主无法跳跃。公主被一个恶魔抓了起来，随后公主发现自己被关押的地牢其实是一个叫做 Wally 的生物，而 Wally 拥有制作传送门的能力，公主需要依靠这个能力逃出地牢并打败恶魔。</p>
+<p>而游戏中的传送门与《传送门》中的传送门的设定十分相似。玩家能将其放置在一些非金属平面上。</p>
+<p>同时游戏中还有一些诸如开关、箱子、滚动的巨石等解密元素。</p>
+<p>《Narbacular Drop》作为一款概念展示型的游戏，关卡流程极短，只有6个谜题，甚至没有进度保存功能。不过，游戏论坛中也有一些自定义地图可以游玩。</p>
+<p><br></p>
+<p><strong>《Narbacular Drop》发布之后，它的理念吸引到了 Valve 。 Valve 随即聘请了整个开发团队。这个开发团队后来进行了《传送门》的开发工作。</strong></p>
+<p>两款游戏理念近似：</p>
+<p>在《Narbacular Drop》中，目的是逃脱地牢；而在《传送门》中，目的是逃脱实验室。</p>
+<p>在《Narbacular Drop》中，有一个唯一的敌人——恶魔；而在《传送门》中，也有唯一的敌人GLaDOS。</p>
+<p><strong>如今，你仍能在《Narbacular Drop》的官网下载到这款游戏。</strong></p>
+ <img src="/post/23d68c4e/02.jpg">
+<p>对了，还有一个小彩蛋，《传送门2》中有一个成就就叫做 <em>Narbacular Drop</em>。</p>
+ <img src="/post/23d68c4e/03.jpg">
+<hr>
+<p><br></p>
+<h2 id="凝胶其实源自喷漆——《Tag-The-Power-of-Paint》"><a href="#凝胶其实源自喷漆——《Tag-The-Power-of-Paint》" class="headerlink" title="凝胶其实源自喷漆——《Tag : The Power of Paint》"></a><strong>凝胶其实源自喷漆——《</strong>Tag : The Power of Paint》</h2> <img src="/post/23d68c4e/04.jpg">
+<p>游玩过《传送门2》的你，一定会对游戏中的凝胶机制印象深刻。踩上去能让玩家瞬间获得速度的橙色加速凝胶；碰到就会让玩家弹跳的蓝色弹跳凝胶；还有能将不可放置传送门的平面变成可以放置传送门的灰白色凝胶；以及还有起清洗凝胶作用的水。</p>
+<p>游戏中的很多谜题需要玩家将凝胶洒向不同的地方来解决。以上图举个例子，玩家可以将蓝色凝胶洒向机枪，将她们弹起来从而瘫痪她们的攻击。</p>
+<p>多种凝胶的配合使用解决谜题更是让人心动不已。毫无疑问，凝胶系统的加入让《传送门2》的玩法更加多样化，使谜题的设置得以更加丰富。</p>
+<p><br></p>
+<p><strong>《传送门2》的凝胶机制其实是源自一款叫做《给力涂鸦</strong>（Tag: The Power of Paint）<strong>》的游戏。</strong></p>
+ <img src="/post/23d68c4e/05.jpg">
+<p><strong>《给力涂鸦》</strong>同样是一款，由迪吉彭理工学院七个大学生，耗时约18个月开发的作品（没错，与上面所提及的《Narbacular Drop》的开发者们出自同一所大学）。</p>
+<p>游戏于 2009 年发布，并获得了同年的独立游戏节的学生展示奖项。</p>
+<p>游戏中你将拿着一把喷漆枪在一片灰白的世界尽情喷漆，通过不同喷漆的特殊能力前进，想法设法通过9个城市。</p>
+<p>游戏一开始，你只有绿色喷漆。随着游戏的进行，你能搜集到红色和蓝色喷漆。</p>
+ <img src="/post/23d68c4e/06.jpg">
+<p>喷漆枪能喷出3种不同颜色喷漆：绿色喷漆有弹跳功能；红色喷漆有加速功能；蓝色喷漆有黏着功能。</p>
+<p>《传送门2》中加入了前两者喷漆的功能。而蓝色喷漆的黏着功能可以让玩家站在垂直平面而不掉落。</p>
+<p>当然，喷漆枪还有清除功能，可以喷射白色喷漆清除其他颜色的喷漆。（《传送门2》中的水也有相同的作用。）</p>
+<p><br></p>
+<blockquote>
+<p>游戏赢得独立游戏节的奖项之后，其音乐、谜题和游戏画面与游戏机制的巧妙结合，受到了业界的赞誉。<br>独立游戏节的专栏记者查维斯·法瑟（Travis Fahs）把该游戏称作2009年第二好的独立游戏，并且希望该作能开发出一个完整的商业游戏。<br>GameSpot（一家游戏媒体）称该游戏是《传送门》和《镜之边缘》元素的巧妙结合，并且称赞了游戏的物理引擎表现。</p>
+</blockquote>
+ <img src="/post/23d68c4e/07.jpg">
+<p><br></p>
+<p>如今，你仍在迪吉彭理工学院的网站上下载到这款游戏**</p>
+<p><strong>同样的，游戏开发团队被招聘进了Valve，并参与到了《传送门2》的开发工作之中，为《传送门2》带来了新的解谜要素——凝胶。</strong></p>
+<p>当然，《传送门2》并没有照搬《给力涂鸦》的设定——并不会有什么凝胶枪，取而代之的是无限输送凝胶的管道。而将凝胶洒向自己的想要的区域的方式也改成了利用传送门以及其他机关要素（如传送漏斗可以浮空运输凝胶）。</p>
+ <img src="/post/23d68c4e/08.jpg">
+<hr>
+<p><br></p>
+<h2 id="尾"><a href="#尾" class="headerlink" title="尾"></a>尾</h2><p><strong>读者可以亲自下载上述的两款游戏，体验一番。虽然游戏较为简陋，但也是有一定的游戏性的。</strong></p>
+<p>许多小众独立游戏中或有十分具有潜力的游戏创意，但因为各种各样的问题（如创意载体较简陋），而没有被挖掘出创意的真正价值。</p>
+<p>希望 Valve 独特的融合游戏要素的方式，能启迪到一些游戏开发者。</p>
+<p>最近有一款将传送门要素和桥梁建造要素融合起来的游戏。先不提游戏素质如何，游戏的创意是很赞的。</p>
+ <img src="/post/23d68c4e/09.jpg">
+<p>最后一提，如果你还没完整体验过《传送门》系列（单人、合作剧情，创意工坊等），现在冬季特惠是你购买的好时机。<strong>创意工坊中甚至有情人节主题的地图。</strong></p>
+<p>如果想体验一段全新的《传送门》剧情，也可以尝试一下一款质量颇佳的Mod 《Portal Stories: Mel》。</p>
+ <img src="/post/23d68c4e/10.jpg">
+<p><br></p>
+<p><strong>Thanks for reading.</strong></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/游戏/" rel="tag"># 游戏</a>
+          
+            <a href="/tags/Portal/" rel="tag"># Portal</a>
+          
+            <a href="/tags/Valve/" rel="tag"># Valve</a>
+          
+            <a href="/tags/文化/" rel="tag"># 文化</a>
+          
+            <a href="/tags/机制/" rel="tag"># 机制</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/83278669.html" rel="next" title="软件安利：手机平板串流（远程控制）电脑">
+                <i class="fa fa-chevron-left"></i> 软件安利：手机平板串流（远程控制）电脑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/995edba2.html" rel="prev" title="Java 分别用栈dfs和队列bfs解决走迷宫问题">
+                Java 分别用栈dfs和队列bfs解决走迷宫问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="AyagiKei" />
+            
+              <p class="site-author-name" itemprop="name">AyagiKei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Ayagikei" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:AyagiKei@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/kei-8/activities" target="_blank" title="ZhiHu"><i class="fa fa-fw fa-circle"></i>ZhiHu</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/ayagikei" target="_blank" title="CSDN"><i class="fa fa-fw fa-circle"></i>CSDN</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传送门的起源——《Narbacular-Drop》"><span class="nav-number">2.</span> <span class="nav-text">传送门的起源——《Narbacular Drop》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#凝胶其实源自喷漆——《Tag-The-Power-of-Paint》"><span class="nav-number">3.</span> <span class="nav-text">凝胶其实源自喷漆——《Tag : The Power of Paint》</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尾"><span class="nav-number">4.</span> <span class="nav-text">尾</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AyagiKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">196k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">5:false</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://AyagiKei.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://sarasarasa.net/post/23d68c4e.html';
+        this.page.identifier = 'post/23d68c4e.html';
+        this.page.title = '《传送门》中的游戏机制来源--传送门与凝胶';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://AyagiKei.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+      .copy-btn {
+          display: inline-block;
+          padding: 6px 12px;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 20px;
+          color: #333;
+          white-space: nowrap;
+          vertical-align: middle;
+          cursor: pointer;
+          background-color: #eee;
+          background-image: linear-gradient(#fcfcfc, #eee);
+          border: 1px solid #d5d5d5;
+          border-radius: 3px;
+          user-select: none;
+      }
+
+      .highlight-wrap .copy-btn {
+          transition: opacity .3s ease-in-out;
+          opacity: 0;
+          padding: 2px 6px;
+          position: fixed;
+          right: 4px;
+          top: 8px;
+      }
+
+      .highlight-wrap:hover .copy-btn,
+      .highlight-wrap .copy-btn:focus {
+          opacity: 1
+      }
+
+      .highlight-wrap {
+          transform: translateZ(0);
+      }
+  </style>
+  <script>
+      $('.highlight').each(function(i, e) {
+          var $wrap = $('<div>').addClass('highlight-wrap')
+          $(e).after($wrap)
+          $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+              var code = $(e.target).parent().find('.code').find('.line').map(function(i, e) {
+                  return $(e).text()
+              }).toArray().join('\n')
+              var ta = document.createElement('textarea')
+              document.body.appendChild(ta)
+              ta.style.position = 'fixed'
+              ta.style.top = 0
+              ta.style.left = 0
+              ta.value = code
+              ta.select()
+              ta.focus()
+              document.execCommand('copy')
+              document.body.removeChild(ta)
+          })).append(e)
+      })
+  </script>
+
+
+</body>
+</html>

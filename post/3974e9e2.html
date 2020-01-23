@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文讲讲怎么用 MPAndroidChart 框架实现折线图、柱形图、饼图，并且进行样式设置，达到和宣传图差不多的效果。 一开始看到 MPAndroidChart 的各种图表介绍图感觉很好看，但是直接New一个相应图表，仅仅填充数据的话，样式稍微有些丑。经过一番阅览文档才把样式调整得好看些。所以就写了这篇文章记录下。 APP 里实现的最终效果：   引入框架首先是引入框架： https://git">
+<meta name="keywords" content="Android,开发日志">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人升开发日志#12 | 01&#x2F;17 图表">
+<meta property="og:url" content="http://sarasarasa.net/post/3974e9e2.html">
+<meta property="og:site_name" content="萨拉萨拉萨">
+<meta property="og:description" content="本文讲讲怎么用 MPAndroidChart 框架实现折线图、柱形图、饼图，并且进行样式设置，达到和宣传图差不多的效果。 一开始看到 MPAndroidChart 的各种图表介绍图感觉很好看，但是直接New一个相应图表，仅仅填充数据的话，样式稍微有些丑。经过一番阅览文档才把样式调整得好看些。所以就写了这篇文章记录下。 APP 里实现的最终效果：   引入框架首先是引入框架： https://git">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://sarasarasa.net/post/3974e9e2/01.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/3974e9e2/02.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/3974e9e2/03.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/3974e9e2/04.jpg">
+<meta property="og:image" content="http://sarasarasa.net/post/3974e9e2/05.jpg">
+<meta property="og:updated_time" content="2019-01-20T13:16:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人升开发日志#12 | 01&#x2F;17 图表">
+<meta name="twitter:description" content="本文讲讲怎么用 MPAndroidChart 框架实现折线图、柱形图、饼图，并且进行样式设置，达到和宣传图差不多的效果。 一开始看到 MPAndroidChart 的各种图表介绍图感觉很好看，但是直接New一个相应图表，仅仅填充数据的话，样式稍微有些丑。经过一番阅览文档才把样式调整得好看些。所以就写了这篇文章记录下。 APP 里实现的最终效果：   引入框架首先是引入框架： https://git">
+<meta name="twitter:image" content="http://sarasarasa.net/post/3974e9e2/01.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://sarasarasa.net/post/3974e9e2.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>人升开发日志#12 | 01/17 图表 | 萨拉萨拉萨</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe7ac5f435cef91b7c68c2e1aa4d39e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i> 
+		
+		
+		<img class="custom-logo-image" src="/images/logo.png"
+               alt="萨拉萨拉萨"/></span>
+		
+		
+        <span class="site-title">萨拉萨拉萨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">A Blog to Write about Everything</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sarasarasa.net/post/3974e9e2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AyagiKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="萨拉萨拉萨">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">人升开发日志#12 | 01/17 图表
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-17 22:44:39" itemprop="dateCreated datePublished" datetime="2019-01-17T22:44:39+08:00">2019-01-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-20 21:16:44" itemprop="dateModified" datetime="2019-01-20T21:16:44+08:00">2019-01-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/" itemprop="url" rel="index"><span itemprop="name">项目</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/开发日志/" itemprop="url" rel="index"><span itemprop="name">开发日志</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/开发日志/人升/" itemprop="url" rel="index"><span itemprop="name">人升</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/3974e9e2.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="post/3974e9e2.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">10 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文讲讲怎么用 <strong>MPAndroidChart</strong> 框架实现折线图、柱形图、饼图，并且进行样式设置，达到和宣传图差不多的效果。</p>
+<p>一开始看到 <strong>MPAndroidChart</strong> 的各种图表介绍图感觉很好看，但是直接New一个相应图表，仅仅填充数据的话，样式稍微有些丑。经过一番阅览文档才把样式调整得好看些。所以就写了这篇文章记录下。</p>
+<p>APP 里实现的最终效果：</p>
+ <img src="/post/3974e9e2/01.jpg">
+<h1 id="引入框架"><a href="#引入框架" class="headerlink" title="引入框架"></a>引入框架</h1><p>首先是引入框架：</p>
+<p><a href="https://github.com/PhilJay/MPAndroidChart" target="_blank" rel="noopener">https://github.com/PhilJay/MPAndroidChart</a></p>
+<p><strong>Gradle设置一下：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    maven &#123; url 'https://jitpack.io' &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="LineChart-折线图"><a href="#LineChart-折线图" class="headerlink" title="LineChart 折线图"></a><strong>LineChart </strong>折线图</h1><h2 id="显示数据"><a href="#显示数据" class="headerlink" title="显示数据"></a>显示数据</h2><p>首先，先让我们的图标正确显示数据吧~</p>
+<ol>
+<li><strong>XML 布局文件内加入：</strong></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">com.github.mikephil.charting.charts.LineChart</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:id</span>=<span class="string">"@+id/line_chart"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>Entry</strong>，Entry 可以理解为一个点，赋值 x 和 y 数值。</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> lineEntries = ArrayList&lt;Entry&gt;()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ((i, e) <span class="keyword">in</span> countList.withIndex()) &#123;</span><br><span class="line">	<span class="keyword">val</span> entry = Entry(i.toFloat(), e.toFloat())</span><br><span class="line">	lineEntries.add(entry)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>LineDataSet</strong>，可以理解为一条线。</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> lineDataSet = LineDataSet(lineEntries, <span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li><strong>LineData</strong>，可以理解为多条线的集合。</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> lineData = LineData(lineDataSet)</span><br><span class="line">view.line_chart.<span class="keyword">data</span> = lineData</span><br><span class="line"></span><br><span class="line"><span class="comment">// 填充数据后要重绘图表</span></span><br><span class="line">view.line_chart.invalidate()</span><br></pre></td></tr></table></figure>
+<p>然后你会得到：</p>
+ <img src="/post/3974e9e2/02.jpg">
+<p>嗯，默认样式有点丑。接下来就是修改样式了。</p>
+<p><br></p>
+<h2 id="设置样式"><a href="#设置样式" class="headerlink" title="设置样式"></a>设置样式</h2><ol>
+<li><strong>设置LineDataSet的样式。</strong></li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">lineDataSet.apply&#123;</span><br><span class="line">    <span class="comment">// 不在坐标点上显示 y 数值</span></span><br><span class="line">    setDrawValues(<span class="literal">false</span>)</span><br><span class="line">    <span class="comment">/* 改为曲线显示模式，一共有四种显示模式：</span></span><br><span class="line"><span class="comment">        LINEAR,STEPPED,CUBIC_BEZIER,HORIZONTAL_BEZIER</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    mode = LineDataSet.Mode.HORIZONTAL_BEZIER</span><br><span class="line">    <span class="comment">// 改变线条颜色</span></span><br><span class="line">    color = resources.getColor(R.color.blue)</span><br><span class="line">    <span class="comment">// 不显示相应坐标点的小圆圈</span></span><br><span class="line">    setDrawCircles(<span class="literal">false</span>)</span><br><span class="line">    setDrawCircleHole(<span class="literal">false</span>)</span><br><span class="line">    <span class="comment">// 设置线的宽度</span></span><br><span class="line">    lineWidth = <span class="number">1.5</span>f</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>设置 X 轴的样式。</strong></li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> xAxis = view.chart.xAxis</span><br><span class="line"><span class="comment">// 这里的listStringDatePastDays方法的功能是获取近7天的日期字符串数组</span></span><br><span class="line"><span class="keyword">val</span> stringDateList = DateUtil.listStringDatePastDays(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">xAxis.apply&#123;</span><br><span class="line">    <span class="comment">// 取消网格线显示</span></span><br><span class="line">    setDrawGridLines(<span class="literal">false</span>)</span><br><span class="line">    <span class="comment">// 位置改到图表下方</span></span><br><span class="line">    position = XAxis.XAxisPosition.BOTTOM</span><br><span class="line">    <span class="comment">// x轴起始改为0</span></span><br><span class="line">    axisMinimum = <span class="number">0</span>f</span><br><span class="line">    <span class="comment">// x轴的最小单位设置为1f</span></span><br><span class="line">    granularity = <span class="number">1</span>f</span><br><span class="line">    <span class="comment">// 改变x轴的显示内容，</span></span><br><span class="line">    <span class="comment">// 然后设置valueFormatter将x轴的数值对应上日期，然后实际上就会显示日期了。</span></span><br><span class="line">    valueFormatter = IAxisValueFormatter &#123; value, axis -&gt;</span><br><span class="line">        stringDateList[value.toInt()]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>设置左侧 Y 轴的样式。</strong>（同理 x 轴）</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> yAxis = view.line_chart_exp.axisLeft</span><br><span class="line">yAxis.granularity = <span class="number">1</span>f</span><br><span class="line"><span class="comment">// 如果你的y轴数值是正数的话，建议最小值为0，因为默认的话会略小于0。</span></span><br><span class="line">yAxis.axisMinimum = <span class="number">0</span>f</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li><strong>图表的样式设置。</strong></li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">view.chart.apply&#123;</span><br><span class="line">    <span class="comment">// 禁用图例</span></span><br><span class="line">    legend.isEnabled = <span class="literal">false</span></span><br><span class="line">    <span class="comment">// 禁用触摸响应</span></span><br><span class="line">    setTouchEnabled(<span class="literal">false</span>)</span><br><span class="line">    <span class="comment">// 禁用右侧的y轴</span></span><br><span class="line">    axisRight.isEnabled = <span class="literal">false</span></span><br><span class="line">    <span class="comment">// 取消右下角的Description Label</span></span><br><span class="line">    description.isEnabled = <span class="literal">false</span></span><br><span class="line">    <span class="comment">// 取消背景的网格绘制</span></span><br><span class="line">    setDrawGridBackground(<span class="literal">false</span>)</span><br><span class="line">    <span class="comment">// 没有数据的时候显示的文本内容</span></span><br><span class="line">    setNoDataText(<span class="string">"暂时没有相应数据"</span>)</span><br><span class="line">    <span class="comment">// 设置动画效果</span></span><br><span class="line">    animateY(<span class="number">1000</span>, Easing.Linear)</span><br><span class="line">    animateX(<span class="number">1000</span>, Easing.Linear)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后就能得到这样的效果：</p>
+ <img src="/post/3974e9e2/03.jpg">
+<h1 id="BarChart-柱形图"><a href="#BarChart-柱形图" class="headerlink" title="BarChart 柱形图"></a>BarChart 柱形图</h1><p><strong>柱形图与折线图类似，只是：</strong></p>
+<blockquote>
+<ol>
+<li>Entry 变成了 BarEntry</li>
+<li>LineDataSet 变成了 BarDataSet</li>
+<li>LineData 变成了 BarData</li>
+<li>LineChart 变成了 BarChart</li>
+</ol>
+</blockquote>
+<p><strong>样式设置也差不多，就直接贴代码了：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">initStepBarChart</span><span class="params">(view: <span class="type">View</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> barEntries = ArrayList&lt;BarEntry&gt;()</span><br><span class="line">    <span class="keyword">val</span> stepList = stepService.listFinishTaskCountPastDays(<span class="number">7</span>)</span><br><span class="line">    <span class="keyword">for</span> ((i, e) <span class="keyword">in</span> stepList.withIndex()) &#123;</span><br><span class="line">        <span class="keyword">val</span> entry = BarEntry(i.toFloat(), e.toFloat())</span><br><span class="line">        barEntries.add(entry)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">val</span> barDataSet = BarDataSet(barEntries, <span class="string">""</span>)</span><br><span class="line">    context?.let &#123; barDataSet.color = (ContextCompat.getColor(it, R.color.color_bar_chart)) &#125;</span><br><span class="line">    barDataSet.setDrawValues(<span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">val</span> barData = BarData(barDataSet)</span><br><span class="line">    <span class="keyword">val</span> xAxisOfBarData = view.bar_chart_step.xAxis</span><br><span class="line">    <span class="keyword">val</span> stringDateList = DateUtil.listStringDatePastDays(<span class="number">7</span>)</span><br><span class="line">    xAxisOfBarData.apply &#123;</span><br><span class="line">        valueFormatter = IAxisValueFormatter &#123; value, axis -&gt;</span><br><span class="line">            stringDateList[value.toInt()]</span><br><span class="line">        &#125;</span><br><span class="line">        position = XAxis.XAxisPosition.BOTTOM</span><br><span class="line">        <span class="comment">//xAxisOfBarData.setDrawAxisLine(false)</span></span><br><span class="line">        setDrawGridLines(<span class="literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">val</span> yAxisOfBarData = view.bar_chart_step.axisLeft</span><br><span class="line">    yAxisOfBarData.apply &#123;</span><br><span class="line">       axisMinimum = <span class="number">0</span>f</span><br><span class="line">       setDrawGridLines(<span class="literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    view.bar_chart_step.apply &#123;</span><br><span class="line">        legend.isEnabled = <span class="literal">false</span></span><br><span class="line">        <span class="keyword">data</span> = barData</span><br><span class="line">        description.isEnabled = <span class="literal">false</span></span><br><span class="line">        setDrawGridBackground(<span class="literal">false</span>)</span><br><span class="line">        axisRight.isEnabled = <span class="literal">false</span></span><br><span class="line">        animateY(<span class="number">1000</span>, Easing.Linear)</span><br><span class="line">        animateX(<span class="number">1000</span>, Easing.Linear)</span><br><span class="line">        setNoDataText(<span class="string">"暂时没有相应数据"</span>)</span><br><span class="line">        invalidate()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="PieChart-饼图"><a href="#PieChart-饼图" class="headerlink" title="PieChart 饼图"></a>PieChart 饼图</h1><h2 id="填充数据"><a href="#填充数据" class="headerlink" title="填充数据"></a>填充数据</h2><p><strong>依旧类似：</strong></p>
+<blockquote>
+<ol>
+<li>Entry 变成了 PieEntry</li>
+<li>LineDataSet 变成了 PieDataSet</li>
+<li>LineData 变成了 PieData</li>
+<li>LineChart 变成了 PieChart</li>
+</ol>
+</blockquote>
+<p><strong>完整代码：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> pieEntries = ArrayList&lt;PieEntry&gt;()</span><br><span class="line">pieEntries.add(PieEntry(<span class="number">0.3</span>, <span class="string">"Pie1"</span>))</span><br><span class="line">pieEntries.add(PieEntry(<span class="number">0.5</span>, <span class="string">"Pie2"</span>))</span><br><span class="line">pieEntries.add(PieEntry(<span class="number">0.2</span>, <span class="string">"Pie3"</span>))</span><br><span class="line"><span class="keyword">val</span> pieDataSet = PieDataSet(pieEntries, <span class="string">""</span>)</span><br><span class="line"><span class="keyword">val</span> pieData = PieData(pieDataSet)</span><br><span class="line">view.pie_chart_exp.<span class="keyword">data</span> = pieData</span><br><span class="line">view.pie_chart_exp.invalidate()</span><br></pre></td></tr></table></figure>
+<p>稍微注意一点的地方是，PieEntry没有x、y值，只有一个value占比数值。</p>
+<p>所有PieEntry的Value总和应该为1，要不然可能显示不正常。</p>
+<p><strong>然后你会得到一块效果很丑的饼：</strong></p>
+ <img src="/post/3974e9e2/04.jpg">
+<p>可以看到所有每一块的颜色都是相同的，图例也只显示了一个，并且所有饼块都紧邻在了一起，右下角的描述也需要去掉，冰块上方的数字应该改成百分比显示。</p>
+<h2 id="设置样式-1"><a href="#设置样式-1" class="headerlink" title="设置样式"></a>设置样式</h2><ol>
+<li>首先是设置颜色。</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pieColors的颜色会与pieEntries一一对应</span></span><br><span class="line"><span class="keyword">val</span> pieColors = ArrayList&lt;<span class="built_in">Int</span>&gt;()</span><br><span class="line">pieColors.add(ContextCompat.getColor(context,R.color.red))</span><br><span class="line">pieColors.add(ContextCompat.getColor(context,R.color.green))</span><br><span class="line">pieColors.add(ContextCompat.getColor(context,R.color.blue))</span><br><span class="line">pieDataSet.colors = pieColors</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>PieDataSet设置饼块间隔、数值字体大小。</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pieDataSet.sliceSpace = <span class="number">3.0</span>f</span><br><span class="line">pieDataSet.valueTextSize = <span class="number">9.0</span>f</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>PieData设置数值以百分比显示和字体颜色。</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置ValueFormatter让数值变成百分号（%）形式显示，但是数值还是原来的0.x</span></span><br><span class="line">pieData.setValueFormatter(PercentFormatter())</span><br><span class="line">pieData.setValueTextColor(ContextCompat.getColor(it, R.color.white))</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>PieChart的样式设置。</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">view.pie_chart_exp.apply&#123;</span><br><span class="line">    <span class="comment">// 设置以百分比显示，这里是指将原来的0.x乘100，并不会加上“%”符号</span></span><br><span class="line">    setUsePercentValues(<span class="literal">true</span>)</span><br><span class="line">    <span class="comment">// 设置Label的字体大小（比如上方的Pie1）</span></span><br><span class="line">    setEntryLabelTextSize(<span class="number">10.0</span>f)</span><br><span class="line">    <span class="comment">// 设置中间的文本显示</span></span><br><span class="line">    centerText = <span class="string">"经验分布"</span></span><br><span class="line">    <span class="comment">// 去掉右下角的Description</span></span><br><span class="line">    description.isEnabled = <span class="literal">false</span></span><br><span class="line">    setNoDataText(<span class="string">"暂时没有相应数据"</span>)</span><br><span class="line">    <span class="comment">// 开启动画效果</span></span><br><span class="line">    animateY(<span class="number">1000</span>, Easing.Linear)</span><br><span class="line">    animateX(<span class="number">1000</span>, Easing.Linear)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>至此，饼图已经变得挺好看了：</strong></p>
+ <img src="/post/3974e9e2/05.jpg">
+<p><strong>当然，你还能进行更多的样式调整，可以参考官方Github Wiki和API文档的介绍。</strong></p>
+<p><br></p>
+<h1 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h1><p><a href="https://github.com/PhilJay/MPAndroidChart/wiki" target="_blank" rel="noopener">WIKI使用教程</a></p>
+<p><a href="https://jitpack.io/com/github/PhilJay/MPAndroidChart/v3.1.0-alpha/javadoc/" target="_blank" rel="noopener">详细API文档</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/开发日志/" rel="tag"># 开发日志</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/325f3e25.html" rel="next" title="「工行星座卡校园版」从下卡到海外在线支付">
+                <i class="fa fa-chevron-left"></i> 「工行星座卡校园版」从下卡到海外在线支付
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/396831a4.html" rel="prev" title="VectorDrawable(xml)转换回SVG">
+                VectorDrawable(xml)转换回SVG <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="AyagiKei" />
+            
+              <p class="site-author-name" itemprop="name">AyagiKei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Ayagikei" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:AyagiKei@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/kei-8/activities" target="_blank" title="ZhiHu"><i class="fa fa-fw fa-circle"></i>ZhiHu</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/ayagikei" target="_blank" title="CSDN"><i class="fa fa-fw fa-circle"></i>CSDN</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引入框架"><span class="nav-number">1.</span> <span class="nav-text">引入框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LineChart-折线图"><span class="nav-number">2.</span> <span class="nav-text">LineChart 折线图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#显示数据"><span class="nav-number">2.1.</span> <span class="nav-text">显示数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置样式"><span class="nav-number">2.2.</span> <span class="nav-text">设置样式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BarChart-柱形图"><span class="nav-number">3.</span> <span class="nav-text">BarChart 柱形图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PieChart-饼图"><span class="nav-number">4.</span> <span class="nav-text">PieChart 饼图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#填充数据"><span class="nav-number">4.1.</span> <span class="nav-text">填充数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置样式-1"><span class="nav-number">4.2.</span> <span class="nav-text">设置样式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#官方文档"><span class="nav-number">5.</span> <span class="nav-text">官方文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AyagiKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">196k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">5:false</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://AyagiKei.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://sarasarasa.net/post/3974e9e2.html';
+        this.page.identifier = 'post/3974e9e2.html';
+        this.page.title = '人升开发日志#12 | 01/17 图表';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://AyagiKei.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+      .copy-btn {
+          display: inline-block;
+          padding: 6px 12px;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 20px;
+          color: #333;
+          white-space: nowrap;
+          vertical-align: middle;
+          cursor: pointer;
+          background-color: #eee;
+          background-image: linear-gradient(#fcfcfc, #eee);
+          border: 1px solid #d5d5d5;
+          border-radius: 3px;
+          user-select: none;
+      }
+
+      .highlight-wrap .copy-btn {
+          transition: opacity .3s ease-in-out;
+          opacity: 0;
+          padding: 2px 6px;
+          position: fixed;
+          right: 4px;
+          top: 8px;
+      }
+
+      .highlight-wrap:hover .copy-btn,
+      .highlight-wrap .copy-btn:focus {
+          opacity: 1
+      }
+
+      .highlight-wrap {
+          transform: translateZ(0);
+      }
+  </style>
+  <script>
+      $('.highlight').each(function(i, e) {
+          var $wrap = $('<div>').addClass('highlight-wrap')
+          $(e).after($wrap)
+          $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+              var code = $(e.target).parent().find('.code').find('.line').map(function(i, e) {
+                  return $(e).text()
+              }).toArray().join('\n')
+              var ta = document.createElement('textarea')
+              document.body.appendChild(ta)
+              ta.style.position = 'fixed'
+              ta.style.top = 0
+              ta.style.left = 0
+              ta.value = code
+              ta.select()
+              ta.focus()
+              document.execCommand('copy')
+              document.body.removeChild(ta)
+          })).append(e)
+      })
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="关于版本目前，华为应用市场上的版本是被恶意篡改，插入广告，修改权限申请（甚至申请了录音权限）的版本。 该版本甚至不能打开登录界面、设置界面，尝试更新也会提示应用签名不正确。 如果你是从华为应用市场下载的，请尽快卸载。 目前，我们官方上架并且维护更新的应用市场有：酷安、魅族、小米、Google Play。 并且在这些应用市场上架的都是相同的包名，完全可以跨市场升级~ Google Play上架的是定">
+<meta name="keywords" content="Android,开发日志">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人升Lifeup 常见问题">
+<meta property="og:url" content="http://sarasarasa.net/post/157a032e.html">
+<meta property="og:site_name" content="萨拉萨拉萨">
+<meta property="og:description" content="关于版本目前，华为应用市场上的版本是被恶意篡改，插入广告，修改权限申请（甚至申请了录音权限）的版本。 该版本甚至不能打开登录界面、设置界面，尝试更新也会提示应用签名不正确。 如果你是从华为应用市场下载的，请尽快卸载。 目前，我们官方上架并且维护更新的应用市场有：酷安、魅族、小米、Google Play。 并且在这些应用市场上架的都是相同的包名，完全可以跨市场升级~ Google Play上架的是定">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-28T15:29:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人升Lifeup 常见问题">
+<meta name="twitter:description" content="关于版本目前，华为应用市场上的版本是被恶意篡改，插入广告，修改权限申请（甚至申请了录音权限）的版本。 该版本甚至不能打开登录界面、设置界面，尝试更新也会提示应用签名不正确。 如果你是从华为应用市场下载的，请尽快卸载。 目前，我们官方上架并且维护更新的应用市场有：酷安、魅族、小米、Google Play。 并且在这些应用市场上架的都是相同的包名，完全可以跨市场升级~ Google Play上架的是定">
+
+
+
+
+
+
+  <link rel="canonical" href="http://sarasarasa.net/post/157a032e.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>人升Lifeup 常见问题 | 萨拉萨拉萨</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bbe7ac5f435cef91b7c68c2e1aa4d39e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i> 
+		
+		
+		<img class="custom-logo-image" src="/images/logo.png"
+               alt="萨拉萨拉萨"/></span>
+		
+		
+        <span class="site-title">萨拉萨拉萨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">A Blog to Write about Everything</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sarasarasa.net/post/157a032e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AyagiKei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="萨拉萨拉萨">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">人升Lifeup 常见问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-15 19:40:10" itemprop="dateCreated datePublished" datetime="2018-12-15T19:40:10+08:00">2018-12-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-28 23:29:04" itemprop="dateModified" datetime="2019-09-28T23:29:04+08:00">2019-09-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/" itemprop="url" rel="index"><span itemprop="name">项目</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/开发日志/" itemprop="url" rel="index"><span itemprop="name">开发日志</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目/开发日志/人升/" itemprop="url" rel="index"><span itemprop="name">人升</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/157a032e.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="post/157a032e.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">7.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">13 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="关于版本"><a href="#关于版本" class="headerlink" title="关于版本"></a>关于版本</h1><p>目前，<strong>华为应用市场</strong>上的版本是被<strong>恶意篡改，插入广告，修改权限申请（甚至申请了录音权限）</strong>的版本。</p>
+<p>该版本甚至不能打开登录界面、设置界面，尝试更新也会提示应用签名不正确。</p>
+<p>如果你是从<strong>华为应用市场</strong>下载的，请尽快卸载。</p>
+<p>目前，我们官方上架并且维护更新的应用市场有：<strong>酷安、魅族、小米、Google Play</strong>。</p>
+<p>并且在这些应用市场上架的都是相同的包名，完全<strong>可以跨市场升级</strong>~</p>
+<p><strong>Google Play上架的是定为$0.99买断制的版本，暂时功能与其他版本并没有什么区别。如果你想支持我们的持续发展，可以考虑在Google Play上购买支持我们~</strong></p>
+<p><strong>捐赠过的用户可以向我们发送邮件获取Google Play的兑换码。</strong></p>
+<h1 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h1><h2 id="建立事项"><a href="#建立事项" class="headerlink" title="建立事项"></a>建立事项</h2><p>通过期限时间和重复频次的配合，<strong>你能轻松地设置出“星期一”到“星期日”的每周事项。只要设置重复频次为“每周”，然后期限时间设置为“周末”即可~。</strong>相应的开始时间会自动计算得出。</p>
+<p>通过开始时间、期限时间和重复频次的配合，你能轻松地设置出清空很复杂的待办事项。如每天的23：00到第二天的2：00的事项。只需要设置开始时间为具体的“当天23：00”，期限时间为具体的“第二天2：00”，重复频次为“每日”即可。</p>
+<blockquote>
+<p>待补充</p>
+</blockquote>
+<h2 id="稍后阅读"><a href="#稍后阅读" class="headerlink" title="稍后阅读"></a>稍后阅读</h2><p><strong>《人升》可以接受其他应用分享过来的信息，用以快速建立「稍后阅读」事项。</strong>并且默认会勾选“学识”属性。</p>
+<p><strong>支持大部分提供分享功能的应用：</strong>如“微博”、“知乎”、“浏览器”、“Twitter”等。</p>
+<h2 id="商店系统"><a href="#商店系统" class="headerlink" title="商店系统"></a>商店系统</h2><blockquote>
+<p>待补充</p>
+</blockquote>
+<h2 id="社区"><a href="#社区" class="headerlink" title="社区"></a>社区</h2><blockquote>
+<p>待补充</p>
+</blockquote>
+<h1 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h1><ul>
+<li><p>目前Smartisan OS出现了裁剪图片崩溃的问题，经查日志发现是”缺少图片读取权限“。</p>
+<p>但是该图片路径理论上应该是无需额外申请读写权限的，应该是OS本身的问题。<strong>待优化。</strong></p>
+</li>
+</ul>
+<h1 id="更新计划"><a href="#更新计划" class="headerlink" title="更新计划"></a>更新计划</h1><p><strong>2019/7/13：</strong>因为目前在实习，稍微将原本大概7-14天一更的频次调整到<strong>14-21天一更</strong>。</p>
+<p><strong>下个版本预计发布日期：</strong>待定</p>
+<p>预计更新内容：</p>
+<ul>
+<li>金币清零</li>
+<li>金币获取量统计</li>
+</ul>
+<p>可能更新内容：</p>
+<ul>
+<li>自定义排序</li>
+<li>团队编辑优化</li>
+</ul>
+<h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h1><p><strong>Q：</strong>可以离线使用吗？</p>
+<p><strong>A：</strong>完全支持离线使用，只要你不需要用到社区方面的功能。</p>
+<p><strong>Q：</strong>社区团队是什么？</p>
+<p><strong>A：</strong>现在的社区其实是一个事项的发布和领取的地方，并且还支持了发表动态等功能。</p>
+<p><strong>Q：</strong>有广告或者内置收费吗？</p>
+<p><strong>A：</strong>没有任何广告和收费项目。</p>
+<p>目前应用在 Google Play作为付费应用上架（0.99美元），功能暂时与国内各市场上架的版本一致。</p>
+<p><strong>Q：</strong>已经创建的事项可以编辑吗？</p>
+<p><strong>A：</strong>长按事项会弹出选项，可以进行<strong>编辑、删除、放弃、置顶</strong>等功能。</p>
+<p><strong>Q：</strong>已经完成的事项可以撤销吗？</p>
+<p><strong>A：</strong>今天以内完成的事项都可以在历史页面撤销。</p>
+<p><strong>Q：</strong><del>事项消失？</del></p>
+<p><strong>A：</strong><del>在老版本中，逾期的事项会自动中断，需要在历史页面中继续事项。新版新增了一个“自动重做逾期事项”的选项，默认开启，应该不会再出现这种情况了。</del></p>
+<p><strong>Q：</strong>没能收到事项的提醒？</p>
+<p><strong>A：</strong>现在的提醒用的是Android原生的闹钟机制，在国产定制系统里，这个闹钟机制需要应用后台运行才能正常运作。所以，最好不要依赖于当前版本的提醒功能。</p>
+<p><strong>Q：</strong>如何提建议或者提交BUG？</p>
+<p><strong>A：</strong>建议和提交BUG都可以在酷安评论区或者是私发邮件。如果是崩溃BUG的话，尽量麻烦发下崩溃报告，这对修复BUG有很大帮助。</p>
+<a id="more"></a>
+<h1 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h1><p><strong>1.66.1（2019/9/27）</strong></p>
+<ol>
+<li><p>【优化】将“紧迫程度”的文案变更为“重要程度”</p>
+</li>
+<li><p>【修复】修复“告示板”页面长按弹出菜单时，页面自动滚动的问题。</p>
+</li>
+<li>【修复】修复新建团队的时候，开始时间和结束时间设置无效的问题。</li>
+<li>【修复】修复“默认不发表团队动态”初次设置不生效的问题。</li>
+<li>【修复】修复查询已加入团队列表、关注列表、粉丝列表的一些问题。</li>
+</ol>
+<p><strong>1.66.0 （2019/9/25）</strong></p>
+<ol>
+<li>【功能】团队现在支持设置金币（范围限制0-99）</li>
+<li>【功能】本地和团队现在支持设置随机金币</li>
+<li>【功能】商店增加设置：自动使用购买的物品、贷款金额设置</li>
+<li>【优化】属性升级增加提示，部分图标和颜色优化，事项卡片间隙改小</li>
+<li>【优化】将正倒序选项移入“排序”选项里，并且增加现在使用的排序方式提示</li>
+<li>【优化】优化团队事项的获取逻辑，增加获取时的提示，以及获取后自动刷新列表</li>
+<li>【优化】标题栏增加自动收缩，增大可视面积</li>
+<li>【优化】优化页面的加载逻辑，加快加载速度</li>
+<li>【修复】修复可完成时间的错误显示</li>
+<li>【修复】修复新增事项里的选择清单的“默认清单”名称显示不正确的问题</li>
+</ol>
+<p><strong>1.65.1 （2019/9/13）</strong></p>
+<ol>
+<li>【优化】桌面小部件增加显示“多次”事项的每日完成次数</li>
+<li>【修复】Kotlin升级导致的一个严重崩溃问题</li>
+<li>【修复】告示板列表刷新的一个崩溃问题</li>
+</ol>
+<p><strong>1.65.0 （2019/9/10）</strong></p>
+<ol>
+<li><p>【功能】稍后阅读：通过其他应用的分享功能（如知乎、微博、浏览器等）快速建立“稍后阅读事项”。</p>
+<p>同时，事项备注中的链接现在支持点击调起浏览器。</p>
+</li>
+<li><p>【功能】自定义经验值惩罚倍数，可设置 0 - 5.0 倍。</p>
+</li>
+<li><p>【功能】商店、仓库的排序系统。（因为遇到了一些问题，仓库暂不支持拼音排序）</p>
+</li>
+<li><p>【功能】现在可以点击选择紧迫程度和困难程度了。</p>
+</li>
+<li><p>【功能】事项详情页面加上该事项完成总次数。</p>
+</li>
+<li><p>【功能】“多次”事项添加每天完成次数显示。</p>
+</li>
+<li><p>【优化】取消了状态页面的波浪动画和相应选项，该动画即便不播放也会消耗大量性能。</p>
+</li>
+<li><p>【优化】完成、放弃、删除事项后，自动取消该次事项的提醒。</p>
+</li>
+<li><p>【优化】优化社区搜索不到相应团队时的显示。</p>
+</li>
+<li><p>【优化】社区页面的新增按钮也添加自动隐藏功能，另外页面切换时会重新显示该按钮。</p>
+</li>
+<li><p>【优化】当选择的属性少于3个的时候，任务卡片不合理的间距修复。</p>
+</li>
+<li><p>【优化】优化了一些图标显示。</p>
+</li>
+<li><p>【修复】修复“事项详情”页面、“我的”页面不会及时刷新的问题。（修改团队信息现在还有这个问题，下个版本修复）</p>
+</li>
+<li><p>【修复】修复部分Android版本应用内语言修改不生效的问题。</p>
+</li>
+<li><p>【修复】修复了一两个可能的崩溃问题。</p>
+</li>
+</ol>
+<p><strong>1.64.3 （2019/8/30）</strong></p>
+<ol>
+<li>修复完成/放弃/删除事项后，立刻进行变更清单/排序等操作引起的崩溃问题。</li>
+<li>优化社区的页面加载逻辑。</li>
+</ol>
+<p><strong>1.64.2 （2019/8/29）</strong></p>
+<ol>
+<li>修复两个比较严重的崩溃问题</li>
+<li>修复逾期事项的逾期时间显示问题，应该为期限时间</li>
+<li>修复逾期事项设为「已经完成」不会增加金币的问题</li>
+<li>修复新增事项里，选择清单的时，不能正确显示更改后的名字问题</li>
+</ol>
+<p><strong>1.64.1 （2019/8/28）</strong></p>
+<ol>
+<li>增加编辑商品功能，修复商品描述不生效的问题。</li>
+<li>增加删除仓库记录功能，修复仓库记录时间不显示日期的问题</li>
+<li>商店和统计对调了入口</li>
+<li>商店页面滑动时自动隐藏“新增”按钮，增加点击tab回到最顶功能</li>
+<li>优化计步统计</li>
+<li>修复已建立事项的提醒时间/期限时间不能置空保存的问题</li>
+</ol>
+<p><strong>1.64.0 （2019/8/23）</strong></p>
+<ol>
+<li><p>全新的金币&amp;商店&amp;仓库激励体系：<br>管理个人商店，上架商品（自己想要的奖励），设置价格（奖励获取的代价）</p>
+<p>完成事项获得金币奖励，前往商店购买商品（获取奖励），然后在仓库中使用你的商品吧~</p>
+</li>
+<li><p>新增放弃事项时的经验值损失提示</p>
+</li>
+<li><p>修复团队搜索、计步统计问题</p>
+</li>
+<li><p>统计页面的统计范围从7天调整为30天</p>
+</li>
+<li><p>一些布局优化，修复一些罕见崩溃。</p>
+</li>
+</ol>
+<p><strong>注：</strong>金币现在仅本地事项支持，团队事项暂时不支持。后续会继续完善金币功能。</p>
+<p><strong>1.63.0（2019/8/11）</strong></p>
+<ol>
+<li>增加系统日历提醒机制（可在事项设置中更换）</li>
+<li>增加清空经验值的功能</li>
+<li>增加删除已发表的动态功能（在个人主页长按动态）</li>
+<li>优化一些界面显示</li>
+</ol>
+<p><strong>1.62.3（2019/8/6）</strong></p>
+<ol>
+<li>采用新的崩溃反馈方式。</li>
+<li>修复社区页面重复加载的问题。</li>
+<li>修复一个获取经验值时的崩溃问题。</li>
+</ol>
+<p><strong>1.62.2</strong></p>
+<ol>
+<li>设置里增加自动检测更新功能。</li>
+<li>修复[用户]页面的点赞操作失败的问题。</li>
+</ol>
+<p><strong>1.62.1</strong></p>
+<ol>
+<li>修复完成事项时可能崩溃的问题。</li>
+</ol>
+<p><strong>1.62.0</strong></p>
+<ol>
+<li>社区动态增加点赞功能</li>
+<li>在「我的」页面可以将收获的点赞数兑换成魅力经验值</li>
+<li>在「我的」页面可以将连续完成事项天数兑换成耐力经验值。</li>
+<li>社区中的「时刻」页面添加自动过滤功能。</li>
+<li>社区页面可以点击Tab回到最顶了。</li>
+<li>修复一个因网络问题引起的崩溃问题。</li>
+<li>性能优化，文案更改。</li>
+</ol>
+<p><strong>1.61.0</strong></p>
+<ol>
+<li>新增夜间模式。</li>
+<li>新增「历史」页面的日期筛选功能。</li>
+<li>新增「特性」页面展示更新内容和未来计划。</li>
+<li>「显示设置」页面新增更改日期格式的设置。</li>
+<li>待办事项页面滚动时，自动隐藏新增事项按钮。</li>
+<li>修复部分Android版本应用内修改语言无效的问题。</li>
+<li>修复暖启动时短暂黑屏，细节、性能优化。</li>
+</ol>
+<p><strong>1.60.8</strong></p>
+<ol>
+<li>修复因为混淆导致登录界面闪退的问题。</li>
+</ol>
+<p><strong>1.60.7</strong></p>
+<ol>
+<li>现支持重命名默认清单。</li>
+<li>修复有时候图标显示不出来的问题。</li>
+<li>优化提交崩溃报告的对话框。</li>
+<li>采用混淆优化应用体积，提高运行效率。</li>
+<li>部分界面开始采用MVP架构重构。</li>
+</ol>
+<p><strong>1.60.6</strong></p>
+<ol>
+<li>修复新建事项时候“开始时间数据异常”的问题</li>
+<li>将隐藏事项页面头部的事项计数卡片改为持久性的，不再是临时性的了。</li>
+<li>大幅度优化了主页、状态、历史等页面的性能表现。</li>
+</ol>
+<p><strong>1.60.5</strong></p>
+<ol>
+<li>修复逾期事项的清单分类可能变回默认清单的问题。</li>
+</ol>
+<p><strong>1.60.4</strong></p>
+<ol>
+<li><p>增加应用内语言更改。</p>
+<p>设置(Settings)→显示设置(Display Settings)→语言设置(Language)</p>
+</li>
+<li><p>新建本地事项的开始时间新增了两个选项</p>
+<ul>
+<li>自动调整（根据重复频次）</li>
+<li>期限当天</li>
+<li>自定义</li>
+</ul>
+</li>
+<li><p>现在支持隐藏事项页面头部的事项计数卡片。相应的也在右上角菜单加入了重新显示的选项。</p>
+</li>
+<li><p>修复了当编辑事项时，修改所属清单不生效的问题。</p>
+</li>
+</ol>
+<p><strong>1.60.3</strong></p>
+<ol>
+<li>修复数个崩溃问题。</li>
+</ol>
+<p><strong>1.60.2</strong></p>
+<ol>
+<li>修复一些文本显示</li>
+</ol>
+<p><strong>1.60.1</strong></p>
+<ol>
+<li>修复了默认情况下，桌面小部件设置「隐藏非今日事项」显示勾选，实际未生效的问题。</li>
+</ol>
+<p><strong>1.60</strong></p>
+<ol>
+<li>添加了英文翻译</li>
+<li>新增了 Google 授权登录</li>
+<li>界面微调</li>
+</ol>
+<p><strong>1.59c</strong></p>
+<ol>
+<li>修复了提醒不正常的问题。</li>
+<li>修复了在一些情况下，新建事项点击没反应的问题。</li>
+</ol>
+<p><strong>1.59b</strong></p>
+<ol>
+<li>修复 Android P 在桌面小部件完成时可能崩溃的问题。</li>
+</ol>
+<p><strong>1.59a</strong></p>
+<ol>
+<li>修复v1.59的桌面小部件完成时可能崩溃的问题。  </li>
+</ol>
+<p><strong>1.59</strong></p>
+<ol>
+<li>现在支持滑动完成事项了。</li>
+<li>新增「统一事项颜色」设置：将所有类型的事项统一为蓝色。</li>
+<li>完成事项时底部弹框提供「撤销」选项。</li>
+<li>「新建事项」页面可以选择「所属清单」了。</li>
+<li>「排序」新增按「重复频次」排序选项。</li>
+<li>优化了桌面小部件完成事项的实现方式，可能解决了一些问题。</li>
+<li>「关于」页面新增「通过Android绿色应用公约认证」的链接。</li>
+<li>现在新建事项时可以不选择相关属性，直接新建普通事项了。</li>
+</ol>
+<p><strong>1.58c</strong></p>
+<ol>
+<li>为了提前适配Android Q和遵守绿色应用公约，去掉了对读写外部存储权限的使用依赖。</li>
+<li>修复放弃事项会让目标完成次数+1的逻辑问题。</li>
+<li>修复选择艾宾浩斯记忆法的事项缺少最后一天的问题。（需要新建事项）</li>
+<li>修复不能把事项编辑为艾宾浩斯记忆法的事项的问题。</li>
+<li>修复编辑个人资料的一个崩溃问题。</li>
+</ol>
+<p><strong>1.58b</strong></p>
+<ol>
+<li>修复选择艾宾浩斯记忆法的事项开始时间异常的问题。</li>
+<li>修复事项详情页面目标次数计数有误的问题。</li>
+</ol>
+<p><strong>1.58a</strong></p>
+<ol>
+<li>修复「状态」页面的步数兑换经验值“领取”按钮不可点击的问题。</li>
+<li>修复删除历史记录后，「我的」的事项统计数据不会相应变化的问题。</li>
+</ol>
+<p><strong>1.58</strong></p>
+<ol>
+<li>增加事项详情页面。（可点击待办事项卡片或者历史页面的记录查看）</li>
+<li>优化当事项备注过长时，待办事项卡片的显示效果。</li>
+<li>优化大部分对话框的显示效果。</li>
+<li>优化设置页面的显示效果，并且增加了选项说明文字。</li>
+<li>新建待办事项页面，增加了各个设置项的指引说明。并且属性下方加上了名字。</li>
+<li>新手指引增加清单和主页右上角的菜单选项（时间范围选择）的说明内容。</li>
+<li>修复了当团队事项逾期后，自动领取下一次团队事项不会刷新页面的问题。</li>
+<li>更换了新图标。</li>
+<li>支持库迁移到了AndroidX。</li>
+<li>修复了一个桌面小部件完成事项时的问题。</li>
+<li>修复了一些崩溃、逻辑和内存泄露问题。</li>
+</ol>
+<p><strong>1.57a</strong></p>
+<ol>
+<li>修复当事项名较长时候的一些显示问题。</li>
+</ol>
+<p><strong>1.57</strong></p>
+<ol>
+<li>添加了「隐藏计步」的设置项。</li>
+<li>调整了重复事项的处理逻辑：每次事项的持续时间将对应上重复频次。</li>
+<li>修复了编辑事项的一些问题。</li>
+<li>修复了两个罕见的崩溃问题。</li>
+<li>去掉了手动输入计步数据的步数限制。</li>
+<li>颜色微调。</li>
+</ol>
+<p><strong>1.56</strong></p>
+<ol>
+<li><p>重复频率增加”艾宾浩斯记忆法”选项。</p>
+<p>（依次重复频率为当天→1天后→2天后→4天后→7天后→15天后）</p>
+</li>
+<li><p>优化待办事项卡片和桌面小部件的时间显示。</p>
+</li>
+<li><p>新增了本地数据的备份/恢复功能。</p>
+</li>
+<li><p>修复重置“团队截止加入日期”时的崩溃问题。</p>
+</li>
+<li><p>修复了一些情况下标题栏菜单错乱的问题。</p>
+</li>
+<li><p>一些界面优化。</p>
+</li>
+</ol>
+<p><strong>1.55</strong></p>
+<ol>
+<li>修改了“放弃”操作的逻辑：不再会中断重复事项。</li>
+<li>修复了编辑事项时候的“重置”按钮显示异常。</li>
+<li>桌面小部件添加圆角。</li>
+<li>修复服务器宕机时的程序崩溃，并且添加了提示。</li>
+<li>服务器修复了 emoji 问题，在昵称、团队、动态等地方都能使用 emoji 了。（代价是丢失了一天的数据orz）<br> 因为一些意外，3月3号服务器停止了服务近10个小时。<br> 并且丢失了一小段时间的团队数据，很抱歉<em>(:з」∠)</em>。<br> 丢失的部分团队事项应该无法完成，2号后第一次登陆的用户可能要重新登陆一遍，麻烦了。</li>
+</ol>
+<p><strong>1.54</strong></p>
+<ol>
+<li>修复因为网络原因没领取到下一次事项的问题（上次判断写错了orz）</li>
+<li>修复一个崩溃问题</li>
+<li>一些界面微调</li>
+</ol>
+<p><strong>1.53</strong></p>
+<ol>
+<li>「清单」新增了一个「所有清单」：可以查看所有清单的事项。</li>
+<li>「提醒时间」加入了三个预设选项：期限前10分钟、期限前30分钟、期限前1小时。</li>
+<li>修复桌面小部件只显示当前清单的问题。</li>
+<li>「待办事项」和「状态」页面布局优化，理论上适配了任意宽度。（解决了当最低宽度为320dp的显示问题）</li>
+<li>修复 QQ 授权登陆时获取失败昵称、头像的问题。</li>
+<li>步数兑换力量经验值的奖励数值调低。</li>
+<li>修复了右上角菜单错乱的问题。</li>
+<li>一些页面的小修小改，属性图标进行了微调。</li>
+<li>偷偷地加了个「捐赠」功能。</li>
+</ol>
+<p><strong>1.52</strong><br>功能：</p>
+<ol>
+<li>「清单」分类功能：</li>
+</ol>
+<ul>
+<li>新建清单</li>
+<li>重命名清单</li>
+<li>删除清单</li>
+<li>事项的「移至」功能。</li>
+</ul>
+<ol start="2">
+<li>「历史」页面新增将逾期事项「设为完成」的功能（点击时间会弹出选项）</li>
+</ol>
+<p>优化：</p>
+<ol>
+<li>优化了对团队事项逾期的处理逻辑，防止出现因为网络原因没领取到下一次事项的情况。</li>
+<li>优化了当团队名太长时，动态的布局显示。</li>
+<li>修复了当重复点期限日期的「设置时间」时触发的一个问题。</li>
+<li>优化了对登陆授权失效的处理。</li>
+<li>修复了发表动态时的一个错误提示。</li>
+</ol>
+<p><strong>1.51</strong></p>
+<p>功能：</p>
+<ol>
+<li>新增「期限日期」的「具体时间」设置，现在可以建立如“每天的4:00到第二天的4:00”周期事项。</li>
+<li>当选择「重复频次」为「每日」的时候，新增了一个设置「星期几忽略」的功能。即可以设置如“每周一到周三”的周期事项。</li>
+<li>设置里新增了「默认不发表团队动态」的选择项</li>
+<li>「社区」的「时刻」新增了范围的选择，可以选择「所有」浏览社区的所有创建和完成事项的动态。</li>
+<li>「排序」新增按拼音字母排序的功能。</li>
+</ol>
+<p>优化：</p>
+<ol>
+<li>待办事项页面新增了移除和新增的动画效果。</li>
+<li>修复了完成事项后，桌面小部件没有立即刷新的问题。</li>
+<li>修复了近七天步数统计柱形图的数据显示不全的问题。</li>
+<li>修复了经验值收支详情页面的文字重叠问题。</li>
+<li>「关于」页面的「检测更新」功能，检测到新的更新时，会弹出一个对话框说明更新内容，询问是否更新。</li>
+<li>「自动重做逾期事项」加上了对单次事项的支持。</li>
+<li>还有一些页面的小修小改和代码优化。</li>
+</ol>
+<p><strong>1.50</strong></p>
+<ol>
+<li>新增「统计」页面（替换掉原来的「消息」模块）：可以查看近七天事项完成数、经验值获取、经验值分布、每日步数等统计数据。</li>
+<li>新增了「经验值收支详情」页面，可以查看经验值的变动详情。</li>
+<li>新增了本地事项的「完成奖励」功能，可以自设事项的完成奖励。</li>
+<li>新增了「手动输入每日步数」的功能。</li>
+<li>优化了各个页面的工具栏标题显示。</li>
+<li>优化了「历史」的加载方式，提升了加载速度。</li>
+<li>优化了小部件的自动刷新间隔。</li>
+<li>“登陆”→ “登录”。</li>
+</ol>
+<p><strong>1.49</strong></p>
+<ol>
+<li>紧急修复一个逾期事项重做的逻辑bug</li>
+<li>增加了历史页面中记录的删除功能</li>
+</ol>
+<p><strong>1.48</strong></p>
+<ol>
+<li>增加了【隐藏社区和消息模块】的设置项</li>
+<li>修复了【自动重做逾期事项】的一个逻辑问题：可能把团队事项当做本地事项来重做。</li>
+<li>修复了历史页面的逾期事项不显示【重做】按钮的问题</li>
+</ol>
+<p><strong>1.47</strong></p>
+<ol>
+<li>增加了事项的【开始时间】选项</li>
+<li>增加了事项的【显示所有事项】、【显示今日事项】、【显示近七天事项】的选项</li>
+<li>增加了简单的【排序】功能（按开始时间、期限时间、创建时间或者经验值排序）</li>
+<li>优化了新建事项的界面</li>
+<li>修复了一个登陆后打开社区还要求登陆的问题</li>
+<li>修复了社区的一个崩溃问题</li>
+</ol>
+<p><strong>1.46</strong></p>
+<ol>
+<li>增加了简单的新手指引功能</li>
+<li>增加了一个默认开启的“自动重做逾期事项”的选项</li>
+<li>新增事项页面增加了容错处理：选择重复周期后，会默认期限日期为当天</li>
+<li>修复了重做时，期限日期不正确逻辑问题；以及在历史页面的“重做”按钮的显示逻辑问题</li>
+<li>修复了在有事项逾期情况下，小部件可能导致应用崩溃的问题</li>
+<li>修复了登陆界面的一个崩溃问题（还优化了按钮的字体位置）</li>
+<li>修复了终止团队时的一个崩溃问题</li>
+</ol>
+<p><strong>1.45</strong></p>
+<ol>
+<li>增加了编辑团队的功能</li>
+<li>增加了小部件的【白色字体和图标】的设置选项</li>
+<li>增加了一个“常见问题”的侧边栏入口</li>
+<li>优化了加载中和加载失败的图片显示</li>
+<li>修复了一个可能导致团队头像为空的问题</li>
+<li>修复了一个“退出登录”可能引起的问题</li>
+</ol>
+<p><strong>1.44</strong></p>
+<ol>
+<li>【功能】本地事项可以设置事项「目标次数」了</li>
+<li>【优化】简单适配了一下全面屏</li>
+<li>【优化】优化了小部件的隐藏事项的逻辑（从隐藏所有未开始事项改成隐藏非今日的事项）</li>
+<li>【优化】默认不开启“状态”页面的波浪动画（开启可能导致页面卡顿和崩溃（？)）</li>
+<li>【优化】修复了一个导致事项的字体颜色不正常的bug</li>
+<li>【优化】排行榜可以直接进入个人主页</li>
+</ol>
+<p><strong>1.43</strong></p>
+<ol>
+<li>增加了小部件的【暗色主题】</li>
+<li>增加了小部件的【隐藏未开始事项】的设置选项</li>
+<li>修复了在完成团队事项、领取团队事项时，小部件不会自动刷新的问题</li>
+</ol>
+<p><strong>1.42</strong></p>
+<ol>
+<li><p><strong>桌面小部件</strong></p>
+</li>
+<li><p>优化了团队、动态列表的每次加载数量</p>
+</li>
+<li>稍微优化了计步器（只有步行检测传感器的时候也能计步了）</li>
+<li>修复了单次和多次任务“重做”时崩溃的问题</li>
+<li>修复了修改个人信息后，本地显示头像异常的问题</li>
+</ol>
+<p><strong>1.41:</strong></p>
+<p>功能：</p>
+<ol>
+<li>（本地）可以自定义重复频次</li>
+<li>增加了一个“默认重复事项”的选项</li>
+</ol>
+<p>其他：</p>
+<ol>
+<li>修复了成就页面的一个逻辑bug</li>
+<li>修复了当服务器在维护时，打开社区可能会应用崩溃的问题</li>
+<li>修复了一个引起新建团队时崩溃的问题（弹出错误提示）</li>
+<li>一些页面的细节优化</li>
+</ol>
+<p><strong>1.40：</strong></p>
+<ol>
+<li>解决了Android P不能QQ登陆的问题（昵称暂不能含emoji，这个要等服务器端修复）</li>
+<li>解决了动态文本显示不全的问题</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/开发日志/" rel="tag"># 开发日志</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/f5d060f4.html" rel="next" title="人升开发日志#11 | 12/06 Android 桌面小部件">
+                <i class="fa fa-chevron-left"></i> 人升开发日志#11 | 12/06 Android 桌面小部件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/1f18a9aa.html" rel="prev" title="2018 年终总结">
+                2018 年终总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="AyagiKei" />
+            
+              <p class="site-author-name" itemprop="name">AyagiKei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Ayagikei" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:AyagiKei@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/kei-8/activities" target="_blank" title="ZhiHu"><i class="fa fa-fw fa-circle"></i>ZhiHu</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://blog.csdn.net/ayagikei" target="_blank" title="CSDN"><i class="fa fa-fw fa-circle"></i>CSDN</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于版本"><span class="nav-number">1.</span> <span class="nav-text">关于版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#功能介绍"><span class="nav-number">2.</span> <span class="nav-text">功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#建立事项"><span class="nav-number">2.1.</span> <span class="nav-text">建立事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#稍后阅读"><span class="nav-number">2.2.</span> <span class="nav-text">稍后阅读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#商店系统"><span class="nav-number">2.3.</span> <span class="nav-text">商店系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#社区"><span class="nav-number">2.4.</span> <span class="nav-text">社区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#已知问题"><span class="nav-number">3.</span> <span class="nav-text">已知问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新计划"><span class="nav-number">4.</span> <span class="nav-text">更新计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">5.</span> <span class="nav-text">Q&amp;A</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新日志"><span class="nav-number">6.</span> <span class="nav-text">更新日志</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AyagiKei</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">196k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">5:false</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://AyagiKei.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://sarasarasa.net/post/157a032e.html';
+        this.page.identifier = 'post/157a032e.html';
+        this.page.title = '人升Lifeup 常见问题';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://AyagiKei.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+      .copy-btn {
+          display: inline-block;
+          padding: 6px 12px;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 20px;
+          color: #333;
+          white-space: nowrap;
+          vertical-align: middle;
+          cursor: pointer;
+          background-color: #eee;
+          background-image: linear-gradient(#fcfcfc, #eee);
+          border: 1px solid #d5d5d5;
+          border-radius: 3px;
+          user-select: none;
+      }
+
+      .highlight-wrap .copy-btn {
+          transition: opacity .3s ease-in-out;
+          opacity: 0;
+          padding: 2px 6px;
+          position: fixed;
+          right: 4px;
+          top: 8px;
+      }
+
+      .highlight-wrap:hover .copy-btn,
+      .highlight-wrap .copy-btn:focus {
+          opacity: 1
+      }
+
+      .highlight-wrap {
+          transform: translateZ(0);
+      }
+  </style>
+  <script>
+      $('.highlight').each(function(i, e) {
+          var $wrap = $('<div>').addClass('highlight-wrap')
+          $(e).after($wrap)
+          $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+              var code = $(e.target).parent().find('.code').find('.line').map(function(i, e) {
+                  return $(e).text()
+              }).toArray().join('\n')
+              var ta = document.createElement('textarea')
+              document.body.appendChild(ta)
+              ta.style.position = 'fixed'
+              ta.style.top = 0
+              ta.style.left = 0
+              ta.value = code
+              ta.select()
+              ta.focus()
+              document.execCommand('copy')
+              document.body.removeChild(ta)
+          })).append(e)
+      })
+  </script>
+
+
+</body>
+</html>
