@@ -8,8 +8,14 @@ categories:
   - 项目
   - 人升Q&A
 abbrlink: e5dce7c7
-date: 2020-02-29 16:06:06
+date: 2020-03-04 15:51:15
 ---
+
+## Known Bug
+
+- Cannot Like others' activities in User Page or Team Page.
+
+<br />
 
 ## Release Log
 
