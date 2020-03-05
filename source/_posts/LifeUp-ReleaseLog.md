@@ -11,13 +11,20 @@ abbrlink: e5dce7c7
 date: 2020-03-04 15:51:15
 ---
 
-## Known Bug
-
-- Cannot Like others' activities in User Page or Team Page.
+## <del>Known Bug</del>
 
 <br />
 
 ## Release Log
+
+**v1.70.3 (Released at 2020/03/05)**
+
+**Important Fixes:**
+
+- Fixes bugs about input coin number
+- Fixes bugs that sub-tasks not refreshing correctly
+- Fixes bugs that cannot like others' activity
+- Fixes bugs that App Widget cannot finishing tasks
 
 **v1.70.2 (Released at 2020/03/04)**
 
