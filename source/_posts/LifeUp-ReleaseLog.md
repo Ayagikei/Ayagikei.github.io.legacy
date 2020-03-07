@@ -11,7 +11,11 @@ abbrlink: e5dce7c7
 date: 2020-03-04 15:51:15
 ---
 
-## <del>Known Bug</del>
+## Known Bug
+
+- **"Copy" cannot copy sub-tasks**
+
+  It will be fixed next version
 
 <br />
 
