@@ -21,6 +21,20 @@ date: 2020-03-04 15:51:15
 
 ## Release Log
 
+**v1.70.6 (Released at 2020/03/09)**
+
+**Improvement:** 
+
+- Make the Achievement unlocked Hint colors same as the theme color
+
+**Fixed：**
+
+- Fixed overdue dialog status not showing correctly after clicking the button
+
+- Fixed a bug that COPY cannot copy sub-tasks
+- Fixed a crash occurred when using "Move To..."
+- Fixed the Selecting Card not correctly showing on some devices
+
 **v1.70.5 (Released at 2020/03/06)**
 
 **Fixed：**
