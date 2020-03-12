@@ -13,7 +13,7 @@ date: 2020-03-04 15:51:15
 
 ## Known Bug
 
-- **"Copy" cannot copy sub-tasks**
+- **Task in unstarted state cannot change to started state showing if not closing the app/changing the list.**
 
   It will be fixed next version
 
