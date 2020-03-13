@@ -13,13 +13,25 @@ date: 2020-03-04 15:51:15
 
 ## Known Bug
 
-- **Task in unstarted state cannot change to started state showing if not closing the app/changing the list.**
-
-  It will be fixed next version
-
 <br />
 
 ## Release Log
+
+**v1.71.0 (Released at 2020/03/13)**
+
+**Features:**
+
+- Feelings Feature
+
+- Add Swipe Action: Finish Task (No Dialog)
+
+**Fixed:**
+
+- Fixed bug that task card state showing incorrectly
+
+- Fixed bug that task which was undo may be disappeared when overdue
+
+- Fixed that the selected sort not showing correctly
 
 **v1.70.6 (Released at 2020/03/09)**
 
