@@ -17,6 +17,17 @@ date: 2020-03-04 15:51:15
 
 ## Release Log
 
+**v1.71.1 (Released at 2020/03/17)**
+
+**Improvement:**
+
+- Better progress bar animation in task page
+
+**Fixed:**
+
+- Fixed a bug that may cause crash when launching application on some devices
+- Fixed a bug about selecting photos
+
 **v1.71.0 (Released at 2020/03/13)**
 
 **Features:**
