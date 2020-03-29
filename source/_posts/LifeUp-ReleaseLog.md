@@ -13,6 +13,14 @@ date: 2020-03-04 15:51:15
 
 ## Known Bug
 
+- **When getting achievement reward, unlock date is incorrect (always 2019/11/16)**
+
+  You can re-enter the achievement page to check the correct date.
+
+  The bug will be fixed next version.
+  
+- **Sensitive word filter not working well with English.**
+
 <br />
 
 ## Release Log
@@ -27,6 +35,8 @@ date: 2020-03-04 15:51:15
 
 - Fixed a bug that may cause crash when launching application on some devices
 - Fixed a bug about selecting photos
+
+<!-- more -->
 
 **v1.71.0 (Released at 2020/03/13)**
 
