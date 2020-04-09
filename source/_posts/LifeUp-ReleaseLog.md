@@ -19,7 +19,13 @@ date: 2020-03-04 15:51:15
 
   The bug will be fixed next version.
   
-- **Sensitive word filter not working well with English.**
+- <del>**Sensitive word filter not working well with English.**</del>
+
+  Fixed by server update.
+
+- **Not enough space for Difficulty Degree to show in the Task Detail Page.**
+
+- **Sub-Task of the single task will be reset when it pass the deadline.** 
 
 <br />
 
