@@ -11,7 +11,9 @@ abbrlink: e5dce7c7
 date: 2020-03-04 15:51:15
 ---
 
-## Known Bug
+## Known Bug（v1.71.1）
+
+### Please update to v1.71.2 to fix these bug
 
 - **When getting achievement reward, unlock date is incorrect (always 2019/11/16)**
 
@@ -30,6 +32,45 @@ date: 2020-03-04 15:51:15
 <br />
 
 ## Release Log
+
+**1.71.2（Released at 2020/04/14）**
+
+**Features:**
+
+- Turkish Language (thanks **İbrahim DOĞAN** for helping translation)
+
+- Customize task card background and opacity
+- Customize the action button text of inventory item
+- Feelings Favorites
+- Feelings Search
+
+**Improvement:**
+
+- New Icon
+
+- Report type support multiple languages
+- Improve UI of the Settings Page
+- Improve the method of switching theme color and language. No need to restart the app to make it work.
+- Improve the crop picture page
+- Improve UI of the select list
+- Add shop item description showing on the shop item list page
+
+**Fixed:**
+
+- Fixed bug that achievement unlock date incorrectly showing
+- Fixed bug that shop item picture showing empty when the file deleted. 
+- Not clear the status of sub-tasks after single task become overdue.
+- Fixed bug that not enough space for Difficulty Degree to show in the Task Detail Page.
+- Fixed bug that after setting overdue task to finished, completed times of the next task not plus one.
+- Fixed bug that the max coin number not showing correctly in the task default settings.
+- Make the data backup/restore page scrollable.
+- Fixed that swipe to complete task not working well when fast swiping multiple tasks.
+- Now app widgets will show the Frozen status
+- Fixed bug that the progress bar on task page showing incorrect progress sometimes
+
+**Server Fixed（2020/4/13）**
+
+- Fixed that report function not working
 
 **v1.71.1 (Released at 2020/03/17)**
 
