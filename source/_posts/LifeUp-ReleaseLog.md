@@ -11,27 +11,26 @@ abbrlink: e5dce7c7
 date: 2020-03-04 15:51:15
 ---
 
-## Known Bug（v1.71.1）
+## Future Plan
 
-### Please update to v1.71.2 to fix these bug
+1. Custom Achievements
+2. Link Complete Reward of task to the inventory.
+3. Add time selector in Statistics page
+4. Custom Exp of task
+5. Better settings of creating a task.
 
-- **When getting achievement reward, unlock date is incorrect (always 2019/11/16)**
+## Known Bug（v1.71.4）
 
-  You can re-enter the achievement page to check the correct date.
+- **Transparent part of the png picture may turn to black when cropping a picture.**
 
-  The bug will be fixed next version.
-  
-- <del>**Sensitive word filter not working well with English.**</del>
-
-  Fixed by server update.
-
-- **Not enough space for Difficulty Degree to show in the Task Detail Page.**
-
-- **Sub-Task of the single task will be reset when it pass the deadline.** 
 
 <br />
 
 ## Release Log
+
+**1.71.3/1.71.4（Released at 2020/04/16）**
+
+**Minor Fixes about icon and crash report**
 
 **1.71.2（Released at 2020/04/14）**
 
