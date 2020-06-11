@@ -19,14 +19,38 @@ date: 2020-03-04 15:51:15
 4. Custom Exp of task
 5. Better settings of creating a task.
 
-## Known Bug（v1.71.4）
-
-- **Transparent part of the png picture may turn to black when cropping a picture.**
-
 
 <br />
 
 ## Release Log
+
+**1.72.0（Released at 2020/06/11）**
+
+**Features:**
+
+- Subtask Remind
+- Subtask Coin
+- App Widget
+  1. Opacity Setting
+  2. Display Coin Number
+  3. Display Count Task Input Dialog
+- Statistics Page Time Select
+- Inventory: Return Item
+- Add subtask support for team
+
+**Improvement:**
+
+- Swipe a count task now will add 1 completed time instead of marking it as completed
+- Add Help Translate Button
+- Add Enabled Multi Exp Reward Setting for count task
+
+**Fix:**
+
+- Fixed that transparent part of png picture showing black after cropping.
+- Fixed that App Widget not working well on some devices.
+- Fixed that Coin Number showing in the Detail Page when it's set to 0.
+- Fixed that Swipe to Finish (no dialog mode) will make the page displayed incorrectly
+- Fixed that subtask cannot be created when click the ENTER button on some devices
 
 **1.71.3/1.71.4（Released at 2020/04/16）**
 
