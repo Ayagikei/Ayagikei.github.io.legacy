@@ -24,6 +24,21 @@ date: 2020-03-04 15:51:15
 
 ## Release Log
 
+**1.72.1（Released at 2020/06/14）**
+
+**Features:**
+
+- Clear achievements data
+
+**Improvement:**
+
+- Better display of shop item description
+
+**Fix:**
+
+- The problem of editing pictures of shop items
+- The problem of editing the text of feelings
+
 **1.72.0（Released at 2020/06/11）**
 
 **Features:**
