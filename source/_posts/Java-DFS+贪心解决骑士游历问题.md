@@ -13,11 +13,9 @@ abbrlink: a3a124b6
 date: 2018-05-05 18:51:46
 ---
 
-{% note info %} 
 
 ## **题目**
 
- {% endnote %}
 
 > 骑士游历
 >
@@ -35,11 +33,8 @@ date: 2018-05-05 18:51:46
 
 <br />
 
-{% note info %} 
 
 ## **回溯枚举解法**
-
- {% endnote %}
 
 
 
@@ -271,11 +266,9 @@ public class Point {
 
 
 
-{% note info %} 
 
 ## **使用贪心（预见算法）优化**
 
- {% endnote %}
 
 贪心优化的思路是：有选择性的走下一个点，先走最难到达的点。
 
@@ -419,11 +412,9 @@ public class KnightProblemSolve {
 
 ```
 
-{% note info %} 
 
 ## **代码以及运行结果**
 
- {% endnote %}
 
 ```java
 System.out.println(KnightProblemSolve.solveByStackWithOpti(new Point(4,5)));
@@ -504,10 +495,8 @@ System.out.println(KnightProblemSolve.solveByStackWithOpti(new Point(4,5)));
 
 所耗时间仅为20ms。
 
-{% note info %} 
 
 ## **参考文章**
 
- {% endnote %}
 
 https://blog.csdn.net/sb___itfk/article/details/50905275

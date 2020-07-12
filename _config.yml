@@ -84,7 +84,7 @@ search:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next-reload
+theme: icarus
 
 symbols_count_time:
   symbols: true

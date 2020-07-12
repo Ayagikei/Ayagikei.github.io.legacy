@@ -13,11 +13,9 @@ categories:
 - 数据结构与算法
 ---
 
-{% note info %} 
 
 ## **题目**
 
- {% endnote %}
 
 > 走迷宫。
 >
@@ -29,11 +27,9 @@ categories:
 
 <br />
 
-{% note info %} 
 
 ## **栈的解法**
 
- {% endnote %}
 
 
 
@@ -191,11 +187,9 @@ public static String solveByStack(int maze[][],Point entrance,Point exit){
 
 
 
-{% note info %} 
 
 ## **队列的解法**
 
- {% endnote %}
 
 队列同样也要用到Point类，代码同上。
 
@@ -296,11 +290,9 @@ public static String solveByStack(int maze[][],Point entrance,Point exit){
     }
 ```
 
-{% note info %} 
 
 ## **测试代码**
 
- {% endnote %}
 
 ```java
 package lab3.Maze;
@@ -369,11 +361,9 @@ public class MazeSolveTest {
 }
 ```
 
-{% note info %} 
 
 ## **参考文章**
 
- {% endnote %}
 
 https://blog.csdn.net/K346K346/article/details/51289478
 
