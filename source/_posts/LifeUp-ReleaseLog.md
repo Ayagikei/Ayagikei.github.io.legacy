@@ -9,16 +9,29 @@ categories:
   - 人升Q&A
 abbrlink: e5dce7c7
 date: 2020-03-04 15:51:15
+toc: true
 ---
 
 ## Future Plan
 
 1. Custom Achievements
 2. Link Complete Reward of task to the inventory.
-3. Add time selector in Statistics page
-4. Custom Exp of task
-5. Better settings of creating a task.
+3. Custom Exp of task
+4. Better settings of creating a task.
 
+<br />
+
+## Support Us
+
+Donations are always appreciated and help support the project. ❤️
+
+With your support, we can get more time to developing and request more design resources to make it better. And there are lots of ideas we want to achieve. 
+
+Via PayPal: https://www.paypal.me/ayagikei
+
+
+
+**Share the application to your friends will also be a great help.** ❤️
 
 <br />
 
