@@ -37,6 +37,23 @@ Via PayPal: https://www.paypal.me/ayagikei
 
 ## Release Log
 
+**1.73.0（Released at 2020/07/26）**
+
+**Features:**
+
+- User achievements
+- Exp decrease animation
+- Edit the completed time of history record
+- Team subtask coin setting
+
+**Improvement:**
+
+- Add coin sound effect
+
+**Fix:**
+
+- The problem of losing subtask coin setting after repeating a task
+
 **1.72.1（Released at 2020/06/14）**
 
 **Features:**
