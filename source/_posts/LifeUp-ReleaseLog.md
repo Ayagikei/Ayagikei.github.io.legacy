@@ -14,8 +14,8 @@ toc: true
 
 ## Future Plan
 
-1. Custom Achievements
-2. Link Complete Reward of task to the inventory.
+1. <del>Custom Achievements</del>
+2. <del>Link Complete Reward of task to the inventory.</del>
 3. Custom Exp of task
 4. Better settings of creating a task.
 
@@ -36,6 +36,15 @@ Via PayPal: https://www.paypal.me/ayagikei
 <br />
 
 ## Release Log
+
+**1.74.0（Released at 2020/08/13）**
+
+1. ATM: Deposit & Withdrawal coins
+2. Now support that selecting shop items as task reward
+3. Shop item stock quantity setting
+4. Improve animation and fixed some bugs
+5. Add hint for Repeat Frequency setting
+6. More.. (update description later)
 
 **1.73.0（Released at 2020/07/26）**
 
