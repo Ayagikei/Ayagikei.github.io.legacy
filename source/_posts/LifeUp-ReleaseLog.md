@@ -28,7 +28,9 @@ Support are always appreciated and help support the project. ❤️
 
 With your support, we can get more time to developing and request more design resources to make it better. And there are also lots of ideas we want to achieve. 
 
-Buy me a coffee ❤️: https://www.buymeacoffee.com/lifeupapp
+{% raw %}
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="lifeupapp" data-color="#79D6B5" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000" data-font-color="#fff" data-coffee-color="#fd0" ></script>
+{% endraw %}
 
 
 
