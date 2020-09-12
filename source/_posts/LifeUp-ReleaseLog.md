@@ -18,24 +18,33 @@ toc: true
 2. <del>Link Complete Reward of task to the inventory.</del>
 3. Custom Exp of task
 4. Better settings of creating a task.
+5. Pomodoro
 
 <br />
 
 ## Support Us
 
-Donations are always appreciated and help support the project. ❤️
+Support are always appreciated and help support the project. ❤️
 
-With your support, we can get more time to developing and request more design resources to make it better. And there are lots of ideas we want to achieve. 
+With your support, we can get more time to developing and request more design resources to make it better. And there are also lots of ideas we want to achieve. 
 
-Via PayPal: https://www.paypal.me/ayagikei
+Buy me a coffee ❤️: https://www.buymeacoffee.com/lifeupapp
 
 
 
-**Share the application to your friends will also be a great help.** ❤️
+**Share the application to your friends will also be a great help.** 
 
 <br />
 
 ## Release Log
+
+## Release Log
+
+**1.74.2**
+
+1. Portuguese Language
+
+
 
 **1.74.0（Released at 2020/08/13）**
 
