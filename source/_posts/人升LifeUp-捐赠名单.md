@@ -19,6 +19,10 @@ toc: true
 
 支付宝可以直接在应用内的关于界面跳转捐赠~
 
+**or**
+
+ {% asset_img alipay.jpg %}
+
 ### 微信
 
  {% asset_img 01.jpg %}
