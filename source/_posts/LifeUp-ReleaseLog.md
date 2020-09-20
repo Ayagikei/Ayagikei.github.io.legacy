@@ -38,9 +38,19 @@ With your support, we can get more time to developing and request more design re
 
 <br />
 
-## Release Log
+
 
 ## Release Log
+
+**1.75.0**
+
+1. Gamify pomodoro timer
+2. Custom task/list tag color
+3. WebDAV auto backup
+4. Hide modules settings
+5. Lots of improvements and fixes
+
+
 
 **1.74.2**
 
