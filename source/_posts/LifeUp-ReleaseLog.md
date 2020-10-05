@@ -18,7 +18,9 @@ toc: true
 2. <del>Link Complete Reward of task to the inventory.</del>
 3. Custom Exp of task
 4. Better settings of creating a task.
-5. Pomodoro
+5. <del>Pomodoro</del>
+6. Custom achievement complete condition
+7. Shop Item usage effect
 
 <br />
 
@@ -42,7 +44,24 @@ With your support, we can get more time to developing and request more design re
 
 ## Release Log
 
-**1.75.0**
+**1.75.2（Released at 2020/10/05）**
+
+1. Default coin number setting of subtask
+2. Add over 100+ icons that can be selected as shop item/achievements icons
+3. add "Enable sound effect" settings
+4. Filter feelings by task content and better ui of filters
+5. Create pomodoro shortcuts
+6. Custom tomatoes selling prices
+7. Pomodoro page will keep screen on when counting down now
+8. Fixed some problems
+
+**1.75.1（Released at 2020/09/20）**
+
+1. Fix lots bugs of 1.75.0
+
+   
+
+**1.75.0（Released at 2020/09/16）**
 
 1. Gamify pomodoro timer
 2. Custom task/list tag color
@@ -52,7 +71,7 @@ With your support, we can get more time to developing and request more design re
 
 
 
-**1.74.2**
+**1.74.2（Released at 2020/08/23）**
 
 1. Portuguese Language
 
@@ -66,6 +85,8 @@ With your support, we can get more time to developing and request more design re
 4. Improve animation and fixed some bugs
 5. Add hint for Repeat Frequency setting
 6. More.. (update description later)
+
+
 
 **1.73.0（Released at 2020/07/26）**
 
