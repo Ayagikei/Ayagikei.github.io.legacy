@@ -20,7 +20,8 @@ toc: true
 4. Better settings of creating a task.
 5. <del>Pomodoro</del>
 6. Custom achievement complete condition
-7. Shop Item usage effect
+7. <del>Shop Item usage effect</del>
+8. Better user guide
 
 <br />
 
@@ -43,6 +44,29 @@ With your support, we can get more time to developing and request more design re
 
 
 ## Release Log
+
+**1.77.1（2020/11/05)**
+
+1. List switch toolbar
+2. Show completed task switch
+3. List can be archived now
+4. Add coin status card
+5. Now you can create feelings for a user achivements
+6. Add a setting to follow system's night mode
+
+**1.77.0（2020/10/28)**
+
+1. Add Market module for community, in where you can share the shop item design or import the item
+2. Fix the logic of the month repeat
+3. Fix webdav auto backup not working when haven't backup at least once
+
+**1.76.0（2020/10/13)**
+
+1. Default coin of subtask
+2. Add in-app icons for creating shop item and achievements
+3. Custom tomato price
+4. Global sound effect enable settings
+5. Now feelings can be search by task content
 
 **1.75.2（Released at 2020/10/05）**
 
