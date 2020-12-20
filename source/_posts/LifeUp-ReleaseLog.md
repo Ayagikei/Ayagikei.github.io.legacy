@@ -16,12 +16,14 @@ toc: true
 
 1. <del>Custom Achievements</del>
 2. <del>Link Complete Reward of task to the inventory.</del>
-3. Custom Exp of task
+3. <del>Custom Exp of task</del>
 4. Better settings of creating a task.
 5. <del>Pomodoro</del>
-6. Custom achievement complete condition
+6. <del>Custom achievement complete condition</del>
 7. <del>Shop Item usage effect</del>
 8. Better user guide
+9. Loot boxes (working on it)
+10. Dropbox (working on it)
 
 <br />
 
@@ -44,6 +46,22 @@ With your support, we can get more time to developing and request more design re
 
 
 ## Release Log
+
+**1.79.x（2020/12)**
+
+1. 3 more unlock condition settings
+2. Custom sound effects settings
+3. Set item reward for achievements
+4. Pomodoro timer record page
+5. Create task from the Calendar page
+6. 5 new theme color.
+7. Lots of improvements and fixes
+
+**1.78.x（2020/11)**
+
+1. Custom achievements unlock condition
+2. Custom task experience points
+3. Lots of improvements and fixes
 
 **1.77.1（2020/11/05)**
 
