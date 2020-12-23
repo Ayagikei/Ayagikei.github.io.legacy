@@ -47,6 +47,14 @@ With your support, we can get more time to developing and request more design re
 
 ## Release Log
 
+**1.80.0（2020/12/24)**
+
+1. Loot boxes shop item effect!
+2. Integrated with Dropbox backup
+3. Configurations for compact mode
+4. Add photo select history bar
+5. A lot of fixes and improvements
+
 **1.79.x（2020/12)**
 
 1. 3 more unlock condition settings
