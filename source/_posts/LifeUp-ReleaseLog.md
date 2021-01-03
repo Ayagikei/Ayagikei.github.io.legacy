@@ -47,6 +47,14 @@ With your support, we can get more time to developing and request more design re
 
 ## Release Log
 
+**1.80.3（2021/01/04)**
+
+1. Free style crop picture
+2. View/Add the icon of the items in the market
+3. When selecting task/item, now you can create a new one directly
+4. Support COPY action for user achievements
+5. A lot of fixes and improvements
+
 **1.80.0（2020/12/24)**
 
 1. Loot boxes shop item effect!
