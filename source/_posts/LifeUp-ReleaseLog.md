@@ -47,6 +47,38 @@ With your support, we can get more time to developing and request more design re
 
 ## Release Log
 
+**1.80.7（2021/01/26)**
+
+1. Add shop item statistic
+2. Redesign attributes description dialog
+3. Custom attributes description
+4. Add a config settings for compact mode: hide all extra info
+5. Fixed a restore from backup file bug
+6. More fixes and improvements...
+
+**1.80.6（2021/01/22)**
+
+1. Now the item with loot boxes effect can be shared to market
+2. New search page: now you can searching user by nickname
+3. Filter team/makret items with time range
+4. Quick add tasks notification
+5. Media files can be ignored when performing backup.
+6. More fixes and improvements...
+
+**1.80.5（2021/01/14)**
+
+1. Open 10/50 loot boxes by one click
+2. Add unlock condition [Get selected item for specify times from Loot Boxes]
+3. ATM interest rate settings
+4. Input number for selling/eating tomatoes
+5. Custom rest timer end sound effect
+6. Add some user guide
+7. Fixed some problems and make some improvements
+
+**1.80.4（2021/01/04)**
+
+1. Fix a crash on Android 6
+
 **1.80.3（2021/01/04)**
 
 1. Free style crop picture
