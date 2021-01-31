@@ -11,6 +11,14 @@ date: 2018-12-15 19:40:10
 toc: true
 ---
 
+{% raw %}
+
+<script>
+    location.href="http://wiki.lifeupapp.fun/zh-cn/#/introduction/release_log";
+</script>
+
+{% endraw %}
+
 # 更新日志
 
 **1.80.7（2021/01/26)**
