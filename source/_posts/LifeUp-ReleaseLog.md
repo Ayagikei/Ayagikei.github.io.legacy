@@ -12,6 +12,14 @@ date: 2020-03-04 15:51:15
 toc: true
 ---
 
+{% raw %}
+
+<script>
+    location.href="http://wiki.lifeupapp.fun/en/#/ReleaseLog";
+</script>
+
+{% endraw %}
+
 ## Future Plan
 
 1. <del>Custom Achievements</del>
