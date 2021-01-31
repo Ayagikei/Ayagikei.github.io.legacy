@@ -12,6 +12,14 @@ date: 2018-12-15 19:40:10
 toc: true
 ---
 
+{% raw %}
+
+<script>
+    location.href="http://wiki.lifeupapp.fun/zh-cn/#/";
+</script>
+
+{% endraw %}
+
 # 公告
 
 ## 已知bug

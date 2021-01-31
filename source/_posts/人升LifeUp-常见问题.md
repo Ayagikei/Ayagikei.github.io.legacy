@@ -12,6 +12,14 @@ date: 2018-12-15 19:40:10
 toc: true
 ---
 
+{% raw %}
+
+<script>
+    location.href="http://wiki.lifeupapp.fun/zh-cn/#/guide/faq";
+</script>
+
+{% endraw %}
+
 ## 其他链接
 
 - [1.75.1 番茄钟、WebDAV自动备份更新日志](http://sarasarasa.net/post/635a53df.html)
