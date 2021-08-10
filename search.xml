@@ -11,13 +11,7 @@
   <entry>
     <title>人升更新介绍#1.80.0 | 12月 开箱抽奖机制</title>
     <url>/post/eb7440ce.html</url>
-    <content><![CDATA[
-
-<script>
-    location.href="http://wiki.lifeupapp.fun/zh-cn/#/features/180";
-</script>
-
-
+    <content><![CDATA[<p><a href="http://wiki.lifeupapp.fun/zh-cn/#/features/180">请点击此处访问新站点</a></p>
 <h2 id="应用简介"><a href="#应用简介" class="headerlink" title="应用简介"></a>应用简介</h2><p><strong>人升是什么？</strong></p>
 <p><em>《人升》</em>取义“让你的人生升级”是一款安卓平台的含有大量『游戏化』元素的待办事项（To-Do）和习惯养成类应用。<em>《人升》</em>既能满足对待办事项的常规功能要求外，还引入了「经验值等级系统」、「成就系统」和个性化的物品激励机制「金币、商品和仓库体系」。</p>
 <blockquote>
@@ -779,13 +773,7 @@
   <entry>
     <title>LifeUp Release Log</title>
     <url>/post/e5dce7c7.html</url>
-    <content><![CDATA[
-
-<script>
-    location.href="http://wiki.lifeupapp.fun/en/#/ReleaseLog";
-</script>
-
-
+    <content><![CDATA[<p><a href="http://wiki.lifeupapp.fun/en/#/ReleaseLog">New Website</a></p>
 <h2 id="Future-Plan"><a href="#Future-Plan" class="headerlink" title="Future Plan"></a>Future Plan</h2><ol>
 <li><del>Custom Achievements</del></li>
 <li><del>Link Complete Reward of task to the inventory.</del></li>
@@ -4429,7 +4417,7 @@
   <entry>
     <title>人升LifeUp 常见问题</title>
     <url>/post/157a032e.html</url>
-    <content><![CDATA[<p><img src="http://wiki.lifeupapp.fun/zh-cn/#/guide/faq" alt="请点击此处访问新站点"></p>
+    <content><![CDATA[<p><a href="http://wiki.lifeupapp.fun/zh-cn/#/guide/faq">请点击此处访问新站点</a></p>
 <h2 id="其他链接"><a href="#其他链接" class="headerlink" title="其他链接"></a>其他链接</h2><ul>
 <li><p><a href="http://sarasarasa.net/post/635a53df.html">1.75.1 番茄钟、WebDAV自动备份更新日志</a></p>
 </li>
@@ -4503,7 +4491,7 @@
   <entry>
     <title>人升LifeUp 公告与详细介绍</title>
     <url>/post/621e3bb6.html</url>
-    <content><![CDATA[<p><img src="http://wiki.lifeupapp.fun/zh-cn/#/" alt="请点击此处访问新站点"></p>
+    <content><![CDATA[<p><a href="http://wiki.lifeupapp.fun/zh-cn/#/">请点击此处访问新站点</a></p>
 <h1 id="公告"><a href="#公告" class="headerlink" title="公告"></a>公告</h1><h2 id="已知bug"><a href="#已知bug" class="headerlink" title="已知bug"></a>已知bug</h2><ul>
 <li><p><strong>领取成就奖励时，显示的时间不正确。</strong></p>
 <p>重新进入页面可以查看正确的时间。下个版本会修复。</p>
@@ -4552,7 +4540,7 @@
 <h2 id="更新计划"><a href="#更新计划" class="headerlink" title="更新计划"></a>更新计划</h2><p><strong>2019/10/31：</strong>因为目前在实习+准备毕设，稍微将原本大概7-14天一更的频次调整到<strong>14-21天一更</strong>。</p>
 <p><br /></p>
 <h2 id="绿色应用"><a href="#绿色应用" class="headerlink" title="绿色应用"></a>绿色应用</h2><p>并且，《人升》<strong>无开屏、无内置广告、暂无内购</strong>。体积也一直<strong>尽量保持在6mb</strong>左右。</p>
-<p>并且通过了<a href="https://green-android.org/" target="_blank" rel="noopener">Android 绿色应用公约 3.0验证</a>，<strong>无需读取手机状态、甚至无需外部存储空间权限</strong>。</p>
+<p>并且通过了<a href="https://green-android.org/">Android 绿色应用公约 3.0验证</a>，<strong>无需读取手机状态、甚至无需外部存储空间权限</strong>。</p>
 <p>理论上运行<strong>无需任何权限</strong>，只为了一些可选功能申请了一些权限：</p>
 <ul>
 <li><p><strong>查看网络连接、查看WLAN连接、拥有完全的网络访问权限</strong></p>
@@ -4717,7 +4705,7 @@
   <entry>
     <title>人升Lifeup 更新日志</title>
     <url>/post/a889432c.html</url>
-    <content><![CDATA[<p><img src="http://wiki.lifeupapp.fun/zh-cn/#/introduction/release_log" alt="请点击此处访问新站点"></p>
+    <content><![CDATA[<p><a href="http://wiki.lifeupapp.fun/zh-cn/#/introduction/release_log">请点击此处访问新站点</a></p>
 <h1 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h1><p><strong>1.80.7（2021/01/26)</strong></p>
 <p>【功能】</p>
 <ol>
