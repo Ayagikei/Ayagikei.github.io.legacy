@@ -12,13 +12,9 @@ date: 2018-12-15 19:40:10
 toc: true
 ---
 
-{% raw %}
 
-<script>
-    location.href="http://wiki.lifeupapp.fun/zh-cn/#/guide/faq";
-</script>
+![请点击此处访问新站点](http://wiki.lifeupapp.fun/zh-cn/#/guide/faq)
 
-{% endraw %}
 
 ## 其他链接
 

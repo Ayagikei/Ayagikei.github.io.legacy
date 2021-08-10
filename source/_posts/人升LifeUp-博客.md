@@ -12,13 +12,8 @@ date: 2018-12-15 19:40:10
 toc: true
 ---
 
-{% raw %}
+![请点击此处访问新站点](http://wiki.lifeupapp.fun/zh-cn/#/)
 
-<script>
-    location.href="http://wiki.lifeupapp.fun/zh-cn/#/";
-</script>
-
-{% endraw %}
 
 # 公告
 
