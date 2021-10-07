@@ -4,6 +4,7 @@ title:
   category: Categoria
   tag: Tag
   schedule: Schedule
+author: Autor
 menu:
   home: Home
   archives: Arquivos
@@ -28,13 +29,19 @@ post:
   read_more: Leia mais
   untitled: Sem título
   sticky: Sticky
+  toc_empty: Este post não possui tabela de conteúdo
   views: Views
+  comments_count: Comments
   related_posts: Related Posts
+  copy_button: Copy
   copyright:
     author: Post author
     link: Post link
     license_title: Copyright Notice
     license_content: "All articles in this blog are licensed under %s unless stating additionally."
+page:
+  totally: Totalmente
+  tags: tags
 footer:
   powered: "Feito com %s"
   theme: Tema
@@ -55,6 +62,7 @@ counter:
     other: "%d posts no total."
 state:
   posts: Posts
+  pages: Páginas
   tags: Tags
   categories: Categorias
 search:
@@ -76,10 +84,11 @@ reward:
   wechatpay: WeChat Pay
   alipay: Alipay
   bitcoin: Bitcoin
+gitmentbutton: Show comments from Gitment
 accessibility:
   nav_toggle: Toggle navigation bar
-  prev_page: Página anterior
-  next_page: Próxima página
+  prev_page: Previous page
+  next_page: Next page
 symbols_count_time:
   count: Symbols count in article
   count_total: Symbols count total

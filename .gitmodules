@@ -4,3 +4,6 @@
 [submodule "themes/next-community"]
 	path = themes/next-community
 	url = https://github.com/theme-next/hexo-theme-next.git
+[submodule "themes/themes/icarus"]
+	path = themes/themes/icarus
+	url = https://github.com/ppoffice/hexo-theme-icarus.git

@@ -4,6 +4,7 @@ title:
   category: Категория
   tag: Тэг
   schedule: Календарь
+author: Автор
 menu:
   home: Главная
   archives: Архив
@@ -28,13 +29,19 @@ post:
   read_more: Читать полностью
   untitled: Без имени
   sticky: Ссылка
+  toc_empty: Эта запись без оглавления
   views: Просмотров
+  comments_count: Комментариев
   related_posts: Похожие записи
+  copy_button: Скопировать
   copyright:
     author: Автор записи
     link: Ссылка на запись
     license_title: Информация об авторских правах
     license_content: "Все записи на этом сайте защищены лицензией %s, если не указано дополнительно."
+page:
+  totally: Всего
+  tags: тэги
 footer:
   powered: "Генератор — %s"
   theme: Тема
@@ -55,6 +62,7 @@ counter:
     other: "%d записей всего."
 state:
   posts: Архив
+  pages: Страницы
   tags: Тэги
   categories: Категории
 search:
@@ -76,13 +84,14 @@ reward:
   wechatpay: WeChat Pay
   alipay: Alipay
   bitcoin: Bitcoin
+gitmentbutton: Открыть Gitment комментарии
 accessibility:
   nav_toggle: Показать/скрыть меню
   prev_page: Предыдущая страница
   next_page: Следующая страница
 symbols_count_time:
   count: Кол-во символов в статье
-  count_total: Общее кол-во символов
+  count_total: Общее кол-во символов в записях
   time: Время чтения
-  time_total: Общее время чтения
+  time_total: Время чтения всего сайта
   time_minutes: мин.

@@ -13,7 +13,7 @@ toc: true
 ---
 
 
-![请点击此处访问新站点](http://wiki.lifeupapp.fun/zh-cn/#/guide/faq)
+[请点击此处访问新站点](http://wiki.lifeupapp.fun/zh-cn/#/guide/faq)
 
 
 ## 其他链接
