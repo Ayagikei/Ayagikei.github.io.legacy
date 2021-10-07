@@ -1,59 +1,230 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>人升开发日志#17 | 08/25 接入Firebase、Crashlytics - SaraSaraSa</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="SaraSaraSa"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="SaraSaraSa"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="找到实习后，挺长一段时间没更新了。 《人升》的话，最近接入了Crashlytics，更新了金币系统等等。 回忆一下Crashlytics的接入过程~ 为什么选择Crashlytics? 不需要额外权限 而国内很多崩溃统计向的都有不少权限要求，比如友盟统计必须依赖READ_PHONE_STATE等权限。  国内也能访问 是的，虽然Crashlytics属于Firebase，但是并没有用到Google"><meta property="og:type" content="blog"><meta property="og:title" content="AyagiKei"><meta property="og:url" content="http://sarasarasa.net/post/be07a40.html"><meta property="og:site_name" content="SaraSaraSa"><meta property="og:description" content="找到实习后，挺长一段时间没更新了。 《人升》的话，最近接入了Crashlytics，更新了金币系统等等。 回忆一下Crashlytics的接入过程~ 为什么选择Crashlytics? 不需要额外权限 而国内很多崩溃统计向的都有不少权限要求，比如友盟统计必须依赖READ_PHONE_STATE等权限。  国内也能访问 是的，虽然Crashlytics属于Firebase，但是并没有用到Google"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://sarasarasa.net/post/be07a40/01.jpg"><meta property="og:image" content="http://sarasarasa.net/post/be07a40/02.jpg"><meta property="og:image" content="http://sarasarasa.net/post/be07a40/03.jpg"><meta property="article:published_time" content="2019-08-25T08:44:03.000Z"><meta property="article:modified_time" content="2021-08-10T14:04:36.969Z"><meta property="article:author" content="AyagiKei"><meta property="article:tag" content="Android"><meta property="article:tag" content="开发日志"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/post/be07a40/01.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://sarasarasa.net/post/be07a40.html"},"headline":"人升开发日志#17 | 08/25 接入Firebase、Crashlytics","image":["http://sarasarasa.net/post/be07a40/01.jpg","http://sarasarasa.net/post/be07a40/02.jpg","http://sarasarasa.net/post/be07a40/03.jpg"],"datePublished":"2019-08-25T08:44:03.000Z","dateModified":"2021-08-10T14:04:36.969Z","author":{"@type":"Person","name":"AyagiKei"},"publisher":{"@type":"Organization","name":"SaraSaraSa","logo":{"@type":"ImageObject","url":{"text":"Sarasarasa"}}},"description":"找到实习后，挺长一段时间没更新了。 《人升》的话，最近接入了Crashlytics，更新了金币系统等等。 回忆一下Crashlytics的接入过程~ 为什么选择Crashlytics? 不需要额外权限 而国内很多崩溃统计向的都有不少权限要求，比如友盟统计必须依赖READ_PHONE_STATE等权限。  国内也能访问 是的，虽然Crashlytics属于Firebase，但是并没有用到Google"}</script><link rel="canonical" href="http://sarasarasa.net/post/be07a40.html"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.0.2"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Sarasarasa</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2019-08-25T08:44:03.000Z" title="2019-8-25 16:44:03">2019-08-25</time>发表</span><span class="level-item"><time dateTime="2021-08-10T14:04:36.969Z" title="2021-8-10 22:04:36">2021-08-10</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><span> / </span><a class="link-muted" href="/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/">开发日志</a><span> / </span><a class="link-muted" href="/categories/%E9%A1%B9%E7%9B%AE/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/%E4%BA%BA%E5%8D%87/">人升</a></span><span class="level-item">5 分钟读完 (大约751个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">人升开发日志#17 | 08/25 接入Firebase、Crashlytics</h1><div class="content"><p>找到实习后，挺长一段时间没更新了。</p>
-<p>《人升》的话，最近接入了Crashlytics，更新了金币系统等等。</p>
-<p>回忆一下Crashlytics的接入过程~</p>
-<h1 id="为什么选择Crashlytics"><a href="#为什么选择Crashlytics" class="headerlink" title="为什么选择Crashlytics?"></a>为什么选择Crashlytics?</h1><ul>
-<li><p><strong>不需要额外权限</strong></p>
-<p>而国内很多崩溃统计向的都有不少权限要求，比如友盟统计必须依赖READ_PHONE_STATE等权限。</p>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>2020-2021杂谈 - SaraSaraSa</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="SaraSaraSa"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="SaraSaraSa"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="断更了很久。 试试随便写点东西，一两年内的回顾和感触杂谈，可能含有非常主观的看法。  2020 回顾Completed🔹 回归工作（2020年初） 2020年初，曾经非常担心，回归工作后，无法适应工作的内容，或者说没法胜任。 但实际情况则不然，虽然当时非常不熟悉业务开发。仍然在3-4月尝试参与了新项目的初始开发，负责了大部分页面的业务逻辑和编写。 即便现在看来有很多可以改进的点（比如连自定义Vi"><meta property="og:type" content="blog"><meta property="og:title" content="AyagiKei"><meta property="og:url" content="http://sarasarasa.net/post/a367d2ae.html"><meta property="og:site_name" content="SaraSaraSa"><meta property="og:description" content="断更了很久。 试试随便写点东西，一两年内的回顾和感触杂谈，可能含有非常主观的看法。  2020 回顾Completed🔹 回归工作（2020年初） 2020年初，曾经非常担心，回归工作后，无法适应工作的内容，或者说没法胜任。 但实际情况则不然，虽然当时非常不熟悉业务开发。仍然在3-4月尝试参与了新项目的初始开发，负责了大部分页面的业务逻辑和编写。 即便现在看来有很多可以改进的点（比如连自定义Vi"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://sarasarasa.net/img/og_image.png"><meta property="article:published_time" content="2021-09-30T15:27:00.000Z"><meta property="article:modified_time" content="2021-10-07T17:08:22.609Z"><meta property="article:author" content="AyagiKei"><meta property="article:tag" content="总结"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://sarasarasa.net/post/a367d2ae.html"},"headline":"2020-2021杂谈","image":["http://sarasarasa.net/img/og_image.png"],"datePublished":"2021-09-30T15:27:00.000Z","dateModified":"2021-10-07T17:08:22.609Z","author":{"@type":"Person","name":"AyagiKei"},"publisher":{"@type":"Organization","name":"SaraSaraSa","logo":{"@type":"ImageObject","url":{"text":"Sarasarasa"}}},"description":"断更了很久。 试试随便写点东西，一两年内的回顾和感触杂谈，可能含有非常主观的看法。  2020 回顾Completed🔹 回归工作（2020年初） 2020年初，曾经非常担心，回归工作后，无法适应工作的内容，或者说没法胜任。 但实际情况则不然，虽然当时非常不熟悉业务开发。仍然在3-4月尝试参与了新项目的初始开发，负责了大部分页面的业务逻辑和编写。 即便现在看来有很多可以改进的点（比如连自定义Vi"}</script><link rel="canonical" href="http://sarasarasa.net/post/a367d2ae.html"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.0.2"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Sarasarasa</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-09-30T15:27:00.000Z" title="2021-9-30 23:27:00">2021-09-30</time>发表</span><span class="level-item"><time dateTime="2021-10-07T17:08:22.609Z" title="2021-10-8 1:08:22">2021-10-08</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E4%B8%AA%E4%BA%BA/">个人</a></span><span class="level-item">22 分钟读完 (大约3244个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">2020-2021杂谈</h1><div class="content"><p>断更了很久。</p>
+<p>试试随便写点东西，一两年内的回顾和感触杂谈，可能含有<strong>非常主观</strong>的看法。</p>
+<p><br /></p>
+<h2 id="2020-回顾"><a href="#2020-回顾" class="headerlink" title="2020 回顾"></a>2020 回顾</h2><h3 id="Completed"><a href="#Completed" class="headerlink" title="Completed"></a>Completed</h3><p><strong>🔹 回归工作（2020年初）</strong></p>
+<p>2020年初，曾经非常担心，回归工作后，无法适应工作的内容，或者说没法胜任。</p>
+<p>但实际情况则不然，虽然当时非常不熟悉业务开发。仍然在3-4月尝试参与了新项目的初始开发，负责了大部分页面的业务逻辑和编写。</p>
+<p>即便现在看来有很多可以改进的点（比如连自定义View都没封装好），但就当时远程办公+初次真正接触业务项目而言，还是可以接受的。</p>
+<p>（甚至一度想继续呆在业务开发）</p>
+<p><strong>🔸 租房生活（2020年初）</strong></p>
+<p>一个人的感觉大概也没那么糟。</p>
+<p><strong>🔸 莫名其妙完成了毕设和答辩（2020年6月左右）</strong></p>
+<p>按照原始设想，其实计划是模仿人升，使用全新的架构（MVVM、Room、Jetpack那一套玩意）和页面设计。</p>
+<p>结果实际情况是，时间过得太快，页面也就重写了两个（登录和新建任务）。</p>
+<p>最后不得已，还是复制了人升的代码，进行修改。</p>
+<p>后端则是重新尝试了 Spring Boot + Kotlin做了一些简单接口。</p>
+<p>论文修修改改，恍惚之间也通过了答辩。</p>
+<p><strong>🔸 毕业（2020年6月左右）</strong></p>
+<p>正处疫情当时，辅导员远程会议、远程寄送毕业证书。</p>
+<p>一天回校收拾行李。</p>
+<p>没有毕业服和仪式，稍感遗憾。</p>
+<p><strong>🔹 真正入职（2020年7月-12月）</strong></p>
+<p>那段时间是比较常规的打工内容。</p>
+<p>除此之外，也有毛病：</p>
+<p>逐渐有些安于现状，缺少自制（甚至体重也涨了起来，体检也被警告）。</p>
+<p>职级评定什么的其实也不是特殊在乎，摸鱼过去（ </p>
+<a id="more"></a>
+<h2 id="2021-回顾"><a href="#2021-回顾" class="headerlink" title="2021  回顾"></a>2021  回顾</h2><h3 id="Completed-1"><a href="#Completed-1" class="headerlink" title="Completed"></a>Completed</h3><p><strong>🔸 建设新的人升官网、文档库</strong></p>
+<p>ICP 备案、域名购买、docsify 搭建、七牛云、CDN解析配置</p>
+<p><strong>🔸 尝试改变（3月-10月） </strong></p>
+<p>在那段黑暗的加班时间内，突然得知被人默默关注的感觉真好。</p>
+<p>从那时起，就打算先进行一定程度的自我提升，先从体重控制做起。如果体重都没法自制，谈何自我提升和努力。</p>
+<blockquote>
+<p>从3月中旬起，半年时间也成功减重15。大体算是成功了。</p>
+</blockquote>
+<p>另一点想改变的是休息时间和早起，但还是太难了（</p>
+<p>–</p>
+<p>也尝试过曾经不太敢动手的事情，</p>
+<ul>
+<li><p>加入用户自建的Q群，”招安”维护；</p>
 </li>
-<li><p><strong>国内也能访问</strong></p>
-<p>是的，虽然Crashlytics属于Firebase，但是并没有用到Google的服务器。</p>
-</li>
-<li><p><strong>配置简单，不需要额外代码</strong></p>
-<p>这一点我也很惊喜，只需要在Gradle文件里进行一些配置。项目代码甚至不需要任何变动。</p>
-</li>
-<li><p><strong>能直接在Crashlytics后台看到混淆前的堆栈信息</strong></p>
-<img src="/post/be07a40/01.jpg" class="">
-<img src="/post/be07a40/02.jpg" class="">
+<li><p>主动邀请；</p>
 </li>
 </ul>
-<p>另外除了崩溃分析/管理功能外，其实还能在控制台看到活跃用户统计、用户行为分析、次日留存率、版本情况等等。</p>
-<p><strong>查看这些信息感觉很有助于维持更新兴趣~</strong></p>
- <img src="/post/be07a40/03.jpg" class="">
-<p>总体来讲，感觉Crashlytics很适合独立开发者使用。</p>
-<h1 id="接入Firebase以及Crashlytics"><a href="#接入Firebase以及Crashlytics" class="headerlink" title="接入Firebase以及Crashlytics"></a>接入Firebase以及Crashlytics</h1><p>Crashlytics已经被并入了Firebase体系，所以要先接入Firebase。</p>
+<p>…</p>
+<p><strong>🔸 5月上海之旅</strong></p>
+<ul>
+<li>shaoqian</li>
+<li>高达！</li>
+<li>薄荷咖啡！</li>
+</ul>
+<p><strong>🔹 主导多次方案设计和开发</strong></p>
+<p>虽然很烧脑，但确实接触到了很多架构设计方面的知识点。</p>
+<p>也抽出了一些时间查看优秀的开源库源码。</p>
+<p><strong>🔸 登上 Google Play 英美区首页（7月1号）</strong></p>
+<p>跟 Google 对接介绍自己的更新亮点、修复 Google 体验官提出的问题。</p>
+<h2 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h2><h3 id="🔹-经验主义-方法论"><a href="#🔹-经验主义-方法论" class="headerlink" title="🔹 经验主义/方法论"></a>🔹 经验主义/方法论</h3><p>近期经常看到一些唯方法论的想法或是讨论：</p>
+<ul>
+<li>我看过一本书（或者是某某理论），里面说XX是不行的，所以XX一定是行不通的。</li>
+<li>或者只凭经验对某些创新想法进行抨击</li>
+<li>…（实在想不到原话了）</li>
+</ul>
+<p>方法论在工程学中是行之有效的：比如编程领域，使用某某写法，能够带来的好处，是能够量化说明的。</p>
 <blockquote>
-<p>Fabric虽然还能直接加入Crashlytics，<strong>但是仅提供支持到2020年3月31号</strong>，官网也在建议用户迁移至Firebase。</p>
+<p>但也不一定是最佳实践。</p>
 </blockquote>
-<p>接入Firebase可以参考<a href="https://firebase.google.com/docs/android/setup?hl=zh-cn" target="_blank" rel="noopener">官方教程</a>。</p>
-<p><strong>流程可以概述为：</strong></p>
-<ol>
-<li><p>创建Firebase项目</p>
+<p>但在产品领域，经验就只是对既往成功的归纳总结。</p>
+<p>成功是无法复刻，一款产品即使内容完全不变，可能也会因为诞生在不同的时代，获得完全不同的反响。</p>
+<p>在这种场景下，唯经验主义就显得很可笑了，不如反问一句：</p>
+<blockquote>
+<p>你们调研分析做得这么好，成功的产品一定很多吧~</p>
+</blockquote>
+<p><strong>实践才是检验真理的唯一标准。</strong></p>
+<p>在产品领域，市场也是非常公平的。</p>
+<p>如果用户说好，哪容得经验主义者说不好。</p>
+<blockquote>
+<p><strong>做个行动主义者，别做方法收集家。</strong></p>
+</blockquote>
+<h3 id="🔸-上进"><a href="#🔸-上进" class="headerlink" title="🔸 上进"></a>🔸 上进</h3><p>很容易将接触到的人简单划分为：上进和非上进（摸鱼）两类，以及一部分经验老道到无法短时间判断的。</p>
+<p>一些很优秀的人，即便经验不足，也没法掩盖他们的上进。</p>
+<p>同理，那些有一定经验却不上进者，对接起来却是尤为难受；感觉仅仅是勉强完成工作罢了。</p>
+<p>–</p>
+<p>比如曾经跟某位开发短暂对接，因为他对一些代码封装有一定的理解，我们也经常跨部门沟通交流技术方面的问题。</p>
+<p>以及忍不住夸赞的测试同学。</p>
+<p>–</p>
+<p>但同时，也遇到过某些负责人。</p>
+<p>表述不清、对接困难、数年工作毫无长进、带的团队也完全没有规范流程可言。</p>
+<p>–</p>
+<p><strong>划分人群，</strong></p>
+<p><strong>其实也是为了自己更好判断接触哪些人。</strong></p>
+<p><strong>多接触优秀的人，向他们学习，近朱者赤。</strong></p>
+<p>–</p>
+<p>同理，技术优秀其实也不一定是由于上进，亦然可能是因为时间积累。</p>
+<blockquote>
+<p>真正的优秀并不在与你技术栈的深浅，对某个框架的熟练程度；</p>
+<p>而是你的学习能力和自我思考。</p>
+</blockquote>
+<h3 id="🔹-开发与写作"><a href="#🔹-开发与写作" class="headerlink" title="🔹 开发与写作"></a>🔹 开发与写作</h3><p>近期又冒出一个观点，越发觉得<strong>「开发与写作是同源的」</strong>。</p>
+<p>只不过写作面向的对象仅仅是人（自己或他人），</p>
+<p>而开发需要同时面向计算机和人。</p>
+<p>–</p>
+<p>学习编程语言，其实也是只是在学习语法。</p>
+<p>如同写作，学会了语法（字词、句子结构），并不代表能够写出优秀的文章。</p>
+<p>–</p>
+<p>但开发需要同时兼顾两位对象，挑战性和写作也是有所不同的。</p>
+<p>写出来的代码既需要运行流畅，计算机足以了解且按流程运行。</p>
+<p>亦需要代码清晰，设计模式合理，以便人阅读、后续维护。</p>
+<h3 id="🔸-契机、目标"><a href="#🔸-契机、目标" class="headerlink" title="🔸 契机、目标"></a>🔸 契机、目标</h3><p>有一个坚定的目标着实很重要，但契机能像催化剂一样，极大程度促成你达成目标。</p>
+<p>比如，当初立项开发《人升》，如果没有校内的两场开发比赛的报名和Deadline限制，</p>
+<p>很可能找不到后端小伙伴一直持续维护（前期《人升》一两年内是完全没有收益的），</p>
+<blockquote>
+<p>说起来，《人升》的名字也是后端小伙伴提供的。</p>
+</blockquote>
+<p>甚至可能我自己都放弃开发。</p>
+<p>–</p>
+<p>有了比赛的契机后，</p>
+<p>我们就有很大的动力进行里程碑设定和开发。</p>
+<p>也确实在开发途中看到了《人升》的潜力和希望。</p>
+<p>–</p>
+<p>在比赛结束后，</p>
+<p>其实我们也不知道《人升》应该如何前进。</p>
+<p>虽然，我当时列了个很简单的roadmap，但是当时其实是打算摸鱼一段时间的。</p>
+<p>结果，未曾设想，那一份发在酷安的roadmap描述上了首页，为我们带上了首波种子用户。</p>
+<p>我们也因此进行了快速迭代，并根据用户的反馈，逐渐找到了自己的开发方向。</p>
+<p>–</p>
+<p>工作中也同理，</p>
+<p>我们经常能接触到一些新鲜东西或技术。</p>
+<p>如果不加以实践可能会逐渐脱离前轨（？，想不到好词语）</p>
+<p>如果在自己的工作中，加以运用上这些自己想要实践的东西，并且这些东西对工作是有利的话，那么就是极好的。</p>
+<p>–</p>
+<p>其实也比较类似设置挑战。</p>
+<blockquote>
+<p>逃出舒适区。</p>
+</blockquote>
+<p>如果工作上缺失机会的，那么如果有个人项目就很方便了。</p>
+<ul>
+<li><p>18年创建《人升》项目时，就在完全不懂 Kotlin 的前提下，直接使用 Kotlin 作为主语言进行开发。</p>
+<p>在现在看来，这也是当时非常正确的决策之一。</p>
 </li>
-<li><p>注册应用，上传签名的SHA码</p>
-<p><strong>这两步在官网跟着流程走就可以，就不详细说明了。</strong></p>
+<li><p>20年毕设开发的时候，我就决定尝试使用 Jetpack 的 MVVM 系列框架进行开发，</p>
+<p>也着实促进了后续对这一套东西的了解（虽然 room 还没用上）。</p>
 </li>
-<li><p><strong>下载 google-services.json</strong>放到项目的模块目录（一般是app文件夹里）中。</p>
+</ul>
+<h3 id="🔸-规划和变化"><a href="#🔸-规划和变化" class="headerlink" title="🔸 规划和变化"></a>🔸 规划和变化</h3><p>对于规划、计划也有了新的看法，近期其实事项非常多，变化、增长也非常迅速，导致根本没法做出长期规划。</p>
+<p>也在思考：长期规划是否真的有必要？</p>
+<p>–</p>
+<p>一款由未来的产品，定是有无数的机遇和变化的。</p>
+<p>这时候如果花费太多时间在长远规划上，可能会因为变化，这些花费掉的时间只能沦为沉没成本了。</p>
+<p>但一个大致的规划也是必要的。</p>
+<p>–</p>
+<p>短中期规划定是有必要的，也要随时根据实际情况调整。</p>
+<p>–</p>
+<p>上文中其实提到了，</p>
+<p>当时《人升》刚结束比赛时，其实是做了一个大致的 roadmap 规划的。</p>
+<p>但现在看来，《人升》其实走了跟那份规划完全不一致的道路。</p>
+<p>–</p>
+<p>今年初，</p>
+<p>也未能想到 7 月份能登上谷歌市场首页，</p>
+<p>完成去年毕业时定下的目标（大约一年左右，实现独立，实际达成也刚好是一年又一个月，很巧。）。</p>
+<p>这个目标在年初看来，也是希望渺茫的。 </p>
+<p>–</p>
+<p>大概19年的年终计划也没实现几个，也不做总结了。</p>
+<p>后续以短中期计划为主。</p>
+<h2 id="杂谈总结"><a href="#杂谈总结" class="headerlink" title="杂谈总结"></a>杂谈总结</h2><ul>
+<li><p>勿将方法论当作成功基石、失败断言。</p>
 </li>
-<li><p>项目级gradle文件里加入Firebase和Crashlytics配置：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    repositories &#123;</span><br><span class="line">    	<span class="comment">// 加上这两个仓库地址</span></span><br><span class="line">        google()</span><br><span class="line">        maven &#123;</span><br><span class="line">            url <span class="string">'https://maven.fabric.io/public'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">'com.google.gms:google-services:4.3.0'</span> <span class="comment">// Google 服务</span></span><br><span class="line">        classpath <span class="string">'io.fabric.tools:gradle:1.29.0'</span>  <span class="comment">// Crashlytics 插件</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>市场大概率公正，由市场做评判。</p>
 </li>
-<li><p>模块级gradle文件里加入：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.google.gms.google-services'</span></span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'io.fabric'</span></span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** firebase **/</span></span><br><span class="line">    implementation <span class="string">'com.google.firebase:firebase-core:17.0.0'</span></span><br><span class="line">    implementation <span class="string">'com.crashlytics.sdk.android:crashlytics:2.10.1'</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>到这一步为止，其实已经集成完毕了。</strong></p>
+<li><p><strong>忽略噪声，噪声无益。</strong></p>
 </li>
-<li><p>（可选）如果你的应用开启了代码混淆的话，建议在proguard-rules.pro文件里加入以下规则，<strong>以便拿到混淆前的堆栈信息：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Crashlytics</span><br><span class="line">-keepattributes *Annotation*</span><br><span class="line">-keepattributes SourceFile,LineNumberTable</span><br><span class="line">-keep public class * extends java.lang.Exception</span><br><span class="line">-keep class com.crashlytics.** &#123; *; &#125;</span><br><span class="line">-dontwarn com.crashlytics.**</span><br></pre></td></tr></table></figure>
+<li><p><strong>不表达的话，别人也没法知道你的想法。</strong></p>
 </li>
-<li><p><strong>测试一下崩溃吧</strong></p>
-<p>在相应的地方可以用以下语句制造一个崩溃，然后过几分钟后，前往Firebase的后台查看崩溃信息吧~</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Crashlytics.getInstance().crash() <span class="comment">// 制造一个崩溃</span></span><br></pre></td></tr></table></figure>
+<li><p>简单划分人群，接触优秀上进者。</p>
 </li>
-</ol>
-<h1 id="更多玩法"><a href="#更多玩法" class="headerlink" title="更多玩法"></a>更多玩法</h1><p>更多Crashlytics的用法可以参考<a href="https://firebase.google.com/docs/crashlytics/customize-crash-reports?hl=zh-cn&amp;platform=android#nav-buttons-1" target="_blank" rel="noopener">官方的页面</a>，比如可以记录try-catch住的异常，自定义一些key-value信息方便分析崩溃等等。</p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>人升开发日志#17 | 08/25 接入Firebase、Crashlytics</p><p><a href="http://sarasarasa.net/post/be07a40.html">http://sarasarasa.net/post/be07a40.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>AyagiKei</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2019-08-25</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-08-10</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Android/">Android</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/">开发日志</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/post/5d88e185.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Kotlin协程混淆规则</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/post/c3b7d6d1.html"><span class="level-item">Pray For KyoAni</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
-            this.page.url = 'http://sarasarasa.net/post/be07a40.html';
-            this.page.identifier = 'post/be07a40.html';
+<li><p>开发与写作同源。</p>
+<p>像写作一样对待开发。</p>
+<p>多练习写作表达能力，对开发可能也受益。</p>
+</li>
+<li><p><strong>不要将自己定义为单一角色。</strong></p>
+<p>我不只是开发。</p>
+<p>不要被划分单一角色，多尝试跨职位了解工作内容，对工作和独立非常有用。</p>
+<p>增加自己的不可替代性。</p>
+</li>
+<li><p>使用契机作为自己实现目标的催化剂。</p>
+</li>
+<li><p>视变化而定，是否要做长远规划。</p>
+<p>或者将关注点放在中短期规划中。</p>
+</li>
+</ul>
+<blockquote>
+<p>那些我很喜欢的思考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://w2solo.com/topics/670">翻译文章 Inkdrop 我是如何通过一个 Markdown 编辑器获得 $1300/月？</a></p>
+<p><a target="_blank" rel="noopener" href="https://v2ex.com/t/805082#reply50">#思考 创业与打工的区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://w2solo.com/topics/71">5 个月独立开发者的一些体验</a></p>
+<p><a target="_blank" rel="noopener" href="https://w2solo.com/topics/761">远离社交，独立开发的这一年</a></p>
+</blockquote>
+<h2 id="试试改变-中短期规划"><a href="#试试改变-中短期规划" class="headerlink" title="试试改变-中短期规划"></a>试试改变-中短期规划</h2><ul>
+<li><p>杜绝患得患失。</p>
+<p>不要被情感情绪左右决策和行动。</p>
+<p>忽略噪声。</p>
+</li>
+<li><p>增加写日记的频次（近期都变成了月记）。</p>
+<p>记录有趣的事情，让以后有日记可溯，增加留念。</p>
+</li>
+<li><p>接触下AE视频编辑。</p>
+<p>刚好有个契机。</p>
+</li>
+<li><p>重拾算法和C++。</p>
+<p>曾经好歹也是个ACMer，现在基本语法都忘记了，非常不应该。</p>
+<p>也能够为变化做好准备。</p>
+</li>
+<li><p>试试星巴克办公。</p>
+<p>恰好也有多篇文章待写。</p>
+</li>
+</ul>
+<p>第一次写这种类型的杂谈，</p>
+<p>虽然，大概也没多少人看得到。</p>
+<blockquote>
+<p>从9/30起笔写了个1/3，最终假期最后一天才写完。</p>
+<p>也是很拖延了（</p>
+</blockquote>
+<p>愿不卑不亢，</p>
+<p>2021/10/8 凌晨</p>
+<p>Kei</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>2020-2021杂谈</p><p><a href="http://sarasarasa.net/post/a367d2ae.html">http://sarasarasa.net/post/a367d2ae.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>AyagiKei</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-09-30</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-10-08</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E6%80%BB%E7%BB%93/">总结</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/post/94096870.html"><span class="level-item">UWP应用（微软ToDo）使用代理网络</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://sarasarasa.net/post/a367d2ae.html';
+            this.page.identifier = 'post/a367d2ae.html';
         };
         (function() {
             var d = document, s = d.createElement('script');  
