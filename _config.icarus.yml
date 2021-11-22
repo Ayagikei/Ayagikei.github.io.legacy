@@ -232,7 +232,7 @@ widgets:
         # Author's current location
         location: Guangzhou
         # URL or path to the avatar image
-        avatar: 
+        avatar: https://wiki.lifeupapp.fun/empty.jpg
         # Whether show the rounded avatar image
         avatar_rounded: false
         # Email address for the Gravatar
