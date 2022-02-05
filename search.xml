@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用SplashScreen实现闪屏页</title>
+    <url>/post/547b7b56.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>水篇小文章</p>
+</blockquote>
+<p>一般我们实现闪屏页是通过自定义主题的<code>windowBackground</code>，然后在主页恢复正常主题。</p>
+<p>而在Android12上，谷歌对闪屏页支持了更多特性（如动画Drawable等）。</p>
+<p>并因此在Jetpack中引入了新成员——SplashScreen。</p>
+<p>使用该库可以非常简单的实现闪屏页，并完成大部分Android版本的兼容。</p>
+<h2 id="API-文档"><a href="#API-文档" class="headerlink" title="API 文档"></a>API 文档</h2><p> <a href="https://developer.android.com/reference/kotlin/androidx/core/splashscreen/SplashScreen#setKeepOnScreenCondition(androidx.core.splashscreen.SplashScreen.KeepOnScreenCondition">SplashScreen  |  Android Developers</a> )</p>
+<blockquote>
+<p>其实文档里的描述非常清晰。</p>
+</blockquote>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">&quot;androidx.core:core-splashscreen:1.0.0-beta01&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><h3 id="步骤1：定制-themes"><a href="#步骤1：定制-themes" class="headerlink" title="步骤1：定制 themes"></a>步骤1：定制 themes</h3><p> 改为继承 <code>Theme.SplashScreen.*</code>，一般Icon背景可以使用<code>&quot;Theme.SplashScreen.IconBackground&quot;</code><br> <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">&quot;Theme.Calendar_manager&quot;</span> <span class="attr">parent</span>=<span class="string">&quot;Theme.SplashScreen.IconBackground&quot;</span>&gt;</span>  </span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">&quot;postSplashScreenTheme&quot;</span>&gt;</span>@style/Theme.Material3.DayNight<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">&quot;windowSplashScreenBackground&quot;</span>&gt;</span>@android:color/background_light<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">&quot;windowSplashScreenAnimatedIcon&quot;</span>&gt;</span>@mipmap/ic_launcher_foreground<span class="tag">&lt;/<span class="name">item</span>&gt;</span>  </span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="步骤2：将-application-或者启动页-theme-改为该-theme"><a href="#步骤2：将-application-或者启动页-theme-改为该-theme" class="headerlink" title="步骤2：将 application 或者启动页 theme 改为该 theme"></a>步骤2：将 application 或者启动页 theme 改为该 theme</h3><h3 id="步骤3：启动页-onCreate-前调用-installSplashScreen"><a href="#步骤3：启动页-onCreate-前调用-installSplashScreen" class="headerlink" title="步骤3：启动页 onCreate 前调用 installSplashScreen()"></a>步骤3：启动页 onCreate 前调用 installSplashScreen()</h3> <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">installSplashScreen()  </span><br><span class="line"><span class="keyword">super</span>.onCreate(savedInstanceState)</span><br></pre></td></tr></table></figure>
+<h2 id="进阶使用"><a href="#进阶使用" class="headerlink" title="进阶使用"></a>进阶使用</h2><h3 id="延长展示时间"><a href="#延长展示时间" class="headerlink" title="延长展示时间"></a>延长展示时间</h3><p>可以使用<strong>KeepOnScreenCondition</strong> api 进行设置：<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">SplashScreen.KeepOnScreenCondition &#123;  </span><br><span class="line">    <span class="keyword">return</span><span class="symbol">@KeepOnScreenCondition</span> SystemClock.elapsedRealtime() - App.appCreateTime &lt;= <span class="number">150</span>  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h2><p><a href="https://github.com/Ayagikei/calendar-account-manager/pull/5/commits/b930c4202ffbf3ca442db7c55c78970100376c3b">Feature 1.1.0 material you by Ayagikei · Pull Request #5 · Ayagikei/calendar-account-manager (github.com)</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>技术</tag>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>人升三周年</title>
     <url>/post/55076597.html</url>
     <content><![CDATA[<p>时光荏苒，距离首次发布《人升》并在 V2EX 宣传已经过去了 3 年。</p>
