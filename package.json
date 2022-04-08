@@ -29,7 +29,7 @@
     "hexo-util": "^2.2.0",
     "inferno": "^7.4.2",
     "inferno-create-element": "^7.4.2",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "semver": "^7.3.2"
   }
 }
